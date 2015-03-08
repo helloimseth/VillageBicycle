@@ -1,11 +1,14 @@
-# Phase 3: Editing and Displaying Posts
+# Phase 3: Searching Bikes
 
 ## Rails
 ### Models
 
 ### Controllers
+BikesController(search)
 
 ### Views
+* bikes/search.html.erb
+* bikes/results.html.erb
 
 ## Backbone
 ### Models
@@ -13,9 +16,7 @@
 ### Collections
 
 ### Views
-* PostForm
 
 ## Gems/Libraries
-* Filepicker
-* Markdown-js
-* Bootstrap Markdown
+Kaminari
+Google Maps API

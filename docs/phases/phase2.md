@@ -1,29 +1,27 @@
-# Phase 2: Viewing Blogs and Posts
+# Phase 2: Creating/Editing/Showing owned Bikes
 
 ## Rails
 ### Models
+* Bikes
+* Add-ons
+* Extras
 
 ### Controllers
-Api::BlogsController (create, destroy, index, show)
-Api::PostsController (create, destroy, show, update)
+* BikesController (create, new, edit, update, show, destroy)
 
 ### Views
-* blogs/show.json.jbuilder
+* bikes/new.html.erb
+* bikes/show.html.erb
+* bikes/edit.html.erb
+* bikes/_form.html.erb
 
 ## Backbone
 ### Models
-* Blog (parses nested `posts` association)
-* Post
+
 
 ### Collections
-* Blogs
-* Posts
 
 ### Views
-* BlogForm
-* BlogShow (composite view, contains PostsIndex subview)
-* PostsIndex (composite view, contains PostsIndexItem subviews)
-* PostsIndexItem
-* PostShow
 
 ## Gems/Libraries
+Filepicker.io (for bike pictures)

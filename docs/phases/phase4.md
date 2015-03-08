@@ -1,13 +1,17 @@
-# Phase 4: User Feeds
+# Requesting/Approving bike rentals/purchases
 
 ## Rails
 ### Models
+Requests
 
 ### Controllers
-Api::PostsController (feed)
+RequestsController(new, create, edit, update, destroy)
 
 ### Views
-posts/feed.json.jbuilder
+Requests/new.html.erb
+Requests/edit.html.erb
+Requests/_form.html.erb
+Update: Users/show.html.erb to include notifications/list requests/scheduled rentals
 
 ## Backbone
 ### Models
@@ -15,6 +19,6 @@ posts/feed.json.jbuilder
 ### Collections
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
 
 ## Gems/Libraries
+SendGrid
