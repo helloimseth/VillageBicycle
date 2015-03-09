@@ -12,14 +12,12 @@
 ## Bike Show
 ![bike-show]
 
+## Bike Form
+![bike-form]
+
 ## Bike Search
 ![bike-search]
 
-## Post Form
-![post-form]
-
-## Search Results
-![search-results]
 
 [new-session]: ./wireframes/SessionNew.png
 [user-show]: ./wireframes/UserShow.png
