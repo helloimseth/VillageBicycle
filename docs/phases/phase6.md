@@ -20,9 +20,9 @@ Bikes
 ### Views
 CompositeView
 UserView (CompositeView)
-UserBikeView
+OwnedBikeItemView
 UserFormView
-BikeView
+BikeShowView
 
 ## Gems/Libraries
 JQuery

@@ -13,9 +13,9 @@
 ### Collections
 
 ### Views
-SearchFormView
-SearchResultsView (composite view of SearchResultsItemView and SearchFormView)
-SearchResultsItemView
+BikeSearchView *(composite view)*
+BikeSearchFormView
+BikeResultsItemView
 
 ## Gems/Libraries
 Google Maps Api

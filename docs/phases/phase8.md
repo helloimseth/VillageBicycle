@@ -18,7 +18,6 @@ RequestFormView
 RequestItemView
 RequestView
 ResponseView
-NotificationItemView
 ScheduledRentalView
 
 ## Gems/Libraries

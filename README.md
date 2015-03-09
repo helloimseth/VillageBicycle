@@ -1,4 +1,4 @@
-# Flux-capacitr
+# The Village Bicycle
 
 [Heroku link][heroku]
 

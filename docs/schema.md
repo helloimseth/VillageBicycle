@@ -9,33 +9,35 @@ password_digest | string    | not null
 session_token   | string    | not null, unique
 first_name		| string	| not null
 last_name		| string	| not null
+bio				| string	| 
 neighborhood_id | integer	| not null, foreign key (references neighborhoods)
 street_num		| integer	| 
 street_name		| string	| 
 size_id 		| integer	| not null, foreign key (references sizes)
 img_url			| string	|
-ride_partner	| boolean	| not null 
+ride_partner	| boolean	| not null *(bonus)*
 
 ## bikes
 column name 	| data type | details
 ----------------|-----------|-----------------------
 id          	| integer   | not null, primary key
 owner_id    	| integer   | not null, foreign key (references users)
-condition   	| string    | not null
-make_id			| integer	| not null, foreign key (references makes) *(bonus)*
-year			| integer	|
+name			| text		| not null
 category		| string	| not null
+description		| text		|
 gender			| string	| not null
 size_id 		| integer	| not null, foreign key (references sizes)
 num_gears		| integer	| not null
 img_url			| string	| 
+make_id			| integer	| not null, foreign key (references makes) *(bonus)*
 for_sale		| boolean	| not null, *(bonus)*
-for_rent		| boolean	| not null
-sale_price		| integer	|
+for_rent		| boolean	| not null, *(bonus)*
+sale_price		| integer	| *(bonus)*
+year			| integer	| *(bonus)*
+condition		| integer	| *(bonus)*
 hour_rent_price	| integer	|
-day_rent_price	| integer	|
-week_rent_price	| integer	|
-notes			| text		|
+day_rent_price	| integer	| *calculated based on hour_rent_price*
+week_rent_price	| integer	| *calculated based on hour_rent_price*
 
 
 ## add_ons
