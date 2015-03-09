@@ -3,14 +3,17 @@
 ## New Session
 ![new-session]
 
-## Feed Show (landing page)
-![feed-show]
+## User Show (landing page)
+![user-show]
 
-## Blog Show
-![blog-show]
+## User Form
+![user-form]
 
-## Post Show
-![post-show]
+## Bike Show
+![bike-show]
+
+## Bike Search
+![bike-search]
 
 ## Post Form
 ![post-form]
@@ -18,9 +21,9 @@
 ## Search Results
 ![search-results]
 
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
+[new-session]: ./wireframes/SessionNew.png
+[user-show]: ./wireframes/UserShow.png
+[user-form]: ./wireframes/UserNew.png
+[bike-show]: ./wireframes/BikeShow.png
+[bike-form]: ./wireframes/BikesNew.png
+[bike-search]: ./wireframes/BikeSearch.png
