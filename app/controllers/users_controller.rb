@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    redirect_to user_url(@user.id)
+    render :show
   end
 
   private
