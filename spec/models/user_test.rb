@@ -5,13 +5,13 @@ class UserTest < ActiveSupport::TestCase
 
   describe User do
 
-    let(:test_user) { User.new(email: "test@example.com",
-                               password: "password",
-                               fname: "John",
-                               lname: "Doe",
-                               bio: "Football fan!",
-                               street_num: 123,
-                               street: "Main St.") }
+    subject(:test_user) { User.new(email: "test@example.com",
+                                   password: "password",
+                                   fname: "John",
+                                   lname: "Doe",
+                                   bio: "Football fan!",
+                                   street_number: 123,
+                                   street: "Main St.") }
 
     context "authentication" do
       it "requires an email address to save a user" do
@@ -21,21 +21,22 @@ class UserTest < ActiveSupport::TestCase
       end
 
       it "won't save a new user with existing email address" do
-        test_user.save!
         new_test_user = User.new(email: "test@example.com",
-                                   password: "password",
-                                   fname: "Jane",
-                                   lname: "Deer",
-                                   bio: "Soccer fan!",
-                                   street_num: 123,
-                                   street: "Avenue St.")
+                                 password: "password",
+                                 fname: "Jane",
+                                 lname: "Deer",
+                                 bio: "Soccer fan!",
+                                 street_number: 123,
+                                 street: "Avenue St.")
 
         expect(new_test_user).not_to be_valid
       end
 
       it "won't save password to database" do
-        test_user.save!
-        expect(test_user.password).to be(nil)
+        test_user.save
+        user = User.find_by(email: "test@example.com")
+
+        expect(user.password).to be(nil)
       end
     end
 

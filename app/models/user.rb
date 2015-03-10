@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
             :fname, :lname, presence: true
 
   validates :email, uniqueness: true;
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6, allow_nil: true }
+
+  attr_reader :password
 
   after_initialize :ensure_session_token
 
@@ -14,10 +16,11 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_session_token
-    SecureRandom::Urlsafe_base64
+    SecureRandom::urlsafe_base64
   end
 
   def password=(password)
+    @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
 
@@ -29,6 +32,8 @@ class User < ActiveRecord::Base
     self.session_token = User.generate_session_token
 
     self.save!
+
+    self.session_token
   end
 
   private
