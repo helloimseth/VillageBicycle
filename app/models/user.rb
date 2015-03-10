@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :default_activated_to_false
 
   belongs_to :neighborhood, inverse_of: :users
   has_one :size, as: :sizables
@@ -45,17 +45,12 @@ class User < ActiveRecord::Base
       self.session_token ||= User.generate_session_token
     end
 
-end
+    def default_activated_to_false
+      self.activated = false
+    end
 
-# create_table "users", force: :cascade do |t|
-#   t.string   "email",           null: false
-#   t.string   "password_digest", null: false
-#   t.string   "session_token",   null: false
-#   t.string   "fname",           null: false
-#   t.string   "lname",           null: false
-#   t.text     "bio"
-#   t.integer  "street_number"
-#   t.string   "street"
-#   t.datetime "created_at",      null: false
-#   t.datetime "updated_at",      null: false
-# end
+    def set_activation_token
+
+    end
+
+end

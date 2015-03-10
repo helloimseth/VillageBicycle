@@ -12,14 +12,27 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in(@user)
+      flash[:notice] = "We've sent an activation email to your account. Please
+                        click the link in the body of the email to activate
+                        your acount."
 
-      # set_neighborhood_and_size_user_id
+      msg = UserMailer.activation_email(@user)
+      msg.deliver
 
-      redirect_to user_url(@user.id)
+      redirect_to new_user_url
     else
       render :new
     end
+  end
+
+  def activate
+    @user = User.find_by(activation_token = params[:activation_token])
+    @user.toggle(@activated)
+    log_in(@user)
+
+    flash[:notice] = "Welcome, #{@user.fname}"
+
+    redirect_to user_url(@user)
   end
 
   def show
@@ -40,8 +53,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-
-      # set_neighborhood_and_size_user_id
 
       redirect_to user_url(@user.id)
     else
