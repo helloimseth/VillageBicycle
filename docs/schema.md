@@ -9,10 +9,10 @@ password_digest | string    | not null
 session_token   | string    | not null, unique
 first_name		| string	| not null
 last_name		| string	| not null
-bio				| string	| 
+bio				| string	|
 neighborhood_id | integer	| not null, foreign key (references neighborhoods)
-street_num		| integer	| 
-street_name		| string	| 
+street_num		| integer	| *model level validation based on if they own bicycles
+street_name		| string	| *model level validation based on if they own bicycles
 size_id 		| integer	| not null, foreign key (references sizes)
 img_url			| string	|
 ride_partner	| boolean	| not null *(bonus)*
@@ -28,7 +28,7 @@ description		| text		|
 gender			| string	| not null
 size_id 		| integer	| not null, foreign key (references sizes)
 num_gears		| integer	| not null
-img_url			| string	| 
+img_url			| string	|
 make_id			| integer	| not null, foreign key (references makes) *(bonus)*
 for_sale		| boolean	| not null, *(bonus)*
 for_rent		| boolean	| not null, *(bonus)*
@@ -87,7 +87,7 @@ id          | integer   | not null, primary key
 name       	| string    | not null
 
 
-## Bonus 
+## Bonus
 
 ## makes
 column name | data type | details
@@ -101,8 +101,8 @@ country     | string    |
 column name 		| data type | details
 --------------------|-----------|-----------------------
 id          		| integer   | not null, primary key
-reviewable_id		| integer   | not null, foreign key 
-reviewable_type		| string	| not null 
+reviewable_id		| integer   | not null, foreign key
+reviewable_type		| string	| not null
 reviewer_id		    | integer   | references users
 rating				| integer	| not null
 feedback_body		| text		|
@@ -113,8 +113,8 @@ feedback_body		| text		|
 column name 		| data type | details
 --------------------|-----------|-----------------------
 id          		| integer   | not null, primary key
-available_id		| integer   | not null, foreign key 
-available_type		| string	| not null 
+available_id		| integer   | not null, foreign key
+available_type		| string	| not null
 time_slot_id	    | integer   | not null, references time_slots
 day of week			| string	| not null
 
@@ -123,8 +123,6 @@ column name 		| data type | details
 --------------------|-----------|-----------------------
 id          		| integer   | not null, primary key
 name				| string    | not null
-hour_range_start	| integer	| not null 
+hour_range_start	| integer	| not null
 hour_range_end	    | integer   | not null
 am					| boolean	| not null
-
-
