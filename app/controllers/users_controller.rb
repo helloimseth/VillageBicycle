@@ -2,8 +2,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
-    redirect_to new_user_url
   end
 
   def create
@@ -29,5 +27,9 @@ class UsersController < ApplicationController
       def user_params
         params.require(:user).permit(:email, :password, :fname, :lname, :bio,
                                      :street_number, :street)
+      end
+
+      def confirmed_password?
+        params[:user][:password] == params[:user][:confirm_password]
       end
 end
