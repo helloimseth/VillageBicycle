@@ -1,1 +1,9 @@
+<% if @user == current_user %>
+  <form action="<%= edit_user_url(@user) %>" method="get">
+    <button>Edit Profile</button>
+  </form>
+<% end %>
 <h1><%= @user.fname %> <%= @user.lname[0] %></h1>
+<p>
+  <%= @user.bio %>
+</p>

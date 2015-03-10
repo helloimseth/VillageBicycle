@@ -1,5 +1,11 @@
-<form action="<%= users_url %>" method="post">
+<% action = @user.persisted? ? user_url(@user.id) : users_url %>
+
+<form action="<%= action %>" method="post">
   <%= auth_token %>
+
+  <% if logged_in? %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
 
   <label for="user_fname">First Name</label>
   <input type="text"
@@ -12,24 +18,53 @@
         id="user_lname"
         name="user[lname]"
         value="<%= @user.lname %>">
-
+  <br>
   <label for="user_email">Email</label>
   <input type="text"
          id="user_email"
          name="user[email]"
          value="<%= @user.email %>">
   <br>
-  <label for="user_password">Password</label>
-  <input type="password"
-         id="user_password"
-         name="user[password]"
-         value="">
-  <br>
-  <label for="user_confirm_password">Confirm Password</label>
-  <input type="password"
-         id="user_confirm_password"
-         name="user[confirm_password]"
-         value="">
+
+  <% if !logged_in? %>
+
+    <label for="user_password">Password</label>
+    <input type="password"
+           id="user_password"
+           name="user[password]"
+           value="">
+    <br>
+    <label for="user_confirm_password">Confirm Password</label>
+    <input type="password"
+           id="user_confirm_password"
+           name="user[confirm_password]"
+           value="">
+
+  <% else %>
+
+    <label for="user-bio">Bio</label><br>
+    <textarea name="user[bio]"
+              id="user_bio"
+              rows="8"
+              cols="40"><%= @user.bio %></textarea>
+    <br>
+    <label for="user-street-number">Street Number</label>
+    <input type="text"
+           name="user[street_number]"
+           id="user-street-number"
+           value="<%= @user.street_number %>"
+           cols="10">
+
+    <label for="user-street">Street</label>
+    <input type="text"
+           name="user[street]"
+           id="user-street"
+           value="<%= @user.street %>"
+           cols="1">
+
+  <% end %>
+
   <br><br>
+
   <button>Submit</button>
 </form>

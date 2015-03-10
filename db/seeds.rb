@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Neighborhood.create!("SoHo")
+Neighborhood.create!("Greenwich Village")
+Neighborhood.create!("East Village")
+Neighborhood.create!("Lower East Side")
+Neighborhood.create!("West Village")
+Neighborhood.create!("TriBeCa")
+Neighborhood.create!("Financial District")
+Neighborhood.create!("Union Square")
+Neighborhood.create!("Chelsea")
+Neighborhood.create!("Gramercy")
+
+Size.create!("XS", "15\"-16\"", "5'0\"-5'3\"")
+Size.create!("S", "16\"-17\"", "5'4\"-5'7\"")
+Size.create!("M", "18\"-19\"", "5'8\"-5'10\"")
+Size.create!("L", "20\"-21\"", "5'11\"-6'2\"")
+Size.create!("XL", "22\"-23\"", "6/3\"+")
