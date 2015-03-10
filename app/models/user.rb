@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(email, password)
-    user = User.findby email: email
+    user = User.find_by email: email
 
     return user if user && user.is_password?(password)
   end
