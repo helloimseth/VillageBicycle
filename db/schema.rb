@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310212602) do
+ActiveRecord::Schema.define(version: 20150310214459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,15 @@ ActiveRecord::Schema.define(version: 20150310212602) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "sizes", force: :cascade do |t|
-    t.string "size",             null: false
-    t.string "frame_sizes",      null: false
-    t.string "suggested_height", null: false
+    t.string  "size",             null: false
+    t.string  "frame_size",       null: false
+    t.string  "suggested_height", null: false
+    t.integer "sizable_id"
+    t.string  "sizable_type"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +42,8 @@ ActiveRecord::Schema.define(version: 20150310212602) do
     t.string   "street"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "size_id"
+    t.integer  "neighborhood_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

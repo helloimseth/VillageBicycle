@@ -48,6 +48,31 @@
               rows="8"
               cols="40"><%= @user.bio %></textarea>
     <br>
+    Frame Size
+    <br>
+    <% Size.all.each do |size| %>
+      <input type="radio" name="user[size_id]"
+                          id='size-<%= size.id %>'
+                          value="<%= size.id %>"
+                          <%= "checked" if size.id == @user.size_id %>>
+      <label for='size-<%= size.id %>'>
+        <%= size.size %> - Suggested height: <%= size.suggested_height %>
+      </label>
+      <br>
+    <% end %>
+    <br>
+    <label for="user-neighborhood">Neighborhood</label>
+    <select id="user-neighborhood" name="user[neighborhood_id]">
+      <option>Select</option>
+      <% Neighborhood.all.each do |neighborhood| %>
+        <option value='<%= neighborhood.id %>'
+        <%= "selected" if neighborhood.id == @user.neighborhood_id %>>
+                  <%= neighborhood.name %>
+        </option>
+      <% end %>
+    </select>
+    <br>
+
     <label for="user-street-number">Street Number</label>
     <input type="text"
            name="user[street_number]"

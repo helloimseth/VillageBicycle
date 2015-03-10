@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  belongs_to :neighborhood, inverse_of: :users
+  has_one :size, as: :sizables
+
   def self.find_by_credentials(email, password)
     user = User.find_by email: email
 
