@@ -17,7 +17,7 @@ class UsersController < ApplicationController
                         your acount."
 
       msg = UserMailer.activation_email(@user)
-      msg.deliver
+      msg.deliver_now
 
       redirect_to new_user_url
     else
