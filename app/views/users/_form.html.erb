@@ -50,7 +50,7 @@
     <br>
     Frame Size
     <br>
-    <% Size.all.each do |size| %>
+    <% @sizes.each do |size| %>
       <input type="radio" name="user[size_id]"
                           id='size-<%= size.id %>'
                           value="<%= size.id %>"
@@ -64,7 +64,7 @@
     <label for="user-neighborhood">Neighborhood</label>
     <select id="user-neighborhood" name="user[neighborhood_id]">
       <option>Select</option>
-      <% Neighborhood.all.each do |neighborhood| %>
+      <% @neighborhoods.each do |neighborhood| %>
         <option value='<%= neighborhood.id %>'
         <%= "selected" if neighborhood.id == @user.neighborhood_id %>>
                   <%= neighborhood.name %>

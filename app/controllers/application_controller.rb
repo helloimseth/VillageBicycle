@@ -25,4 +25,16 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     redirect_to new_sessions_url unless logged_in?
   end
+
+  def set_categories
+    @categories = Category.all
+  end
+
+  def set_sizes
+    @sizes = Size.all
+  end
+
+  def set_neighborhoods
+    @neighborhoods = Neighborhood.all
+  end
 end

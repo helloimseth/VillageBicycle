@@ -13,7 +13,7 @@
   <label for="bike-category">Category</label>
   <select id="bike-category" name="bike[category_id]">
     <option>Select</option>
-    <% Category.all.each do |cat| %>
+    <% @categories.each do |cat| %>
       <option value='<%= cat.id %>' <%= "selected" if cat.id == @bike.category_id %>>
         <%= cat.name %>
       </option>
@@ -40,7 +40,7 @@
   <label for="bike-hourly-price">Desired price for hourly rent</label>
   <input type="number" name="bike[hourly_price]" id="bike-hourly-price" value="<%= @bike.hourly_price %>">
   <br>
-  <% Size.all.each do |size| %>
+  <% @sizes.each do |size| %>
     <input type="radio" name="bike[size_id]"
                         id='size-<%= size.id %>'
                         value="<%= size.id %>"

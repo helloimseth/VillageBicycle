@@ -3,6 +3,8 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
+    set_categories
+    set_sizes
   end
 
   def create
@@ -23,6 +25,8 @@ class BikesController < ApplicationController
 
   def edit
     @bike = Bike.find(params[:id])
+    set_categories
+    set_sizes
   end
 
   def update

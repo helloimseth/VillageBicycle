@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def new
     redirect_to edit_user_url(current_user) if logged_in?
     @user = User.new
+    set_sizes
+    set_neighborhoods
   end
 
   def create
@@ -46,6 +48,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user == current_user
+      set_sizes
+      set_neighborhoods
+      
       render :edit
     else
       render :show

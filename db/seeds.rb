@@ -33,18 +33,30 @@ Category.create!(name: "Cruiser")
 Category.create!(name: "Fixed Gear")
 
 
-u1.bikes.create!(name: "Lucy", gender: "Men's", size_id: 2, num_gears: 6,
+b1 = u1.bikes.create!(name: "Lucy", gender: "Men's", size_id: 2, num_gears: 6,
                  hourly_price: 27, category_id: 1)
-u1.bikes.create!(name: "Cougar", gender: "Men's", size_id: 3, num_gears: 1,
+b2 = u1.bikes.create!(name: "Cougar", gender: "Men's", size_id: 3, num_gears: 1,
                  hourly_price: 10, category_id: 4)
 
-u2.bikes.create!(name: "Big Apple", gender: "Men's", size_id: 5, num_gears: 12,
+b3 = u2.bikes.create!(name: "Big Apple", gender: "Men's", size_id: 5, num_gears: 12,
                  hourly_price: 20, category_id: 2)
-u2.bikes.create!(name: "The Manimal", gender: "Men's", size_id: 5, num_gears: 16,
+b4 = u2.bikes.create!(name: "The Manimal", gender: "Men's", size_id: 5, num_gears: 16,
                  hourly_price: 50, category_id: 3)
 
 
-u3.bikes.create!(name: "Partition", gender: "Women's", size_id: 1, num_gears: 3,
+b5 = u3.bikes.create!(name: "Partition", gender: "Women's", size_id: 1, num_gears: 3,
                  hourly_price: 15, category_id: 5)
-u3.bikes.create!(name: "Independent Woman", gender: "Women's", size_id: 1, num_gears: 12,
+b6 = u3.bikes.create!(name: "Independent Woman", gender: "Women's", size_id: 1, num_gears: 12,
                  hourly_price: 44, category_id: 1)
+
+e1 = Extra.create!(name:"Helmet")
+e2 = Extra.create!(name:"Lock")
+e3 = Extra.create!(name:"Headlight")
+e4 = Extra.create!(name:"Taillight")
+
+b1.extras = [e1, e2, e3]
+b2.extras = [e1]
+b3.extras = [e2]
+b4.extras = [e2, e3]
+b5.extras = [e4, e1, e3]
+b6.extras = [e1, e3]
