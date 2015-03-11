@@ -1,6 +1,7 @@
+<br>
 <form action="<%= search_bikes_url %>" method="get">
   <label for="query-category">Category</label>
-  <select id="query-category" name="query[category_id]">
+  <select id="query-category" name="query[bike][category_id]">
     <option value="">Select</option>
     <% @categories.each do |cat| %>
       <option value='<%= cat.id %>'>
@@ -8,18 +9,26 @@
       </option>
     <% end %>
   </select>
-  <br>
-  <input type="radio" name="query[gender]"
+  <br><br>
+  <label for="query-neighborhood">Neighborhood</label>
+  <select id="query-neighborhood" name="query[owner][neighborhood_id]">
+    <option value="">Select</option>
+    <% @neighborhoods.each do |neighborhood| %>
+      <option value='<%= neighborhood.id %>'><%= neighborhood.name %></option>
+    <% end %>
+  </select>
+  <br><br>
+  <input type="radio" name="query[bike][gender]"
                       id="Men's"
                       value="Men's">
   <label for="Men's">Men's</label>
-  <input type="radio" name="query[gender]"
+  <input type="radio" name="query[bike][gender]"
                       id="Women's"
                       value="Women's">
   <label for="Women's">Women's</label>
-  <br>
+  <br><br>
   <% @sizes.each do |size| %>
-    <input type="radio" name="query[size_id]"
+    <input type="radio" name="query[bike][size_id]"
                         id='size-<%= size.id %>'
                         value="<%= size.id %>">
     <label for='size-<%= size.id %>'>
@@ -27,11 +36,15 @@
     </label>
     <br>
   <% end %>
+  <br>
   <button>Submit</button>
 </form>
 
 <ul>
   <% @bikes.each do |bike| %>
-    <li><%= bike.name %></li>
+    <li><a href="<%= bike_url(bike) %> "><%= bike.name %> - <%= bike.type %></a> -
+      $<%= bike.hourly_price %>/hour<br>
+      Owned by <a href="<%= user_url(bike.owner) %>"><%= bike.owner_name %></a>
+    </li>
   <% end %>
 </ul>

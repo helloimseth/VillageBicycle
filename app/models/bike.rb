@@ -31,19 +31,20 @@ class Bike < ActiveRecord::Base
     query_string = ""
     query_params = []
 
-    query.each do |category, param|
+    query[:bike].each do |category, param|
       unless param.blank?
-        query_string << "#{category} = ? OR "
+        query_string << "bikes.#{category} = ? OR "
         query_params << param
       end
-
     end
 
-    #neighborhood
-    #gender
-    #type
-    #size
+    if query[:owner][:neighborhood_id].blank?
       query_params.unshift(query_string[0..-5])
-    return Bike.where(query_params)
+      Bike.where(query_params)
+    else
+      query_string << "users.neighborhood_id = ?"
+      query_params.unshift(query_string).push(query[:owner][:neighborhood_id])
+      Bike.joins(:owner).where(query_params)
+    end
   end
 end

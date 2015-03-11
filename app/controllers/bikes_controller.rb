@@ -57,7 +57,7 @@ class BikesController < ApplicationController
     end
     set_categories
     set_sizes
-    params = {}
+    set_neighborhoods
   end
 
   private
