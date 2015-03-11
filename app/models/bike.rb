@@ -12,6 +12,9 @@ class Bike < ActiveRecord::Base
   belongs_to :size, inverse_of: :bikes
   belongs_to :category, inverse_of: :bikes
 
+  has_many :add_ons
+  has_many :extras, through: :add_ons, source: :extra
+
   def type
     self.category.name
   end
