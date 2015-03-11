@@ -1,12 +1,20 @@
 <h1><%= @bike.name %> the <%= @bike.category.name %></h1>
+<% if @bike.owner == current_user %>
+  <form action="<%= edit_bike_url(@bike) %>" method="get">
+    <button>Edit Bike</button>
+  </form>
+<% end %>
 <a href="<%= user_url(@bike.owner) %>">Owned by <%= @bike.owner_name %></a>
 <section>
   <%= @bike.notes %>
 </section>
 <ul>
-  <li> <%= @bike.num_gears %> </li>
+  <li> Number of Gears:<%= @bike.num_gears %> </li>
   <li> Suggested height: <%= @bike.size.suggested_height %></li>
 </ul>
+<% @bike.extras.each do |extra| %>
+  <li><%= extra.name %></li>
+<% end %>
 <ul>
   <li>$<%= @bike.hourly_price %>/hour</li>
   <li>$<%= @bike.hourly_price * 7 %>/day</li>

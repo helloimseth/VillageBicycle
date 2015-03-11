@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   get '/users/activate'
-  resources :users, except: [:index] do
-    resources :bikes, only: [:new]
-  end
+  resources :users, except: [:index]
 
-  resources :bikes, except: [:new, :index]
+  resources :bikes, except: [:index]
 
   resource :sessions, only: [:new, :create, :destroy]
 end

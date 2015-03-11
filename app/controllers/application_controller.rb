@@ -37,4 +37,8 @@ class ApplicationController < ActionController::Base
   def set_neighborhoods
     @neighborhoods = Neighborhood.all
   end
+
+  def set_extras
+    @extras = Extra.all
+  end
 end

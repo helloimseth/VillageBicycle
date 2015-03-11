@@ -17,13 +17,13 @@ Size.create!(size:"XL", frame_size: "22\"-23\"", suggested_height: "6/3\"+")
 
 u1 = User.create!(fname:"Seth", lname: "Hamlin", email: "email@example.com",
                   password: "password", neighborhood_id: 1, size_id: 3,
-                  activated: true)
+                  activated: true, address: "598 Broadway")
 u2 = User.create!(fname:"Bill", lname: "DeBlasio", email: "mayor@example.com",
                   password: "password", neighborhood_id: 7, size_id: 5,
-                  activated: true)
+                  activated: true, address: "City Hall Park")
 u3 = User.create!(fname:"Beyonce", lname: "Knowles", email: "yonce@example.com",
                   password: "password", neighborhood_id: 6, size_id: 1,
-                  activated: true)
+                  activated: true, address: "Franklin and Hudson")
 
 Category.create!(name: "Road Bike")
 Category.create!(name: "Road Bike (Compact)")

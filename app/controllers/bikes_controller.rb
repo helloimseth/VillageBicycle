@@ -5,12 +5,14 @@ class BikesController < ApplicationController
     @bike = Bike.new
     set_categories
     set_sizes
+    set_extras
   end
 
   def create
     @bike = current_user.bikes.new(bike_params)
 
     if @bike.save
+      @bike.extra_ids = params[:bike][:extra_ids]
       redirect_to user_url(current_user)
     else
       flash[:notice] = @bike.errors.full_messages
@@ -27,12 +29,14 @@ class BikesController < ApplicationController
     @bike = Bike.find(params[:id])
     set_categories
     set_sizes
+    set_extras
   end
 
   def update
     @bike = Bike.find(params[:id])
 
     if @bike.update(bike_params)
+      @bike.extra_ids = params[:bike][:extra_ids]
       redirect_to bike_url(@bike)
     else
       flash[:notice] = @bike.errors.full_messages
@@ -50,7 +54,7 @@ class BikesController < ApplicationController
   private
     def bike_params
       params.require(:bike).permit(:name, :notes, :gender, :size_id, :num_gears,
-                                   :hourly_price, :category_id)
+                                   :hourly_price, :category_id, :extra_ids)
     end
 
 end

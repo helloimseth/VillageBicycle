@@ -51,5 +51,11 @@
     <br>
   <% end %>
   <br>
+  <% @extras.each do |extra| %>
+    <input type="checkbox" name="bike[extra_ids][]"
+           id='bike-extra-<%= extra.id %>' value="<%= extra.id %>"
+           <%= "checked" if @bike.extras.include?(extra) %>>
+    <label for='bike-extra-<%= extra.id %>'><%= extra.name %></label>
+  <% end %>
   <button name="submit">Submit</button>
 </form>
