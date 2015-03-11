@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:notice] = "We've sent an activation email to your account. Please
                         click the link in the body of the email to activate
-                        your acount."
+                        your account."
 
       msg = UserMailer.activation_email(@user)
       msg.deliver_now
@@ -26,8 +26,8 @@ class UsersController < ApplicationController
   end
 
   def activate
-    @user = User.find_by(activation_token = params[:activation_token])
-    @user.toggle(@activated)
+    @user = User.find_by(activation_token: params[:activation_token])
+    @user.toggle(:activated)
     log_in(@user)
 
     flash[:notice] = "Welcome, #{@user.fname}"
@@ -64,15 +64,10 @@ class UsersController < ApplicationController
 
       def user_params
         params.require(:user).permit(:email, :password, :fname, :lname, :bio,
-                                     :street_number, :street, :neighborhood_id,
-                                     :size_id)
+                                     :address, :neighborhood_id, :size_id)
       end
 
       def confirmed_password?
         params[:user][:password] == params[:user][:confirm_password]
       end
-      #
-      # def set_neighborhood_and_size_user_id
-      #   Neighborhood.find(params[:users][:neighborhood_id])
-      # end
 end

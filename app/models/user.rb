@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  after_initialize :ensure_session_token, :default_activated_to_false
+  after_initialize :ensure_session_token, :default_activated_to_false,
+                   :set_activation_token
 
   belongs_to :neighborhood, inverse_of: :users
   has_one :size, as: :sizables
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
     return user if user && user.is_password?(password)
   end
 
-  def self.generate_session_token
+  def self.generate_token
     SecureRandom::urlsafe_base64
   end
 
@@ -32,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def reset_session_token!
-    self.session_token = User.generate_session_token
+    self.session_token = User.generate_token
 
     self.save!
 
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
   private
 
     def ensure_session_token
-      self.session_token ||= User.generate_session_token
+      self.session_token ||= User.generate_token
     end
 
     def default_activated_to_false
@@ -50,7 +51,7 @@ class User < ActiveRecord::Base
     end
 
     def set_activation_token
-
+      self.activation_token = User.generate_token
     end
 
 end

@@ -8,11 +8,15 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:user][:email],
                                      params[:user][:password])
 
-    if @user
+    if @user && @user.activated
       log_in @user
 
       redirect_to user_url(@user.id)
     else
+      alert = "Sorry, you haven't activated your account yet. We
+               sent your activatition link to your email address"
+      flash[:notice] = alert unless @user.nil?
+      
       render :new
     end
   end

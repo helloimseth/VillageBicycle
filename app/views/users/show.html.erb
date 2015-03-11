@@ -4,7 +4,7 @@
   </form>
 <% end %>
 <h1><%= @user.fname %> <%= @user.lname[0] %></h1>
-<strong><%= @user.neighborhood.name %></strong>
+<strong><%= @user.neighborhood.name unless @user.neighborhood.nil? %></strong>
 <p>
   <%= @user.bio %>
 </p>

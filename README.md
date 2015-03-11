@@ -7,8 +7,8 @@
 ## Minimum Viable Product
 The Village Bicycle is an AirBnB clone for renting or buying bicycles from other people. Users can:
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
+- [x] Create accounts
+- [x] Create sessions (log in)
 - [ ] Create bikes
 - [ ] View bikes and other users
 - [ ] Search bikes by location
@@ -31,7 +31,7 @@ I will implement the user model with Rails based authentication using BCrypt. I
 will implement the new user sign-up functionality using an initial form taking email/password which will
 bring the new user to a complete new profile form, which will be made with a _form partial
 that will also be used for editing. This will also require the creation of a Size model and Neighborhood
-Model to populate selection sets. By the end of this phase, users will be able to sign-up 
+Model to populate selection sets. By the end of this phase, users will be able to sign-up
 edit, and view their own profiles.
 
 [Details][phase-one]
@@ -40,27 +40,27 @@ edit, and view their own profiles.
 I will implement the bike model with a belongs_to association to users. By the end of this phase,
 users will be able to create, edit, and view owned bikes. Users' show pages will also list the
 bikes they own and that list will be anchored to their respective bike's show page. Users will also be
-able to destroy the bikes they own. As with users, I will implement the new bike creation using a _form 
+able to destroy the bikes they own. As with users, I will implement the new bike creation using a _form
 partial that will also be used for the edit functionality.
 
 [Details][phase-two]
 
 ### Phase 3: Searching Bikes (~1 day)
 In this phase, I will implement a search action on the BikesController as well as search form view.
-This will require the use of google maps' api to search by location and display the locations on a 
-map. By the end of this phase, users will be able to search for bikes by location, availability, 
+This will require the use of google maps' api to search by location and display the locations on a
+map. By the end of this phase, users will be able to search for bikes by location, availability,
 for rent/for purchase and/or type and view a list of bikes matching the search terms.
 
 [Details][phase-three]
 
 ### Phase 4: Requesting/Approving bike rentals/purchases (~2 days)
-I make a Requests model, controller, and form view that will be accessible from the 
-bike show page. By the end of this phase Users will make a request for a bike, which 
+I make a Requests model, controller, and form view that will be accessible from the
+bike show page. By the end of this phase Users will make a request for a bike, which
 will have the reviewed field set to false by default; this will cause a notification email
 to the bike owner, as well as a notification on the user's profile page, only visible if the
-show page belongs to the current user. Bike owners will have a requests index which will 
-lead them to a request show page where they can approve, deny or response to a request. 
-Approval/denial will trigger an email to be sent to the requestor, as well as a notification 
+show page belongs to the current user. Bike owners will have a requests index which will
+lead them to a request show page where they can approve, deny or response to a request.
+Approval/denial will trigger an email to be sent to the requestor, as well as a notification
 to be sent to the user's profile page, also only visible if the show page belongs to the current user.
 
 Approved requests will be listed on the requestor and bike owners homepages, again, only visible if the show page belongs to the current user. Past requests won't be displayed.
@@ -78,9 +78,9 @@ resemble a website that isn't a complete eyesoar.
 [Details][phase-five]
 
 ### Phase 6: Viewing Users and Bikes in Backbone (~1 day)
-This phase translate the users and bikes views (except searches and requests) into Backbone. In this phase, I will 
+This phase translate the users and bikes views (except searches and requests) into Backbone. In this phase, I will
 create an API namespace in the routes and provide JSON templates using JBuilder. I will make Models for users
-and bikes, with a nested bikes collection under users using a bikes() function and overwriting the user model's 
+and bikes, with a nested bikes collection under users using a bikes() function and overwriting the user model's
 parse function. The users's view will be a composite view to incoroporate both the user info, their owned bikes list
 and for the future addition of requests and scheduled rentals information.
 

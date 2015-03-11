@@ -73,18 +73,11 @@
     </select>
     <br>
 
-    <label for="user-street-number">Street Number</label>
+    <label for="user-address">Street Address</label>
     <input type="text"
-           name="user[street_number]"
-           id="user-street-number"
-           value="<%= @user.street_number %>"
-           cols="10">
-
-    <label for="user-street">Street</label>
-    <input type="text"
-           name="user[street]"
-           id="user-street"
-           value="<%= @user.street %>"
+           name="user[address]"
+           id="user-address"
+           value="<%= @user.address %>"
            cols="1">
 
   <% end %>

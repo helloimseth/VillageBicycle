@@ -8,6 +8,7 @@
 </head>
 <body>
 <%= log_out_button if logged_in? %>
+<%= flash[:notice] if flash[:notice] %>
 <%= yield %>
 
 </body>
