@@ -9,8 +9,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    render :new unless confirmed_password?
-
     @user = User.new(user_params)
 
     if @user.save
@@ -50,7 +48,7 @@ class UsersController < ApplicationController
     if @user == current_user
       set_sizes
       set_neighborhoods
-      
+
       render :edit
     else
       render :show
@@ -73,10 +71,7 @@ class UsersController < ApplicationController
 
       def user_params
         params.require(:user).permit(:email, :password, :fname, :lname, :bio,
-                                     :address, :neighborhood_id, :size_id)
-      end
-
-      def confirmed_password?
-        params[:user][:password] == params[:user][:confirm_password]
+                                     :address, :neighborhood_id, :size_id,
+                                     :password_confirmation)
       end
 end

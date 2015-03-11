@@ -36,8 +36,8 @@
     <br>
     <label for="user_confirm_password">Confirm Password</label>
     <input type="password"
-           id="user_confirm_password"
-           name="user[confirm_password]"
+           id="password_confirmation"
+           name="user[password_confirmation]"
            value="">
 
   <% else %>
@@ -48,8 +48,11 @@
               rows="8"
               cols="40"><%= @user.bio %></textarea>
     <br>
+
     Frame Size
+
     <br>
+
     <% @sizes.each do |size| %>
       <input type="radio" name="user[size_id]"
                           id='size-<%= size.id %>'
@@ -60,7 +63,9 @@
       </label>
       <br>
     <% end %>
+
     <br>
+
     <label for="user-neighborhood">Neighborhood</label>
     <select id="user-neighborhood" name="user[neighborhood_id]">
       <option>Select</option>

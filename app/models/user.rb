@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true;
   validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password, confirmation: true
 
   attr_reader :password
 
