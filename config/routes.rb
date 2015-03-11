@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  get '/users/activate'
-  resources :users, except: [:index]
+  resources :users, except: [:index] do
+    collection { get 'activate' }
+  end
 
-  resources :bikes, except: [:index]
+  resources :bikes, except: [:index] do
+    collection { get 'search' }
+  end
 
   resource :sessions, only: [:new, :create, :destroy]
 end

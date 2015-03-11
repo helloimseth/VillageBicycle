@@ -26,4 +26,24 @@ class Bike < ActiveRecord::Base
   def owner_name
     "#{self.owner.fname} #{self.owner.lname[0]}"
   end
+
+  def self.search(query)
+    query_string = ""
+    query_params = []
+
+    query.each do |category, param|
+      unless param.blank?
+        query_string << "#{category} = ? OR "
+        query_params << param
+      end
+
+    end
+
+    #neighborhood
+    #gender
+    #type
+    #size
+      query_params.unshift(query_string[0..-5])
+    return Bike.where(query_params)
+  end
 end

@@ -49,6 +49,17 @@ class BikesController < ApplicationController
     redirect_to user_url(current_user)
   end
 
+  def search
+    if params[:query]
+      @bikes = Bike.search(params[:query])
+    else
+      @bikes = []
+    end
+    set_categories
+    set_sizes
+    params = {}
+  end
+
   private
     def bike_params
       params.require(:bike).permit(:name, :notes, :gender, :size_id, :num_gears,

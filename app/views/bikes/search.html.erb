@@ -1,0 +1,37 @@
+<form action="<%= search_bikes_url %>" method="get">
+  <label for="query-category">Category</label>
+  <select id="query-category" name="query[category_id]">
+    <option value="">Select</option>
+    <% @categories.each do |cat| %>
+      <option value='<%= cat.id %>'>
+        <%= cat.name %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+  <input type="radio" name="query[gender]"
+                      id="Men's"
+                      value="Men's">
+  <label for="Men's">Men's</label>
+  <input type="radio" name="query[gender]"
+                      id="Women's"
+                      value="Women's">
+  <label for="Women's">Women's</label>
+  <br>
+  <% @sizes.each do |size| %>
+    <input type="radio" name="query[size_id]"
+                        id='size-<%= size.id %>'
+                        value="<%= size.id %>">
+    <label for='size-<%= size.id %>'>
+      <%= size.size %> - Suggested height: <%= size.suggested_height %>
+    </label>
+    <br>
+  <% end %>
+  <button>Submit</button>
+</form>
+
+<ul>
+  <% @bikes.each do |bike| %>
+    <li><%= bike.name %></li>
+  <% end %>
+</ul>

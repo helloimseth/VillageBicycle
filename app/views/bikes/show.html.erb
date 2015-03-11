@@ -34,5 +34,12 @@
 </ul>
 
 <section>
-  Location: <%= @bike.neighborhood %>
+  Location: <%= @bike.neighborhood %><br>
+  <iframe
+  width="400"
+  height="250"
+  frameborder="0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBiao2WMw8sjrDYPOejBbLnuRWrMh6wOvg
+    &q=<%= "#{@bike.owner.address} #{@bike.neighborhood}" %>">
+</iframe>
 </section>
