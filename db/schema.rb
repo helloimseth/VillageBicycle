@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311140158) do
+ActiveRecord::Schema.define(version: 20150311141312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,9 @@ ActiveRecord::Schema.define(version: 20150311140158) do
   end
 
   create_table "neighborhoods", force: :cascade do |t|
-    t.integer  "frame_size",       null: false
-    t.string   "suggested_height", null: false
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "sizes", force: :cascade do |t|

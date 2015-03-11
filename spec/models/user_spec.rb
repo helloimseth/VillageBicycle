@@ -28,14 +28,10 @@ RSpec.describe User, :type => :model do
     end
 
     context "association" do
-      it "has a size" do
-        size = Size.new( id: 1 )
-        test_user.size_id = 1
+      it { should belong_to(:size) }
 
-        expect(test_user.size).to be_an_instance_of(Size)
-      end
-
-      it "has a neighborhood"
+      it { should belong_to(:neighborhood) }
+      
       it "can have a bike"
     end
   end
