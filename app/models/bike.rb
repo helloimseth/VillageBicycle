@@ -1,7 +1,10 @@
 class Bike < ActiveRecord::Base
   validates :name, :gender, :size, :num_gears,
             :hourly_price, :category, presence: true
-  validates :gender, inclusion: { in: %w( Men's Women's )}
+  validates :gender, inclusion: { in: %w( Men's Women's ) }
+
+  has_attached_file :picture, styles: { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :owner,
     class_name: "User",

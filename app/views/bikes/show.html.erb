@@ -11,7 +11,7 @@
     <button>Delete Bike</button>
   </form>
 <% end %>
-
+<img src="<%= @bike.picture.url(:medium) %>" alt="Profile Picture" />
 <a href="<%= user_url(@bike.owner) %>">Owned by <%= @bike.owner_name %></a>
 
 <section>

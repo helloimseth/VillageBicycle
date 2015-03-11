@@ -29,3 +29,8 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+gem "paperclip", "~> 4.2"
+gem "figaro", '~> 1.0.0'
+gem "aws-sdk", "< 2.0"
+gem "aws-sdk-core"

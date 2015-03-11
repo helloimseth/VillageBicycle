@@ -61,7 +61,9 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user.id)
     else
-      flash[:notice] = @user.errors.full_messages
+      flash[:notice] = @user.errors.full_messages      
+      set_sizes
+      set_neighborhoods
 
       render :edit
     end
@@ -72,6 +74,6 @@ class UsersController < ApplicationController
       def user_params
         params.require(:user).permit(:email, :password, :fname, :lname, :bio,
                                      :address, :neighborhood_id, :size_id,
-                                     :password_confirmation)
+                                     :password_confirmation, :picture)
       end
 end

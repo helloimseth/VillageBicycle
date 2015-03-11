@@ -1,6 +1,6 @@
 <% action = @user.persisted? ? user_url(@user.id) : users_url %>
 
-<form action="<%= action %>" method="post">
+<form action="<%= action %>" method="post" enctype='multipart/form-data' >
   <%= auth_token %>
 
   <% if @user.persisted? %>
@@ -85,9 +85,15 @@
            value="<%= @user.address %>"
            cols="1">
 
+    <br><br>
+    <label for="user-picture">Profile Picture</label>
+    <input type="file" name="user[picture]" id="user-picture" value="">
+
+
   <% end %>
 
   <br><br>
+
 
   <button>Submit</button>
 </form>
