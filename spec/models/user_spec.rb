@@ -31,7 +31,7 @@ RSpec.describe User, :type => :model do
       it { should belong_to(:size) }
 
       it { should belong_to(:neighborhood) }
-      
-      it "can have a bike"
+
+      it { should have_many(:bikes) }
     end
   end
