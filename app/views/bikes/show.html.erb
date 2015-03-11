@@ -3,6 +3,11 @@
   <form action="<%= edit_bike_url(@bike) %>" method="get">
     <button>Edit Bike</button>
   </form>
+  <form action="<%= bike_url(@bike) %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete Bike</button>
+  </form>
 <% end %>
 <a href="<%= user_url(@bike.owner) %>">Owned by <%= @bike.owner_name %></a>
 <section>
