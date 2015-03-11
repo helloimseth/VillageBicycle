@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     end
 
     def default_activated_to_false
-      self.activated = false
+      self.activated ||= false
     end
 
     def set_activation_token

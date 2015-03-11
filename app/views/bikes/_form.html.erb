@@ -1,0 +1,55 @@
+<% action = @bike.persisted? ? bike_url(@bike) : bikes_url %>
+
+<form action="<%= action %>" method="post">
+  <%= auth_token %>
+
+  <% if @bike.persisted? %>
+    <input type="hidden" name="_method" value="put">
+  <% end %>
+
+  <label for="bike-name">Name</label>
+  <input type="text" name="bike[name]" id="bike-name" value="<%= @bike.name %>">
+
+  <label for="bike-category">Category</label>
+  <select id="bike-category" name="bike[category_id]">
+    <option>Select</option>
+    <% Category.all.each do |cat| %>
+      <option value='<%= cat.id %>' <%= "selected" if cat.id == @bike.category_id %>>
+        <%= cat.name %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+  <input type="radio" name="bike[gender]"
+                      id="Men's"
+                      value="Men's"
+                      <%= "checked" if @bike.gender == "Men's" %>>
+  <label for="Men's">Men's</label>
+  <input type="radio" name="bike[gender]"
+                      id="Women's"
+                      value="Women's"
+                      <%= "checked" if @bike.gender == "Women's" %>>
+  <label for="Women's">Women's</label>
+  <br>
+  <label for="bike-notes">Description</label>
+  <textarea name="bike[notes]" id="bike-notes" rows="8" cols="40"><%= @bike.notes %></textarea>
+  <br>
+  <label for="bike-num-gears">Number of Gears</label>
+  <input type="number" name="bike[num_gears]" id="bike-num-gears" value="<%= @bike.num_gears %>">
+  <br>
+  <label for="bike-hourly-price">Desired price for hourly rent</label>
+  <input type="number" name="bike[hourly_price]" id="bike-hourly-price" value="<%= @bike.hourly_price %>">
+  <br>
+  <% Size.all.each do |size| %>
+    <input type="radio" name="bike[size_id]"
+                        id='size-<%= size.id %>'
+                        value="<%= size.id %>"
+                        <%= "checked" if size.id == @bike.size_id %>>
+    <label for='size-<%= size.id %>'>
+      <%= size.size %> - Suggested height: <%= size.suggested_height %>
+    </label>
+    <br>
+  <% end %>
+  <br>
+  <button name="submit">Submit</button>
+</form>

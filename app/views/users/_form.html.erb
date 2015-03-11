@@ -3,7 +3,7 @@
 <form action="<%= action %>" method="post">
   <%= auth_token %>
 
-  <% if logged_in? %>
+  <% if @user.persisted %>
     <input type="hidden" name="_method" value="put">
   <% end %>
 

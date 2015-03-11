@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user][:email],
                                      params[:user][:password])
-
     if @user && @user.activated
       log_in @user
 
@@ -16,7 +15,7 @@ class SessionsController < ApplicationController
       alert = "Sorry, you haven't activated your account yet. We
                sent your activatition link to your email address"
       flash[:notice] = alert unless @user.nil?
-      
+
       render :new
     end
   end
