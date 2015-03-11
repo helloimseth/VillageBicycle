@@ -10,4 +10,16 @@ class Bike < ActiveRecord::Base
 
   belongs_to :size, inverse_of: :bikes
   belongs_to :category, inverse_of: :bikes
+
+  def type
+    self.category.name
+  end
+
+  def neighborhood
+    self.owner.neighborhood.name
+  end
+
+  def owner_name
+    "#{self.owner.fname} #{self.owner.lname[0]}"
+  end
 end

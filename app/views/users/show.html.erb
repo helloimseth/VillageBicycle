@@ -8,3 +8,15 @@
 <p>
   <%= @user.bio %>
 </p>
+
+<section>
+  <h2>Owned Bikes</h2>
+  <ul>
+    <% @bikes.each do |bike| %>
+      <a href="<%= bike_url(bike) %>">
+        <li><%= bike.name %> the <%= bike.category.name %> -
+            $<%= bike.hourly_price %>/hour </li>
+      </a>
+    <% end %>
+  </ul>
+</section>

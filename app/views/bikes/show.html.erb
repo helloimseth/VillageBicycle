@@ -1,0 +1,17 @@
+<h1><%= @bike.name %> the <%= @bike.category.name %></h1>
+<a href="<%= user_url(@bike.owner) %>">Owned by <%= @bike.owner_name %></a>
+<section>
+  <%= @bike.notes %>
+</section>
+<ul>
+  <li> <%= @bike.num_gears %> </li>
+  <li> Suggested height: <%= @bike.size.suggested_height %></li>
+</ul>
+<ul>
+  <li>$<%= @bike.hourly_price %>/hour</li>
+  <li>$<%= @bike.hourly_price * 7 %>/day</li>
+  <li>$<%= @bike.hourly_price * 30 %>/week</li>
+</ul>
+<section>
+  Location: <%= @bike.neighborhood %>
+</section>
