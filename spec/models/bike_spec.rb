@@ -7,6 +7,8 @@ RSpec.describe Bike, type: :model do
   context "validation" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:gender) }
+    # inclusion of gender in men's women's
+    
     it { should validate_presence_of(:size) }
     it { should validate_presence_of(:num_gears) }
     it { should validate_presence_of(:hourly_price) }
