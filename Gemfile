@@ -18,6 +18,8 @@ group :test do
 end
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
