@@ -14,6 +14,7 @@ gem "letter_opener", group: :development
 
 group :test do
   gem 'guard-rspec'
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do

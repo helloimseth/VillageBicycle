@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
                    :set_activation_token
 
   belongs_to :neighborhood, inverse_of: :users
-  has_one :size, as: :sizables
-
+  belongs_to :size, inverse_of: :users
+  
   def self.find_by_credentials(email, password)
     user = User.find_by email: email
 

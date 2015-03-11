@@ -1,3 +1,3 @@
 class Size < ActiveRecord::Base
-  belongs_to :sizables, polymorphic: true
+  has_many :users, inverse_of: :size
 end

@@ -1,24 +1,16 @@
 require 'test_helper'
 require 'spec_helper'
 
-class UserTest < ActiveSupport::TestCase
+RSpec.describe User, :type => :model do
 
-  describe User do
-
-    subject(:test_user) { User.new(email: "test@example.com",
-                                   password: "password",
-                                   fname: "John",
-                                   lname: "Doe",
-                                   bio: "Football fan!",
-                                   street_number: 123,
-                                   street: "Main St.") }
+    subject(:test_user) do
+      User.new(email: "test@example.com", password: "password",
+               fname: "John", lname: "Doe", bio: "Football fan!",
+               address: "123 Main St.")
+    end
 
     context "authentication" do
-      it "requires a password to be at least 6 characters" do
-        test_user.password = "fail"
-
-        expect(test_user).not_to be_valid
-      end
+      it { should validate_length_of(:password).is_at_least(6) }
 
       it "won't save password to database" do
         test_user.save
@@ -29,26 +21,21 @@ class UserTest < ActiveSupport::TestCase
     end
 
     context "validation" do
-      it "requires users have First and Last Names" do
-        test_user.fname, test_user.lname = nil, nil
-
-        expect(test_user).not_to be_valid
-      end
-
-      it "requires an email address to save a user" do
-        test_user.email = nil;
-
-        expect(test_user).not_to be_valid
-      end
-
-      it "won't save a new user with existing email address" do
-        new_test_user = User.new(email: "test@example.com", password: "password",
-                                 fname: "Jane", lname: "Deer")
-
-        expect(new_test_user).not_to be_valid
-      end
+      it { should validate_presence_of(:fname) }
+      it { should validate_presence_of(:lname) }
+      it { should validate_presence_of(:email) }
+      it { should validate_uniqueness_of(:email) }
     end
 
-  end
+    context "association" do
+      it "has a size" do
+        size = Size.new( id: 1 )
+        test_user.size_id = 1
 
-end
+        expect(test_user.size).to be_an_instance_of(Size)
+      end
+
+      it "has a neighborhood"
+      it "can have a bike"
+    end
+  end
