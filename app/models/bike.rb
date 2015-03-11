@@ -1,6 +1,7 @@
 class Bike < ActiveRecord::Base
   validates :name, :gender, :size, :num_gears,
             :hourly_price, :category, presence: true
+  validates :gender, inclusion: { in: %w( Men's Women's )}
 
   belongs_to :owner,
     class_name: "User",
