@@ -3,8 +3,7 @@ class Extra < ActiveRecord::Base
 
   has_many :addings,
     class_name: "AddOn",
-    foreign_key: :extra_id,
-    primary_key: :id,
-    inverse_of: :extras
+    inverse_of: :extra
 
+  has_many :bikes, through: :addings, source: :bike
 end

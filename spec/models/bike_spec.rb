@@ -18,5 +18,7 @@ RSpec.describe Bike, type: :model do
     it { should belong_to(:size) }
     it { should belong_to(:category) }
     it { should belong_to(:owner) }
+    it { should have_many(:add_ons) }
+    it { should have_many(:extras) }
   end
 end

@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Extra, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "association" do
+    it { should have_many(:addings) }
+    it { should have_many(:bikes) }
+  end
 end
