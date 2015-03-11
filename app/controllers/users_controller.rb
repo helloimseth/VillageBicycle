@@ -21,6 +21,8 @@ class UsersController < ApplicationController
 
       redirect_to new_user_url
     else
+      flash[:notice] = @user.errors.full_messages
+
       render :new
     end
   end
@@ -53,9 +55,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-
       redirect_to user_url(@user.id)
     else
+      flash[:notice] = @user.errors.full_messages
+
       render :edit
     end
   end
