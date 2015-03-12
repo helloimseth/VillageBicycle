@@ -18,6 +18,9 @@ class Bike < ActiveRecord::Base
   has_many :add_ons
   has_many :extras, through: :add_ons, source: :extra
 
+  has_many :requests
+  has_many :requestors, through: :requests, source: :requestor
+
   def type
     self.category.name
   end

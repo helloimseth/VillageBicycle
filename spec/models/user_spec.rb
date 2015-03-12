@@ -29,9 +29,12 @@ RSpec.describe User, :type => :model do
 
     context "association" do
       it { should belong_to(:size) }
-
       it { should belong_to(:neighborhood) }
 
       it { should have_many(:bikes) }
+      it { should have_many(:rental_requests)}
+
+      it { should have_many(:requests) }
+      it { should have_many(:requested_bikes) }
     end
   end

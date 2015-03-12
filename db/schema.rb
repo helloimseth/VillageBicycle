@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311230250) do
+ActiveRecord::Schema.define(version: 20150312134635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,16 +43,6 @@ ActiveRecord::Schema.define(version: 20150311230250) do
     t.datetime "picture_updated_at"
   end
 
-  create_table "bikes_extras", force: :cascade do |t|
-    t.integer  "bike_id"
-    t.integer  "extra_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "bikes_extras", ["bike_id"], name: "index_bikes_extras_on_bike_id", using: :btree
-  add_index "bikes_extras", ["extra_id"], name: "index_bikes_extras_on_extra_id", using: :btree
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
   end
@@ -67,6 +57,16 @@ ActiveRecord::Schema.define(version: 20150311230250) do
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "requestor_id", null: false
+    t.integer  "bike_id",      null: false
+    t.time     "start",        null: false
+    t.time     "end",          null: false
+    t.boolean  "approved"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "sizes", force: :cascade do |t|
