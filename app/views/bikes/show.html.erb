@@ -43,3 +43,30 @@
     &q=<%= "#{@bike.owner.address} #{@bike.neighborhood}" %>">
 </iframe>
 </section>
+
+<section>
+  <h2>Request This Bike</h2>
+  <form action="<%= requests_url %>" method="post">
+    <%= auth_token %>
+
+    <input type="hidden" name="request[bike_id]" value="<%= @bike.id %>">
+
+    <label for="start-date">Start Date</label>
+    <input type="date" name="request[start_date]" id="start-date">
+    <select name="request[start_time]">
+      <option val="">Pick up time</option>
+        <%= time_dropdown %>
+    </select>
+
+    <br>
+
+    <label for="end-date">End Date</label>
+    <input type="date" name="request[end_date]" id="end-date">
+    <select name="request[end_time]">
+      <option val="">Drop off time</option>
+        <%= time_dropdown %>
+    </select>
+    <br>
+    <button>Request me!</button>
+  </form>
+</section>

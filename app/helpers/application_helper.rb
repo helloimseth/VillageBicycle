@@ -17,4 +17,17 @@ module ApplicationHelper
       </form>
     HTML
   end
+
+  def time_dropdown
+    dropdown = ""
+    (1..24).each do |hour|
+      [00, 15, 30, 45].each do |minute|
+        dropdown << <<-HTML
+          <option value='#{hour * 100 + minute}'>#{hour}:#{minute}</option>
+          HTML
+      end
+    end
+    dropdown.html_safe
+  end
+
 end
