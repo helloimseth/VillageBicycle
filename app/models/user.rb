@@ -22,14 +22,14 @@ class User < ActiveRecord::Base
     foreign_key: :owner_id,
     primary_key: :id,
     inverse_of: :owner
-  has_many :rental_requests, through: :bikes, source: :requests
+  has_many :rental_for, through: :bikes, source: :requests
 
-  has_many :requests,
+  has_many :requests_made,
     class_name: "Request",
     foreign_key: :requestor_id,
     primary_key: :id,
     inverse_of: :requestor
-  has_many :requested_bikes, through: :requests, source: :bike
+  has_many :requested_bikes, through: :requests_made, source: :bike
 
   def self.find_by_credentials(email, password)
     user = User.find_by email: email

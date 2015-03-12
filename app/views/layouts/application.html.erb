@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= log_out_button if logged_in? %>
+<% if logged_in? %>
+  <a href="user_url(current_user)">Home</a>
+<%= log_out_button %>
+<% end %> 
 <%= flash[:notice] if flash[:notice] %>
 <%= yield %>
 

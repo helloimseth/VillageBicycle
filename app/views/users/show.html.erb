@@ -3,6 +3,9 @@
     <button>Edit Profile</button>
   </form>
 <% end %>
+<form action="<%= search_bikes_url %>" method="get">
+  <button>Bike Search</button>
+</form>
 
 <h1><%= @user.fname %> <%= @user.lname[0] %></h1>
 
@@ -34,6 +37,24 @@
         <li><%= bike.name %> the <%= bike.category.name %> -
             $<%= bike.hourly_price %>/hour </li>
       </a>
+    <% end %>
+  </ul>
+</section>
+
+<section>
+  <h2>Requests Made</h2>
+  <ul>
+    <% @requests_made.each do |request| %>
+      <li>
+        <em>Requested
+          <a href="<%= bike_url(request.bike) %>"><%= request.bike.name %></a>
+          from
+          <a href="<%= user_url(request.bike.owner) %>"><%= request.bike.owner_name %></a></em>
+        <br>
+        Start: <%= request.start.to_formatted_s(:long_ordinal) %>
+        <br>
+        End: <%= request.end.to_formatted_s(:long_ordinal) %>
+      </li>
     <% end %>
   </ul>
 </section>

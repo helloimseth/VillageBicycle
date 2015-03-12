@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @bikes = @user.bikes
+    @requests_made = @user.requests_made
   end
 
   def edit
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user.id)
     else
-      flash[:notice] = @user.errors.full_messages      
+      flash[:notice] = @user.errors.full_messages
       set_sizes
       set_neighborhoods
 

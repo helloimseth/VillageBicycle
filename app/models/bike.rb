@@ -53,4 +53,8 @@ class Bike < ActiveRecord::Base
       Bike.joins(:owner).where(query_params)
     end
   end
+
+  def is_owned_by?(user)
+    self.owner == user
+  end
 end
