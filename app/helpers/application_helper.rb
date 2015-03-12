@@ -18,16 +18,25 @@ module ApplicationHelper
     HTML
   end
 
-  def time_dropdown
-    dropdown = ""
-    (1..24).each do |hour|
-      [00, 15, 30, 45].each do |minute|
-        dropdown << <<-HTML
-          <option value='#{hour * 100 + minute}'>#{hour}:#{minute}</option>
-          HTML
-      end
+  def list_requests(requests)
+    request_string = "<ul>"
+
+    requests.each do |request|
+      request_string << <<-HTML
+            <li>
+              <em><a href="#{user_url(request.requestor)}">#{request.requestor.name}'s</a>
+              request for
+              <a href="#{bike_url(request.bike)}">#{request.bike.name}</a></em>
+              <br>
+              From: #{request.start.to_formatted_s(:long_ordinal)}
+              <br>
+              To: #{request.end.to_formatted_s(:long_ordinal)}
+            </li>
+      HTML
     end
-    dropdown.html_safe
+
+    request_string << "</ul>"
+    request_string.html_safe
   end
 
 end

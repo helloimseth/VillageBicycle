@@ -18,7 +18,7 @@
 </p>
 
 <section>
-  <h2>Owned Bikes</h2>
+  <h2><%= "My" if @user == current_user %> Bikes</h2>
   <% if @user == current_user %>
     <% if @user.address.blank? %>
       <em>If you'd like to add a bike, please make sure to
@@ -30,7 +30,6 @@
     <% end %>
   <% end %>
 
-
   <ul>
     <% @bikes.each do |bike| %>
       <a href="<%= bike_url(bike) %>">
@@ -40,21 +39,29 @@
     <% end %>
   </ul>
 </section>
+<% if @user == current_user %>
 
 <section>
-  <h2>Requests Made</h2>
-  <ul>
-    <% @requests_made.each do |request| %>
-      <li>
-        <em>Requested
-          <a href="<%= bike_url(request.bike) %>"><%= request.bike.name %></a>
-          from
-          <a href="<%= user_url(request.bike.owner) %>"><%= request.bike.owner_name %></a></em>
-        <br>
-        Start: <%= request.start.to_formatted_s(:long_ordinal) %>
-        <br>
-        End: <%= request.end.to_formatted_s(:long_ordinal) %>
-      </li>
-    <% end %>
-  </ul>
+  <h2>Requests for my bikes</h2>
+  <% unless @bikes.any? %>
+  <em>You don't have any owned bikes listed! Add a bike to share with your city</em>
+  <% else %>
+    <%= list_requests(@pending_requests) %>
+  <% end %>
 </section>
+
+<section>
+  <h2>Confirmed Reservations for my bikes</h2>
+  <%= list_requests(@approved_requests) %>
+</section>
+
+<section>
+  <h2>Requests I've Made</h2>
+    <%= list_requests(@requests_made) %>
+</section>
+
+<section>
+  <h2>My confirmed reservations</h2>
+    <%= list_requests(@reservations) %>
+</section>
+<% end %>

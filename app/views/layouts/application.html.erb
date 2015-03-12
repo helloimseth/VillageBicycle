@@ -8,9 +8,11 @@
 </head>
 <body>
 <% if logged_in? %>
-  <a href="user_url(current_user)">Home</a>
+  <form action="<%= user_url(current_user) %>" method="get">
+    <button>Home</button>
+  </form>
 <%= log_out_button %>
-<% end %> 
+<% end %>
 <%= flash[:notice] if flash[:notice] %>
 <%= yield %>
 

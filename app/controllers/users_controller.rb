@@ -40,7 +40,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @bikes = @user.bikes
-    @requests_made = @user.requests_made
+    @pending_requests = @user.pending_requests_for
+    @approved_requests = @user.approved_requests
+    @requests_made = @user.pending_requests_made
+    @reservations = @user.reservations
   end
 
   def edit

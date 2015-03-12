@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     foreign_key: :owner_id,
     primary_key: :id,
     inverse_of: :owner
-  has_many :rental_for, through: :bikes, source: :requests
+  has_many :requests_for, through: :bikes, source: :requests
 
   has_many :requests_made,
     class_name: "Request",
@@ -56,6 +56,26 @@ class User < ActiveRecord::Base
     self.save!
 
     self.session_token
+  end
+
+  def name
+    "#{self.fname} #{self.lname[0]}"
+  end
+
+  def pending_requests_for
+    self.requests_for.select{ |req| req.approved.nil? }
+  end
+
+  def approved_requests
+    self.requests_for.select{|req| req.approved == true }
+  end
+
+  def pending_requests_made
+    self.requests_made.select{ |req| req.approved.nil? }
+  end
+
+  def reservations
+    self.requests_made.select{|req| req.approved == true }
   end
 
   private
