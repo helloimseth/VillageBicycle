@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   def new
     redirect_to edit_user_url(current_user) if logged_in?
     @user = User.new
-    set_sizes
-    set_neighborhoods
+    @sizes = Size.all
+    @neighborhoods = Neighborhood.all
   end
 
   def create
@@ -50,8 +50,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user == current_user
-      set_sizes
-      set_neighborhoods
+      @sizes = Size.all
+      @neighborhoods = Neighborhood.all
 
       render :edit
     else
@@ -66,8 +66,8 @@ class UsersController < ApplicationController
       redirect_to user_url(@user.id)
     else
       flash[:notice] = @user.errors.full_messages
-      set_sizes
-      set_neighborhoods
+      @sizes = Size.all
+      @neighborhoods = Neighborhood.all
 
       render :edit
     end

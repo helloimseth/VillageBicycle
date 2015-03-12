@@ -17,7 +17,27 @@
       <option value='<%= neighborhood.id %>'><%= neighborhood.name %></option>
     <% end %>
   </select>
+
   <br><br>
+  <input type="hidden" name="query[year]" value="2015">
+  <label>Rental Start <br>
+  <%= datetime_select(:query, :start_date,
+                      discard_year: true,
+                      discard_hour: true,
+                      prompt: {month: "Start Date", day: ""}) %>
+  </label>
+
+  <br><br>
+
+  <label>Rental End <br>
+  <%= datetime_select(:query, :end_date,
+                      discard_year: true,
+                      discard_hour: true,
+                      prompt: { month: "End Date", day: "" }) %>
+  </label>
+
+  <br><br>
+
   <input type="radio" name="query[bike][gender]"
                       id="Men's"
                       value="Men's">

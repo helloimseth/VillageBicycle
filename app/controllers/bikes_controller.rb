@@ -3,9 +3,9 @@ class BikesController < ApplicationController
 
   def new
     @bike = Bike.new
-    set_categories
-    set_sizes
-    set_extras
+    @categories = Category.all
+    @sizes = Size.all
+    @extras = Extra.all
   end
 
   def create
@@ -26,9 +26,9 @@ class BikesController < ApplicationController
 
   def edit
     @bike = Bike.find(params[:id])
-    set_categories
-    set_sizes
-    set_extras
+    @categories = Category.all
+    @sizes = Size.all
+    @extras = Extra.all
   end
 
   def update
@@ -50,14 +50,16 @@ class BikesController < ApplicationController
   end
 
   def search
+    @categories = Category.all
+    @sizes = Size.all
+    @neighborhoods = Neighborhood.all
+
     if params[:query]
       @bikes = Bike.search(params[:query])
     else
       @bikes = []
     end
-    set_categories
-    set_sizes
-    set_neighborhoods
+
   end
 
   private

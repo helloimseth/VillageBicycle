@@ -27,24 +27,36 @@ class Bike < ActiveRecord::Base
 
     query[:bike].each do |category, param|
       unless param.blank? || category == :dates
-        query_string << "bikes.#{category} = ? OR "
+        query_string << "bikes.#{category} = ? AND "
         query_params << param
       end
     end
 
-    if query[:dates]
-      query_string << "((bikes.start <= #{query[:dates][:start]} &&
-                         bikes.end >= #{query[:dates][:start]}) ||
-                         bike.start >=)"
-
-    if
-      query_params.unshift(query_string[0..-5])
-      Bike.where(query_params)
-    else
+    unless query[:owner][:neighborhood_id].blank?
       query_string << "users.neighborhood_id = ?"
-      query_params.unshift(query_string).push(query[:owner][:neighborhood_id])
-      Bike.joins(:owner).where(query_params)
+      query_params << query[:owner][:neighborhood_id]
     end
+
+    query_string = query_string[0...-5] if query_string[-5..-1] == " AND "
+
+    query_params.unshift(query_string)
+
+    if query["start_date(2i)"].blank? || query["end_date(2i)"].blank?
+      Bike.joins(:owner)
+          .where(query_params)
+    else
+      start_date = "#{query["year"]}-#{query["start_date(2i)"]}-#{query["start_date(3i)"]}"
+      end_date = "#{query["year"]}-#{query["end_date(2i)"]}-#{query["end_date(3i)"]}"
+
+      query_params[0] << " AND " if query[:owner][:neighborhood_id].blank?
+      query_params[0] << "(? > CAST(requests.end AS DATE) OR CAST(requests.start AS DATE) > ? OR requests.id IS NULL)"
+      query_params.concat([start_date, end_date])
+
+      Bike.joins(:owner)
+          .joins("LEFT JOIN requests ON requests.bike_id = bikes.id")
+          .where(query_params)
+    end
+
   end
 
   def type
@@ -69,7 +81,16 @@ class Bike < ActiveRecord::Base
 
     def only_search_by_bike_terms
       query[:owner][:neighborhood_id].blank? &&
-      query[:dates][:start].blanky? &&
-      query[:dates][:end].blanky?
+      query[:dates][:start].blank? &&
+      query[:dates][:end].blank?
     end
 end
+
+# SELECT
+#   b.*
+# FROM
+#   bikes as b
+# LEFT OUTER JOIN
+#   requests as r ON r.bike_id = b.id
+# WHERE
+#   '2015-03-15' > CAST(r.end AS DATE) OR CAST(r.start AS DATE) > '2015-04-12' OR r.id IS NULL;
