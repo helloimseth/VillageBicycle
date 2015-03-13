@@ -12,9 +12,9 @@ The Village Bicycle is an AirBnB clone for renting or buying bicycles from other
 - [x] Create bikes
 - [x] View bikes and other users
 - [x] Search bikes by location
-- [ ] Search bikes by availability
+- [x] Search bikes by availability
 - [x] Search bikes by bikes table columns
-- [ ] Make rental requests for bikes
+- [x] Make rental requests for bikes
 - [ ] Approve requests for bike rentals
 
 ## Design Docs
