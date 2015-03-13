@@ -1,24 +1,31 @@
-<% if @user == current_user %>
-  <form action="<%= edit_user_url(@user) %>" method="get">
-    <button>Edit Profile</button>
+
+<nav>
+  <% if @user == current_user %>
+    <form action="<%= edit_user_url(@user) %>" method="get">
+      <button>Edit Profile</button>
+    </form>
+  <% end %>
+  <form action="<%= search_bikes_url %>" method="get">
+    <button>Bike Search</button>
   </form>
-<% end %>
-<form action="<%= search_bikes_url %>" method="get">
-  <button>Bike Search</button>
-</form>
 
-<h1><%= @user.fname %> <%= @user.lname[0] %></h1>
+</nav>
 
-<img src="<%= image_url(@user.picture.url(:medium)) %>" alt="Profile Picture" />
 
-<strong><%= @user.neighborhood.name unless @user.neighborhood.nil? %></strong>
+<article class="profile-info group">
+  <img class='profile-picture' src="<%= image_url(@user.picture.url(:medium)) %>" alt="Profile Picture" />
 
-<p>
-  <%= @user.bio %>
-</p>
+  <h1><strong><%= @user.name %></strong></h1>
 
-<section>
-  <h2><%= "My" if @user == current_user %> Bikes</h2>
+  Biking Around <strong><%= @user.neighborhood.name unless @user.neighborhood.nil? %></strong>
+
+  <p>
+    <%= @user.bio %>
+  </p>
+
+</article>
+
+<section class="subview-list group">
   <% if @user == current_user %>
     <% if @user.address.blank? %>
       <em>If you'd like to add a bike, please make sure to
@@ -29,11 +36,11 @@
       </form>
     <% end %>
   <% end %>
-
+  <h2><strong><%= "My" if @user == current_user %> Bikes</strong></h2>
   <ul>
     <% @bikes.each do |bike| %>
       <a href="<%= bike_url(bike) %>">
-        <li><%= bike.name %> the <%= bike.category.name %> -
+        <li class="subview-list-li"><%= bike.name %> the <%= bike.category.name %> -
             $<%= bike.hourly_price %>/hour </li>
       </a>
     <% end %>
@@ -41,14 +48,14 @@
 </section>
 <% if @user == current_user %>
 
-<section>
+<section class="subview-list">
   <h2>Requests for my bikes</h2>
   <% unless @bikes.any? %>
   <em>You don't have any owned bikes listed! Add a bike to share with your city</em>
   <% else %>
     <ul>
       <% @pending_requests.each do |request| %>
-        <li>
+        <li class="subview-list-li">
           <em><a href="<%=user_url(request.requestor) %>"><%= request.requestor.name %>'s</a>
           request for
           <a href="<%= bike_url(request.bike) %>"><%= request.bike.name %></a></em>
@@ -70,17 +77,17 @@
   <% end %>
 </section>
 
-<section>
+<section class="subview-list">
   <h2>Confirmed Reservations for my bikes</h2>
   <%= list_requests(@approved_requests) %>
 </section>
 
-<section>
+<section class="subview-list">
   <h2>Requests I've Made</h2>
     <%= list_requests(@requests_made) %>
 </section>
 
-<section>
+<section class="subview-list">
   <h2>My confirmed reservations</h2>
     <%= list_requests(@reservations) %>
 </section>

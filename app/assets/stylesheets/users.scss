@@ -1,3 +1,55 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.subview-list {
+  position: relative;
+  margin: 50px auto;
+  width: 830px;
+  background: #eeeeee;
+}
+
+.subview-list button {
+  float: right;
+  margin: 10px
+}
+
+.subview-list > h2 {
+  display: block;
+  background: #151515;
+  color: #ffffff;
+  padding: 10px 10px;
+}
+
+.subview-list a {
+  color: #BB1244;
+}
+
+.subview-list a:hover {
+  color: #4412BB;
+}
+
+.subview-list > em {
+  display: block;
+  padding: 10px 10px;
+  font-style: italic;
+}
+
+.subview-list > ul {
+  padding: 10px;
+}
+
+.subview-list-li {
+  padding: 10px;
+  border-bottom: 1px solid #151515;
+}
+
+
+
+.subview-list-li:hover {
+  background: #FCFCFC;
+}
+
+.subview-list-li button {
+  float: right
+}

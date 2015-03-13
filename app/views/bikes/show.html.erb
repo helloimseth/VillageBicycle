@@ -1,4 +1,3 @@
-<h1><%= @bike.name %> the <%= @bike.category.name %></h1>
 
 <% if @bike.is_owned_by?(current_user) %>
   <form action="<%= edit_bike_url(@bike) %>" method="get">
@@ -14,23 +13,28 @@
 <form action="<%= search_bikes_url %>" method="get">
   <button>Bike Search</button>
 </form>
-<img src="<%= image_url(@bike.picture.url(:medium)) %>" alt="Profile Picture" />
-<a href="<%= user_url(@bike.owner) %>">Owned by <%= @bike.owner_name %></a>
 
-<section>
+
+<section class="profile-info group">
+
+
+  <img class="profile-picture" src="<%= image_url(@bike.picture.url(:medium)) %>" alt="Profile Picture" />
+  <h1><%= @bike.name %> the <%= @bike.category.name %></h1>
+  <strong>Owned by</strong><a href="<%= user_url(@bike.owner) %>"><%= @bike.owner_name %></a>
   <%= @bike.notes %>
+  <ul>
+    <li> Number of Gears:<%= @bike.num_gears %> </li>
+    <li> Suggested height: <%= @bike.size.suggested_height %></li>
+  </ul>
+
+  <% @bike.extras.each do |extra| %>
+    <li><%= extra.name %></li>
+  <% end %>
 </section>
 
-<ul>
-  <li> Number of Gears:<%= @bike.num_gears %> </li>
-  <li> Suggested height: <%= @bike.size.suggested_height %></li>
-</ul>
 
-<% @bike.extras.each do |extra| %>
-  <li><%= extra.name %></li>
-<% end %>
 
-<ul>
+<ul class="price-list group">
   <li>$<%= @bike.hourly_price %>/hour</li>
   <li>$<%= @bike.hourly_price * 7 %>/day</li>
   <li>$<%= @bike.hourly_price * 30 %>/week</li>
@@ -42,39 +46,41 @@
   <% api_key = 'AIzaSyC3q4nt34Ssd1m3YXMWEE6F4kPzdhD7zg0' %>
 <% end %>
 
-<section>
-  Location: <%= @bike.neighborhood %><br>
-  <iframe
-  width="400"
-  height="250"
-  frameborder="0"
-  src="https://www.google.com/maps/embed/v1/place?key=<%= api_key%>
-    &q=<%= "#{@bike.owner.address} #{@bike.neighborhood}" %>">
-</iframe>
-</section>
+  <article class="more-info">
+    <section class="location-section">
+      <h2>Location: <%= @bike.neighborhood %></h2>
+      <iframe
+      width="400"
+      height="250"
+      frameborder="0"
+      src="https://www.google.com/maps/embed/v1/place?key=<%= api_key%>
+        &q=<%= "#{@bike.owner.address} #{@bike.neighborhood}" %>">
+    </iframe>
+    </section>
 
-<% unless @bike.is_owned_by?(current_user) %>
-  <section>
-    <%= flash[:request_error] unless flash[:request_error].nil? %>
-    <h2>Request This Bike</h2>
-    <form action="<%= requests_url %>" method="post">
-      <%= auth_token %>
+    <% unless @bike.is_owned_by?(current_user) %>
+      <section class="bike-request-form">
+        <%= flash[:request_error] unless flash[:request_error].nil? %>
+        <h2>Request This Bike</h2>
+        <form action="<%= requests_url %>" method="post">
+          <%= auth_token %>
 
-      <input type="hidden" name="request[bike_id]" value="<%= @bike.id %>">
+          <input type="hidden" name="request[bike_id]" value="<%= @bike.id %>">
 
-      <label>Rental Start <br>
-      <%= datetime_select(:request, :start, discard_year: true, ampm: true,
-                          prompt: true) %>
-      </label>
+          <label>Rental Start <br>
+          <%= datetime_select(:request, :start, discard_year: true, ampm: true,
+                              prompt: true) %>
+          </label>
 
-      <br><br>
+          <br><br>
 
-      <label>Rental End <br>
-      <%= datetime_select(:request, :end, discard_year: true, ampm: true,
-                          prompt: true) %>
-      </label>
-      <br><br>
-      <button>Request me!</button>
-    </form>
-  </section>
+          <label>Rental End <br>
+          <%= datetime_select(:request, :end, discard_year: true, ampm: true,
+                              prompt: true) %>
+          </label>
+          <br><br>
+          <button>Request me!</button>
+        </form>
+      </section>
+  </article>
 <% end %>

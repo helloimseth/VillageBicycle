@@ -1,3 +1,42 @@
 // Place all the styles related to the Bikes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.price-list {
+  width: 468px;
+  margin: 25px auto;
+  font-size: 16px;
+  text-align: center;
+}
+.price-list li {
+  display: block;
+  width: 100px;
+  padding: 10px 25px;
+  float: left;
+  border: 3px solid white;
+  background: #eeeeee;
+}
+
+.more-info {
+  margin: auto;
+  width: 850px;
+}
+
+.location-section {
+  width: 400px;
+  float: left;
+  background: #eeeeee;
+  padding: 10px 15px;
+}
+
+.bike-request-form {
+  float: left;
+  width: 350px;
+  background: #eeeeee;
+  padding: 10px 15px;
+  margin-left: 25px;
+}
+
+.bike-request-form form {
+  margin: auto;
+}
