@@ -1,3 +1,29 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new-session-form {
+  width: 500px;
+  margin: 20px auto;
+  border: 5px solid #151515;
+  padding-bottom: 20px;
+}
+
+.new-session-form h1 {
+  text-align: center;
+  background: #151515;
+  color: white;
+}
+
+.new-session-form label, input {
+  text-align: center;
+  display: block;
+  width: 250px;
+  margin: 10px auto -10px auto;
+}
+
+.new-session-form button, .sign-up-button button {
+  display: block;
+  margin: auto;
+  width: 70px;
+}

@@ -61,10 +61,10 @@
 </form>
 
 <% if @bikes.any? %>
-<section>
+<section class="subview-list">
   <ul>
     <% @bikes.each do |bike| %>
-      <li><a href="<%= bike_url(bike) %> "><%= bike.name %> - <%= bike.type %></a> -
+      <li class="subview-list-li"><a href="<%= bike_url(bike) %> "><%= bike.name %> - <%= bike.type %></a> -
         $<%= bike.hourly_price %>/hour<br>
         Owned by <a href="<%= user_url(bike.owner) %>"><%= bike.owner_name %></a>
       </li>

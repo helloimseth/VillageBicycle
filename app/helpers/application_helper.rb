@@ -23,7 +23,7 @@ module ApplicationHelper
 
     requests.each do |request|
       request_string << <<-HTML
-            <li>
+            <li class="subview-list-li">
               <em><a href="#{user_url(request.requestor)}">#{request.requestor.name}'s</a>
               request for
               <a href="#{bike_url(request.bike)}">#{request.bike.name}</a></em>

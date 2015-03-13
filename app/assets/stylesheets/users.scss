@@ -25,10 +25,6 @@
   color: #BB1244;
 }
 
-.subview-list a:hover {
-  color: #4412BB;
-}
-
 .subview-list > em {
   display: block;
   padding: 10px 10px;
@@ -44,7 +40,9 @@
   border-bottom: 1px solid #151515;
 }
 
-
+.subview-list-li:hover {
+  color: #4412BB;
+}
 
 .subview-list-li:hover {
   background: #FCFCFC;
