@@ -63,13 +63,15 @@
       <input type="hidden" name="request[bike_id]" value="<%= @bike.id %>">
 
       <label>Rental Start <br>
-      <%= datetime_select(:request, :start, discard_year: true, ampm: true) %>
+      <%= datetime_select(:request, :start, discard_year: true, ampm: true,
+                          prompt: true) %>
       </label>
 
       <br><br>
 
       <label>Rental End <br>
-      <%= datetime_select(:request, :end, discard_year: true, ampm: true) %>
+      <%= datetime_select(:request, :end, discard_year: true, ampm: true,
+                          prompt: true) %>
       </label>
       <br><br>
       <button>Request me!</button>

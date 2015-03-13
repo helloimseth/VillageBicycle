@@ -11,12 +11,14 @@ class Request < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :requests_made
 
-  def approve
+  def approve!
     self.approved = true
+    self.save!
   end
 
-  def reject
+  def reject!
     self.approved = false
+    self.save!
   end
 
   private

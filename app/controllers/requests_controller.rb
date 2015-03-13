@@ -16,6 +16,24 @@ class RequestsController < ApplicationController
     end
   end
 
+  def approve
+    request = Request.find(params[:id])
+    request.approve!
+
+    flash[:notice] = "Awesome! #{request.requestor.name} will rent
+                      #{request.bike.name} from #{request.start.to_formatted_s(:short)}
+                      to #{request.end.to_formatted_s(:short)}"
+
+    redirect_to user_url(current_user)
+  end
+
+  def reject
+    request = Request.find(params[:id])
+    request.reject!
+
+    redirect_to user_url(current_user)
+  end
+
   private
 
     def request_params

@@ -46,7 +46,27 @@
   <% unless @bikes.any? %>
   <em>You don't have any owned bikes listed! Add a bike to share with your city</em>
   <% else %>
-    <%= list_requests(@pending_requests) %>
+    <ul>
+      <% @pending_requests.each do |request| %>
+        <li>
+          <em><a href="<%=user_url(request.requestor) %>"><%= request.requestor.name %>'s</a>
+          request for
+          <a href="<%= bike_url(request.bike) %>"><%= request.bike.name %></a></em>
+          <br>
+          From: <%= request.start.to_formatted_s(:long_ordinal) %>
+          <br>
+          To: <%= request.end.to_formatted_s(:long_ordinal) %>
+          <form action="<%= approve_request_url(request) %>" method="post">
+            <%= auth_token %>
+            <button>Approve</button>
+          </form>
+          <form action="<%= reject_request_url(request) %>" method="post">
+            <%= auth_token %>
+            <button>Reject</button>
+          </form>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
 </section>
 
