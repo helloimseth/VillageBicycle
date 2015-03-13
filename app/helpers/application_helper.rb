@@ -28,9 +28,9 @@ module ApplicationHelper
               request for
               <a href="#{bike_url(request.bike)}">#{request.bike.name}</a></em>
               <br>
-              From: #{request.start.to_formatted_s(:long_ordinal)}
+              From: #{request.start.to_formatted_s(:short)}
               <br>
-              To: #{request.end.to_formatted_s(:long_ordinal)}
+              To: #{request.end.to_formatted_s(:short)}
             </li>
       HTML
     end
