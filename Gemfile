@@ -12,12 +12,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem "letter_opener", group: :development
 gem "yelp", require: 'yelp'
+gem 'faker', require: 'faker'
 
 group :test do
   gem 'guard-rspec'
   gem 'shoulda-matchers'
   gem 'shoulda'
-  gem 'faker'
 end
 
 group :development, :test do
