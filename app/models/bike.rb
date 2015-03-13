@@ -3,7 +3,7 @@ class Bike < ActiveRecord::Base
             :hourly_price, :category, presence: true
   validates :gender, inclusion: { in: %w( Men's Women's ) }
 
-  has_attached_file :picture, styles: { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :picture, styles: { :medium => "300x300>", :thumb => "100x100>" }, default_url: ":style/blank_bicycle.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :owner,

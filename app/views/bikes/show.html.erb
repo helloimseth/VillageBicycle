@@ -14,7 +14,7 @@
 <form action="<%= search_bikes_url %>" method="get">
   <button>Bike Search</button>
 </form>
-<img src="<%= @bike.picture.url(:medium) %>" alt="Profile Picture" />
+<img src="<%= image_url(@bike.picture.url(:medium)) %>" alt="Profile Picture" />
 <a href="<%= user_url(@bike.owner) %>">Owned by <%= @bike.owner_name %></a>
 
 <section>
@@ -42,7 +42,7 @@
   width="400"
   height="250"
   frameborder="0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBiao2WMw8sjrDYPOejBbLnuRWrMh6wOvg
+  src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_MAPS_API"]%>
     &q=<%= "#{@bike.owner.address} #{@bike.neighborhood}" %>">
 </iframe>
 </section>
