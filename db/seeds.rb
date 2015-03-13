@@ -1,3 +1,19 @@
+require 'yelp'
+require 'faker'
+
+client = Yelp::Client.new({ consumer_key: "yJrhKETwuRbzQnxbTIRhGQ",
+                            consumer_secret: "BW_9I3vJAF101tVUou6xycrIU9M",
+                            token: "jjjTWRC1VEy5bKBvgOO8nntI3Zvr5qFc",
+                            token_secret: "BMVINdOoolK113r-_NUEEp6yvuo"
+                          })
+
+Neighborhood.delete_all
+Size.delete_all
+User.delete_all
+Category.delete_all
+Bike.delete_all
+Extra.delete_all
+
 Neighborhood.create!(name: "SoHo")
 Neighborhood.create!(name: "Greenwich Village")
 Neighborhood.create!(name: "East Village")
@@ -15,16 +31,6 @@ Size.create!(size:"M", frame_size: "18\"-19\"", suggested_height: "5'8\"-5'10\""
 Size.create!(size:"L", frame_size: "20\"-21\"", suggested_height: "5'11\"-6'2\"")
 Size.create!(size:"XL", frame_size: "22\"-23\"", suggested_height: "6/3\"+")
 
-u1 = User.create!(fname:"Seth", lname: "Hamlin", email: "email@example.com",
-                  password: "password", neighborhood_id: 1, size_id: 3,
-                  activated: true, address: "598 Broadway")
-u2 = User.create!(fname:"Bill", lname: "DeBlasio", email: "mayor@example.com",
-                  password: "password", neighborhood_id: 7, size_id: 5,
-                  activated: true, address: "City Hall Park")
-u3 = User.create!(fname:"Beyonce", lname: "Knowles", email: "yonce@example.com",
-                  password: "password", neighborhood_id: 6, size_id: 1,
-                  activated: true, address: "Franklin and Hudson")
-
 Category.create!(name: "Road Bike")
 Category.create!(name: "Road Bike (Compact)")
 Category.create!(name: "Mountain Bike")
@@ -32,31 +38,56 @@ Category.create!(name: "BMX Bike")
 Category.create!(name: "Cruiser")
 Category.create!(name: "Fixed Gear")
 
-
-b1 = u1.bikes.create!(name: "Lucy", gender: "Men's", size_id: 2, num_gears: 6,
-                 hourly_price: 27, category_id: 1)
-b2 = u1.bikes.create!(name: "Cougar", gender: "Men's", size_id: 3, num_gears: 1,
-                 hourly_price: 10, category_id: 4)
-
-b3 = u2.bikes.create!(name: "Big Apple", gender: "Men's", size_id: 5, num_gears: 12,
-                 hourly_price: 20, category_id: 2)
-b4 = u2.bikes.create!(name: "The Manimal", gender: "Men's", size_id: 5, num_gears: 16,
-                 hourly_price: 50, category_id: 3)
-
-
-b5 = u3.bikes.create!(name: "Partition", gender: "Women's", size_id: 1, num_gears: 3,
-                 hourly_price: 15, category_id: 5)
-b6 = u3.bikes.create!(name: "Independent Woman", gender: "Women's", size_id: 1, num_gears: 12,
-                 hourly_price: 44, category_id: 1)
-
 e1 = Extra.create!(name:"Helmet")
 e2 = Extra.create!(name:"Lock")
 e3 = Extra.create!(name:"Headlight")
 e4 = Extra.create!(name:"Taillight")
 
-b1.extras = [e1, e2, e3]
-b2.extras = [e1]
-b3.extras = [e2]
-b4.extras = [e2, e3]
-b5.extras = [e4, e1, e3]
-b6.extras = [e1, e3]
+#######
+User.create!(id: 1,
+             fname: "Seth",
+             lname: "Hamlin",
+             email: 'email@example.com',
+             password: "password",
+             neighborhood: Neighborhood.find_by(name: "SoHo"),
+             size: Size.find_by(size: "M"),
+             activated: true,
+             address: "598 Broadway")
+
+25.times do |num|
+  user = User.new(id: num + 2,
+                  fname: Faker::Name.first_name,
+                  lname: Faker::Name.last_name,
+                  email: Faker::Internet.email,
+                  password: "password",
+                  neighborhood: Neighborhood.all.sample,
+                  size: Size.all.sample,
+                  activated: true,
+                  picture: Faker::Avatar.image)
+
+  addrs = JSON.parse(client.search('#{user.neighborhood.name}, New York, NY').to_json)
+
+  user.address = addrs['businesses'].sample['location']['address'][0]
+
+  user.save!
+end
+
+50.times do |num|
+  b = Bike.new(id: num + 1,
+               name: [Faker::Name.first_name, Faker::Team.creature, Faker::Hacker.noun].sample.capitalize,
+               gender: ["Men's", "Women's"].sample,
+               size: Size.all.sample,
+               num_gears: (1..25).to_a.sample,
+               hourly_price: (10..50).to_a.sample,
+               category: Category.all.sample,
+               owner: User.all.sample)
+
+  num_add_ons = [0,1,2,3,4].sample
+  b.add_on_ids = []
+
+  num_add_ons.times do |num|
+    b.add_on_ids << num
+  end
+
+  b.save!
+end

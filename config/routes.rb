@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'users#show'
+
   resources :users, except: [:index] do
     collection { get 'activate' }
   end

@@ -56,6 +56,7 @@ class BikesController < ApplicationController
 
     if params[:query]
       @bikes = Bike.search(params[:query])
+      @search_query = Bike.maps_search_query(@bikes)
     else
       @bikes = []
     end

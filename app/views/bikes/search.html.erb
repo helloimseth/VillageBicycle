@@ -60,11 +60,15 @@
   <button>Submit</button>
 </form>
 
-<ul>
-  <% @bikes.each do |bike| %>
-    <li><a href="<%= bike_url(bike) %> "><%= bike.name %> - <%= bike.type %></a> -
-      $<%= bike.hourly_price %>/hour<br>
-      Owned by <a href="<%= user_url(bike.owner) %>"><%= bike.owner_name %></a>
-    </li>
-  <% end %>
-</ul>
+<% if @bikes.any? %>
+<section>
+  <ul>
+    <% @bikes.each do |bike| %>
+      <li><a href="<%= bike_url(bike) %> "><%= bike.name %> - <%= bike.type %></a> -
+        $<%= bike.hourly_price %>/hour<br>
+        Owned by <a href="<%= user_url(bike.owner) %>"><%= bike.owner_name %></a>
+      </li>
+    <% end %>
+  </ul>
+</section>
+<% end %>

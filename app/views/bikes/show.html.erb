@@ -36,13 +36,19 @@
   <li>$<%= @bike.hourly_price * 30 %>/week</li>
 </ul>
 
+<% if Rails.env.production? %>
+  <% api_key = ENV["GOOGLE_MAPS_API"] %>
+<% else %>
+  <% api_key = 'AIzaSyC3q4nt34Ssd1m3YXMWEE6F4kPzdhD7zg0' %>
+<% end %>
+
 <section>
   Location: <%= @bike.neighborhood %><br>
   <iframe
   width="400"
   height="250"
   frameborder="0"
-  src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_MAPS_API"]%>
+  src="https://www.google.com/maps/embed/v1/place?key=<%= api_key%>
     &q=<%= "#{@bike.owner.address} #{@bike.neighborhood}" %>">
 </iframe>
 </section>

@@ -58,6 +58,16 @@ class Bike < ActiveRecord::Base
     end
   end
 
+  def self.maps_search_query(bikes)
+    query_string = ""
+
+    bikes.each do |bike|
+      query_string += "markers=label:#{bike.owner.address},#{bike.neighborhood},New+York,NY&".gsub(" ","+")
+    end
+
+    query_string
+  end
+
   def type
     self.category.name
   end

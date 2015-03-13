@@ -38,7 +38,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    id = params[:id] || current_user.id
+    @user = User.find(id)
     @bikes = @user.bikes
     @pending_requests = @user.pending_requests_for
     @approved_requests = @user.approved_requests
