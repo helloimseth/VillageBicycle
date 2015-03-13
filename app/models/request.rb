@@ -40,7 +40,7 @@ class Request < ActiveRecord::Base
       overlaps = Request.where(bike_id: self.bike_id)
                         .where(approved: true)
                         .where.not(query)
-      if overlaps.any?
+      if overlaps.any? && self.approved != false
         errors[:base] << 'We sorry, that bike has already been
                           reserved during the requested time'
       end
