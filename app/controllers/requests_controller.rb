@@ -12,7 +12,7 @@ class RequestsController < ApplicationController
     else
       flash[:request_error] = @request.errors.full_messages
 
-      render bike_url(@request.bike)
+      redirect_to bike_url(@request.bike_id)
     end
   end
 

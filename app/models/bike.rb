@@ -56,7 +56,6 @@ class Bike < ActiveRecord::Base
           .joins("LEFT JOIN requests ON requests.bike_id = bikes.id")
           .where(query_params)
     end
-
   end
 
   def type
@@ -70,8 +69,6 @@ class Bike < ActiveRecord::Base
   def owner_name
     "#{self.owner.fname} #{self.owner.lname[0]}"
   end
-
-
 
   def is_owned_by?(user)
     self.owner == user

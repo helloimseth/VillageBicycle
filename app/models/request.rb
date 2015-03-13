@@ -2,6 +2,7 @@ class Request < ActiveRecord::Base
   validates :requestor, :bike, :start, :end, presence: true
   validate :start_must_be_before_end
   validate :cannot_request_own_bike
+  validate :cannot_request_unavailable_bikes
 
   belongs_to :bike
   belongs_to :requestor,
@@ -29,6 +30,17 @@ class Request < ActiveRecord::Base
     def cannot_request_own_bike
       if self.requestor == self.bike.owner
         errors[:base] << "Can't rent your own bike!"
+      end
+    end
+
+    def cannot_request_unavailable_bikes
+      query = ["? > requests.end OR requests.start > ?", self.start, self.end]
+      overlaps = Request.where(bike_id: self.bike_id)
+                        .where(approved: true)
+                        .where.not(query)
+      if overlaps.any?
+        errors[:base] << 'We sorry, that bike has already been
+                          reserved during the requested time'
       end
     end
 

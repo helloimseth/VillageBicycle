@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password, confirmation: true
 
-  has_attached_file :picture, styles: { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :picture, styles: { :medium => "300x300>", :thumb => "100x100>" }, default_url: ":style/blank_user.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   attr_reader :password

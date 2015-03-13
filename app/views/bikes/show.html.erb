@@ -49,7 +49,7 @@
 
 <% unless @bike.is_owned_by?(current_user) %>
   <section>
-    <%= flash[:request_errors] unless flash[:request_errors].nil? %>
+    <%= flash[:request_error] unless flash[:request_error].nil? %>
     <h2>Request This Bike</h2>
     <form action="<%= requests_url %>" method="post">
       <%= auth_token %>

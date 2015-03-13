@@ -9,7 +9,7 @@
 
 <h1><%= @user.fname %> <%= @user.lname[0] %></h1>
 
-<img src="<%= @user.picture.url(:medium) %>" alt="Profile Picture" />
+<img src="<%= image_url(@user.picture.url(:medium)) %>" alt="Profile Picture" />
 
 <strong><%= @user.neighborhood.name unless @user.neighborhood.nil? %></strong>
 
