@@ -40,11 +40,7 @@
   <li>$<%= @bike.hourly_price * 30 %>/week</li>
 </ul>
 
-<% if Rails.env.production? %>
-  <% api_key = ENV["GOOGLE_MAPS_API"] %>
-<% else %>
-  <% api_key = 'AIzaSyC3q4nt34Ssd1m3YXMWEE6F4kPzdhD7zg0' %>
-<% end %>
+
 
   <article class="more-info">
     <section class="location-section">

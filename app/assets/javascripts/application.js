@@ -12,10 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require underscore
 //= require backbone
-//= require sample_project_proposal_master
+//= require village_bicycle
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

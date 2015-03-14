@@ -12,6 +12,7 @@ Size.delete_all
 User.delete_all
 Category.delete_all
 Bike.delete_all
+AddOn.delete_all
 Extra.delete_all
 
 Neighborhood.create!(name: "SoHo")
@@ -38,10 +39,10 @@ Category.create!(name: "BMX Bike")
 Category.create!(name: "Cruiser")
 Category.create!(name: "Fixed Gear")
 
-e1 = Extra.create!(name:"Helmet")
-e2 = Extra.create!(name:"Lock")
-e3 = Extra.create!(name:"Headlight")
-e4 = Extra.create!(name:"Taillight")
+e1 = Extra.create!(id: 1, name:"Helmet")
+e2 = Extra.create!(id: 2, name:"Lock")
+e3 = Extra.create!(id: 3, name:"Headlight")
+e4 = Extra.create!(id: 4, name:"Taillight")
 
 #######
 User.create!(id: 1,
@@ -82,12 +83,14 @@ end
                category: Category.all.sample,
                owner: User.all.sample)
 
-  num_add_ons = [0,1,2,3,4].sample
-  b.add_on_ids = []
+  num_extras = [1,2,3,4,5].sample
+  extra_ids = []
 
-  num_add_ons.times do |num|
-    b.add_on_ids << num
+  num_extras.times do |num|
+    extra_ids << num unless num == 1
   end
+
+  b.extra_ids = extra_ids
 
   b.save!
 end

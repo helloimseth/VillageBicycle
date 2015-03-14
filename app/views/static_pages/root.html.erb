@@ -1,0 +1,12 @@
+<section class="root-el">
+
+</section>
+
+<script charset="utf-8">
+  $(document).ready(function(){
+    VillageBicycle.initialize({
+      currentUserId: <%= current_user.id %>,
+      $rootEl: $('.root-el')
+    });
+  });
+</script>

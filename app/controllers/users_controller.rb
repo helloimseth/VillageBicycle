@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
     flash[:notice] = "Welcome, #{@user.fname}"
 
-    redirect_to user_url(@user)
+    redirect_to root_url
   end
 
   def show

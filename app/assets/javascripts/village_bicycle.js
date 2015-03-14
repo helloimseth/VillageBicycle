@@ -3,11 +3,11 @@ window.VillageBicycle = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    alert('Hello from Backbone!');
+  initialize: function(options) {
+    this.currentUserId = options.currentUserId
+    new VillageBicycle.Routers.Router({
+      $rootEl: options.$rootEl
+    });
+    Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  VillageBicycle.initialize();
-});

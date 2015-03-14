@@ -3,6 +3,16 @@
 <head>
   <title>The Village Bicycle</title>
   <%= stylesheet_link_tag    'application', media: 'all'%>
+
+  <% if Rails.env.production? %>
+    <% api_key = ENV["GOOGLE_MAPS_API"] %>
+  <% else %>
+    <% api_key = 'AIzaSyC3q4nt34Ssd1m3YXMWEE6F4kPzdhD7zg0' %>
+  <% end %>
+
+  <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js"></script>
+        
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
@@ -13,6 +23,7 @@
   </form>
 <%= log_out_button %>
 <% end %>
+
 <%= flash[:notice] if flash[:notice] %>
 <%= yield %>
 

@@ -1,0 +1,36 @@
+<% if (bike.owner_id === VillageBicycle.currentUserId) { %>
+    <button id="edit-bike">Edit Bike</button>
+
+    <button id="delete-bike">Delete Bike</button>
+<% } %>
+
+<button id="bike-search">Bike Search</button>
+
+<section class="profile-info group">
+
+  <h1><%= bike.escape('name') %> the <%= bike.escape('categoryName') %></h1>
+  <strong>Owned by</strong><a href="#"><%= bike.owner().escape('name') %></a>
+  <%= bike.escape('notes') %>
+  <ul>
+    <li> Number of Gears:<%= bike.escape('num_gears') %> </li>
+    <li> Suggested height: <%= bike.escape('suggested_height') %></li>
+  </ul>
+
+  <ul>
+  <% if (bike.extras) { %>
+    <% bike.extras.forEach(function (extra) { %>
+      <li><%= extra.name %></li>
+    <% }); %>
+  <% } %>
+  </ul>
+</section>
+
+<ul class="price-list group">
+  <li>$<%= bike.escape('hourly_price') %>/hour</li>
+  <li>$<%= bike.escape('hourly_price') * 7 %>/day</li>
+  <li>$<%= bike.escape('hourly_price') * 30 %>/week</li>
+</ul>
+
+<section id="map-view">
+
+</section>

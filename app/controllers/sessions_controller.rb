@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.activated
       log_in @user
 
-      redirect_to user_url(@user.id)
+      redirect_to root_url
     else
       alert = "Sorry, you haven't activated your account yet. We
                sent your activatition link to your email address"
