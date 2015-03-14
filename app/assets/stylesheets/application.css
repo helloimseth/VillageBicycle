@@ -77,3 +77,9 @@
  .profile-info > strong {
    font-weight: bold
  }
+
+#map-view {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

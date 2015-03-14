@@ -3,7 +3,7 @@ json.extract! @bike, :name, :gender, :num_gears,
 
 json.image_url image_path(@bike.picture.url)
 
-json.owner @bike.owner, :id, :name
+json.owner @bike.owner, :id, :name, :address
 
 json.size @bike.size, :id, :suggested_height, :frame_size
 

@@ -20,7 +20,8 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
   swapView: function (view) {
     this._currentView && this.currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.render().$el)
+    this.$rootEl.html(view.$el)
+    view.render()
   }
 
 
