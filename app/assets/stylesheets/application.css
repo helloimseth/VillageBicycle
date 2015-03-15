@@ -43,12 +43,16 @@
  }
 
  h1 {
-   font-size: 24pt
+   font-size: 24px;
  }
 
 
  h2 {
-   font-size: 18pt
+   font-size: 18px;
+ }
+
+ h3 {
+   font-size: 14px;
  }
 
  .group:after {
@@ -57,18 +61,20 @@
    display: block;
  }
 
+ .root-el {
+   width: 800px;
+   margin: auto;
+ }
+
  .profile-info {
    margin: 50px auto 0px auto;
    width: 800px;
    background: #eeeeee;
-   padding: 10px 15px;
- }
-
- .profile-info > *:not(strong) {
-   margin: 10px;
+   padding: 10px 0;
  }
 
  .profile-picture {
+   margin: 0 10px;
    float: left;
    border: 1px solid #151515;
    background: white;
@@ -78,8 +84,6 @@
    font-weight: bold
  }
 
-#map-view {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+ .profile-info ul {
+   padding: 5px 0;
+ }

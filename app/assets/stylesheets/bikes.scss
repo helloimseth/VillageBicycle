@@ -17,6 +17,27 @@
   background: #eeeeee;
 }
 
+.extras-list {
+  float: left;
+  width: 300px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.extras-list li {
+  display: block;
+  width: 65px;
+  padding: 10px 5px;
+  float: left;
+  color: white;
+  background: #BB1244;
+  border-radius: 5px;
+}
+
+.extras-list li:not(:last-of-type) {
+  margin-right: 10px;
+}
+
 .more-info {
   margin: auto;
   width: 850px;
@@ -28,6 +49,20 @@
   background: #eeeeee;
   padding: 10px 15px;
 }
+
+.location-section figure {
+  margin-top: 10px;
+  border: 3px solid #151515;
+}
+
+#map-view {
+  height: 300px;
+  width: 395px;
+  margin: 10px 0;
+  padding: 0;
+  background: black;
+}
+
 
 .bike-request-form {
   float: left;

@@ -1,22 +1,21 @@
-VillageBicycle.Views.BikeMapShow = Backbone.View.extend({
-
-  attributes: {
-    id: 'map-view'
-  },
+VillageBicycle.Views.BikeShowMap = Backbone.View.extend({
 
   initialize: function (options) {
     this.latlng = options.latlng;
   },
 
   render: function () {
-    console.log(this.latlng);
     var mapOptions= {
-      center: { lat: this.latlng.lat(), lng: this.latlng.lng() },
-      zoom: 8
+      center: this.latlng,
+      zoom: 15
     };
 
     this._map = new google.maps.Map(this.el, mapOptions)
-
+    this._marker = new google.maps.Marker({
+      position: this.latlng,
+      map: this._map,
+      title: this.model.get('address') + ' ' + this.model.get('neighborhood')
+    })
   }
 
 });

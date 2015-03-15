@@ -1,7 +1,9 @@
 json.extract! @bike, :name, :gender, :num_gears,
                      :hourly_price, :neighborhood, :owner_id
 
-json.image_url image_path(@bike.picture.url)
+json.image_url_medium image_path(@bike.picture.url(:medium))
+json.image_url_thumb image_path(@bike.picture.url(:thumb))
+
 
 json.owner @bike.owner, :id, :name, :address
 

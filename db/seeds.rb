@@ -87,7 +87,7 @@ end
   extra_ids = []
 
   num_extras.times do |num|
-    extra_ids << num unless num == 1
+    extra_ids << num unless num == 0
   end
 
   b.extra_ids = extra_ids
