@@ -4,8 +4,9 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   tagName: 'article',
 
   events: {
-    'click .subview-list-li:not(.active)': 'toggleActiveClass',
-    'click #add-bike': 'renderBikeForm'
+    'click .subview-list-li': 'toggleActiveClass',
+    'click #add-bike': 'renderBikeForm',
+    'click .edit-page': 'renderEditModal'
   },
 
   initialize: function () {
@@ -24,15 +25,12 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   },
 
   toggleActiveClass: function (event) {
-    var currentActive = $('.subview-list-li.active')
-
-    if (currentActive && this.activeBikeListItemView) {
-      this.activeBikeListItemView.$el.remove();
-      this.activeBikeListItemView.remove();
-      currentActive.removeClass('active');
+    if (this._activeBikeListItemView) {
+      this._activeBikeListItemView.$el.remove();
+      this._activeBikeListItemView.remove();
     }
 
-    $(event.currentTarget).addClass('active')
+    $(event.currentTarget).toggleClass('active')
                           .one("transitionend", this._addBikeInfo.bind(this));
   },
 
@@ -40,7 +38,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     var bike = new VillageBicycle.Models.Bike();
     this.model.bikes().add(bike);
 
-    var bikeModal = new VillageBicycle.Views.BikeForm({
+    var bikeModal = new VillageBicycle.Views.ModalForm({
       model: bike
     });
 
@@ -48,16 +46,24 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
 
   },
 
+  renderEditModal: function () {
+    var editModal = new VillageBicycle.Views.ModalForm({
+      model: this.model
+    });
+
+    this.$el.append(editModal.render().$el)
+  },
+
   _addBikeInfo: function (event) {
     var bikeId = $(event.currentTarget).data('bike-id');
     var bike = this.model.bikes().get(bikeId);
 
-    this.activeBikeListItemView = new VillageBicycle.Views.BikeListItemView({
+    this._activeBikeListItemView = new VillageBicycle.Views.BikeListItemView({
       model: bike
     })
 
     $('.subview-list-li.active .bike-list-item-info')
-                            .html(this.activeBikeListItemView.render().$el);
+                            .html(this._activeBikeListItemView.render().$el);
   }
 
 });

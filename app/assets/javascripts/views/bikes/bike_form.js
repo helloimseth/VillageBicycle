@@ -1,5 +1,7 @@
-VillageBicycle.Views.BikeForm = Backbone.View.extend({
-  template: JST['bikes/bike_form'],
+VillageBicycle.Views.ModalForm = Backbone.View.extend({
+  userTemplate: JST['users/user_form'],
+
+  bikeTemplate: JST['bikes/bike_form'],
 
   tagName: 'figure',
 
@@ -9,9 +11,17 @@ VillageBicycle.Views.BikeForm = Backbone.View.extend({
   },
 
   render: function () {
-    var templatedForm = this.template({
-      bike: this.model
-    });
+    var templatedForm;
+
+    if (this.model.urlRoot === 'api/bikes') {
+      templatedForm = this.bikeTemplate({
+        bike: this.model
+      });
+    } else {
+      templatedForm = this.userTemplate({
+        user: this.model
+      });
+    }
 
     this.$el.html(templatedForm);
 

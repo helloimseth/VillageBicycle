@@ -52,7 +52,7 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   },
 
   renderEditView: function () {
-    var editModal = new VillageBicycle.Views.BikeForm({
+    var editModal = new VillageBicycle.Views.ModalForm({
       model: this.model
     });
 

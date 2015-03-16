@@ -57,6 +57,7 @@
 
 .subview-list-li.active {
   height: 150px;
+  transition: height 100ms linear;
 }
 
 .subview-list-li.active:hover{
