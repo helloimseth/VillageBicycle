@@ -1,0 +1,15 @@
+<label for="bike-name">Name</label>
+<input type="text"
+       name="bike[name]"
+       id="bike-name"
+       value="<%= bike.escape('name') %>">
+
+<label for="bike-category">Category</label>
+<select id="bike-category" name="bike[category_id]">
+  <option>Select</option>
+  <% VillageBicycle.Categories.forEach( function (cat) {%>
+    <option value='<%= cat.id %>' <%= "selected" if cat.id == bike.escape('categoryId') %>>
+      <%= cat.name %>
+    </option>
+  <% }); %>
+</select>

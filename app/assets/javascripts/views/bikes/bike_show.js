@@ -4,6 +4,10 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
 
   tagName: 'article',
 
+  events: {
+    'click .edit-page': 'renderEditView'
+  },
+
   initialize: function () {
     this._subviews = [];
     this.listenTo(this.model, "sync", this.render);
@@ -42,6 +46,16 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
       },
         this.attachMapView.bind(this)
     );
+  },
+
+  renderEditView: function () {
+    var editView = new VillageBicycle.Views.BikeForm({
+      model: this.model
+    });
+
+    this.$el.find('#profile-info-text')
+            .html(editView.render().$el)
+
   },
 
   remove: function () {

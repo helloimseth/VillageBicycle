@@ -16,6 +16,8 @@ VillageBicycle.Views.BikeShowMap = Backbone.View.extend({
       map: this._map,
       title: this.model.get('address') + ' ' + this.model.get('neighborhood')
     })
+
+    return this;
   }
 
 });

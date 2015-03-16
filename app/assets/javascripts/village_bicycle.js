@@ -8,6 +8,7 @@ window.VillageBicycle = {
     new VillageBicycle.Routers.Router({
       $rootEl: options.$rootEl
     });
+
     Backbone.history.start();
   }
 };
