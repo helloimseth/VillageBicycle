@@ -1,20 +1,22 @@
-<% if (bike.owner_id === VillageBicycle.currentUserId) { %>
-    <button id="edit-bike">Edit Bike</button>
-
-    <button id="delete-bike">Delete Bike</button>
-<% } %>
-
 <button id="bike-search">Bike Search</button>
 
 <section class="profile-info group">
-  <button class="edit-page">Edit</button>
+  <% if (bike.escape('owner_id') == VillageBicycle.currentUserId) { %>
+    <button class="delete-model">Delete</button>
+
+      <button class="edit-page">Edit</button>
+  <% } %>
   <img class="profile-picture"
        src="<%= bike.escape('image_url_medium') %>"
        alt="Profile Picture" >
 
   <article id="profile-info-text">
     <h1><%= bike.escape('name') %> the <%= bike.escape('type') %></h1>
-    <h2>Owned by <a href="#"><%= bike.escape('owner_name') %></a></h2>
+    <h2>Owned by
+      <a href="javascript:void(0)" id="owner-link">
+        <%= bike.escape('owner_name') %>
+      </a>
+    </h2>
     <p>
       <%= bike.escape('notes') %>
     </p>

@@ -23,6 +23,12 @@ class Api::BikesController < ApplicationController
     end
   end
 
+  def destroy
+    @bike = Bike.find(params[:id])
+
+    @bike.destroy!
+  end
+
   private
 
   def bike_params

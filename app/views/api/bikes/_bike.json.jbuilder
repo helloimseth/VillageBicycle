@@ -1,4 +1,4 @@
-json.extract! bike, :name, :gender, :num_gears, :notes,
+json.extract! bike, :id, :name, :gender, :num_gears, :notes,
                     :hourly_price, :neighborhood, :owner_id,
                     :size_id, :type, :extras, :extra_ids, :owner_name
 

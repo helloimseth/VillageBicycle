@@ -22,5 +22,3 @@ VillageBicycle.Collections.Bikes = Backbone.Collection.extend({
   }
 
 });
-
-VillageBicycle.Collections.bikes = new VillageBicycle.Collections.Bikes()

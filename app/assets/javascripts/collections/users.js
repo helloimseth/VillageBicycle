@@ -21,5 +21,3 @@ VillageBicycle.Collections.Users = Backbone.Collection.extend({
   }
 
 });
-
-VillageBicycle.Collections.users = new VillageBicycle.Collections.Users()

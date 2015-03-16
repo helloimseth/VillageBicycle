@@ -94,17 +94,21 @@
    padding: 5px 0;
  }
 
-.edit-page {
+.edit-page, .delete-model {
   float: right;
   width: 50px;
   margin-right: 10px;
   background: #efefef;
   border-style: none;
   font-size: 16px;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
-.edit-page:hover {
+.delete-model {
+  width: 75px;
+}
+
+.edit-page:hover, .delete-model:hover {
   background: #4412BB;
   color: #fff;
 }

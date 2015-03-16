@@ -26,9 +26,6 @@ VillageBicycle.Views.BikeForm = Backbone.View.extend({
     this.model.save(attrs, {
       success: function () {
         this.remove();
-        Backbone.history.navigate("/bikes/" + this.model.id, {
-          trigger: true
-        });
       }.bind(this)
     })
   },

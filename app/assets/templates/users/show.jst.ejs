@@ -1,0 +1,16 @@
+<article class="profile-info group">
+  <% if (user.id == VillageBicycle.currentUserId) { %>
+    <button class="edit-page">Edit</button>
+  <% } %>
+  <img class='profile-picture'
+       src="<%= user.get('image_url_medium') %>"
+       alt="Profile Picture" >
+
+  <h1><strong><%= user.escape('name') %></strong></h1>
+
+  Biking Around <strong><%= user.escape('neighborhood') %></strong>
+
+  <p>
+    <%= user.escape('bio') %>
+  </p>
+</article>

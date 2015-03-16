@@ -5,7 +5,9 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   tagName: 'article',
 
   events: {
-    'click .edit-page': 'renderEditView'
+    'click .edit-page': 'renderEditView',
+    'click .delete-model': 'renderDeleteModal',
+    'click #owner-link': 'navigateToOwnerShow'
   },
 
   initialize: function () {
@@ -39,7 +41,7 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
 
   geocodeAddress: function () {
     var geocoder = new google.maps.Geocoder();
-    
+
     geocoder.geocode({
         address: this.model.get('address') + ' ' +
                  this.model.get('neighborhood') + ' ' +
@@ -54,8 +56,26 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
       model: this.model
     });
 
+    this._subviews.push(editModal);
+
     this.$el.append(editModal.render().$el)
 
+  },
+
+  renderDeleteModal: function () {
+    var deleteModal = new VillageBicycle.Views.DeleteModal({
+      model: this.model
+    });
+
+    this._subviews.push(deleteModal);
+
+    this.$el.append(deleteModal.render().$el)
+  },
+
+  navigateToOwnerShow: function (event) {
+    Backbone.history.navigate("users/" + this.model.get('owner_id'), {
+      trigger: true
+    })
   },
 
   remove: function () {
