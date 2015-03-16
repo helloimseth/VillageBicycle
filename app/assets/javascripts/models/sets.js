@@ -2,15 +2,20 @@ VillageBicycle.Models.Sets = Backbone.Model.extend({
   urlRoot: '/api/sets',
 
   parse: function (response) {
-    this.categories = response.categories;
+    this.set('categories', response.categories);
     delete response.categories;
-    this.sizes = response.sizes;
+    this.set('sizes', response.sizes);
     delete response.sizes;
-    this.extras = response.extras;
+    this.set('extras', response.extras);
     delete response.extras;
-    this.neighborhoods = response.neighborhoods;
+    this.set('neighborhoods', response.neighborhoods);
     delete response.neighborhoods;
     return response;
+  },
+
+  grab: function(collection, id) {
+    var a = this.get(collection);
+    return _.find(a, function (obj) { return obj.id === id });
   }
 })
 

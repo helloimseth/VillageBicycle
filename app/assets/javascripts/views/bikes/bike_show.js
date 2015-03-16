@@ -21,8 +21,6 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
 
     this.$el.html(templatedShow);
 
-    console.log(this.model.get('categoryId'));
-
     return this;
   },
 

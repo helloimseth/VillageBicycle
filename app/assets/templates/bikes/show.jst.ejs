@@ -13,7 +13,7 @@
        alt="Profile Picture" >
 
   <article id="profile-info-text">
-    <h1><%= bike.escape('name') %> the <%= bike.escape('categoryName') %></h1>
+    <h1><%= bike.escape('name') %> the <%= bike.escape('type') %></h1>
     <h2>Owned by <a href="#"><%= bike.owner().escape('name') %></a></h2>
     <p>
       <%= bike.escape('notes') %>
@@ -21,13 +21,13 @@
 
     <h3>Specs</h3>
     <ul>
-      <li> Number of Gears:<%= bike.escape('num_gears') %> </li>
-      <li> Suggested height: <%= bike.escape('suggestedHeight') %></li>
+      <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
+      <li> Suggested height: <%= bike.get('size').suggested_height %></li>
     </ul>
-    <% if (bike.extras.length > 0) { %>
+    <% if (bike.escape('extras').length > 0) { %>
       <h3>Comes with</h3>
       <ul class="extras-list group">
-        <% bike.extras.forEach(function (extra) { %>
+        <% bike.get('extras').forEach(function (extra) { %>
           <li><%= extra.name %></li>
         <% }); %>
       </ul>

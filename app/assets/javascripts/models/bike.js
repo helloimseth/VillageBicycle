@@ -12,18 +12,13 @@ VillageBicycle.Models.Bike = Backbone.Model.extend({
   parse: function (response) {
     this.owner().set(response.owner)
 
-    this.set('sizeId', response.size.id);
-    this.set('suggestedHeight', response.size.suggested_height);
+    this.set(
+      'size',
+      VillageBicycle.Sets.grab('sizes', response.size_id)
+    );
 
-    this.set('categoryId', response.category.id)
-    this.set('categoryName', response.category.name)
+    delete response.owner; delete response.sizes;
 
-    this.extras = response.extras
-
-    delete response.owner
-    delete response.size
-    delete response.category
-    delete response.extras
     return response
   }
 });

@@ -7,9 +7,9 @@
 <label for="bike-category">Category</label>
 <select id="bike-category" name="bike[category_id]">
   <option>Select</option>
-  <% VillageBicycle.Sets.categories.forEach( function (cat) {%>
+  <% VillageBicycle.Sets.get('categories').forEach( function (cat) {%>
     <option value='<%= cat.id %>'
-      <% if (cat.id == bike.escape('categoryId')) { %>
+      <% if (cat.name == bike.escape('type')) { %>
         <%= 'selected' %>
       <% } %>>
       <%= cat.name %>
@@ -52,9 +52,9 @@
 <label for="bike-size">Size</label>
 <select id="bike-size" name="bike[size_id]">
   <option>Select</option>
-  <% VillageBicycle.Sets.sizes.forEach( function (size) {%>
+  <% VillageBicycle.Sets.get('sizes').forEach( function (size) {%>
     <option value='<%= size.id %>'
-      <% if (size.id == bike.escape('sizeId')) { %>
+      <% if (size.id == bike.escape('size_id')) { %>
         <%= 'selected' %>
       <% } %>>
       <%= size.size %> - <%= size.suggested_height %>
@@ -64,14 +64,12 @@
 
 <br>
 
-<% VillageBicycle.Sets.extras.forEach( function (extra) { %>
+<% VillageBicycle.Sets.get('extras').forEach( function (extra) { %>
   <input type="checkbox" name="bike[extra_ids][]"
-         id='bike-extra-<%= extra.id %>' value="<%= extra.id %>"
-         <% bike.extras.forEach( function (bikeExtra) { %>
-           <% if (extra.id === bikeExtra.id) { %>
+         id='bike-extra-<%= extra.id %>' value='<%= extra.id %>'
+           <% if (_.contains(bike.get('extra_ids'), extra.id)) { %>
              <%= 'checked' %>
-           <% } %>>
-         <% }); %>
+           <% }; %>>
   <label for='bike-extra-<%= extra.id %>'><%= extra.name %></label>
 <% }); %>
 
