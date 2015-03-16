@@ -4,7 +4,7 @@ VillageBicycle.Views.BikeForm = Backbone.View.extend({
   tagName: 'figure',
 
   events: {
-    'submit .modal-form form': 'updateBike',
+    'submit .modal-form form': 'submitForm',
     'change #bike-picture': "changePicture"
   },
 
@@ -18,7 +18,7 @@ VillageBicycle.Views.BikeForm = Backbone.View.extend({
     return this;
   },
 
-  updateBike: function (event) {
+  submitForm: function (event) {
     event.preventDefault()
 
     var attrs = $(event.currentTarget).serializeJSON()

@@ -1,5 +1,15 @@
 class Api::BikesController < ApplicationController
 
+  def create
+    @bike = current_user.bikes.new(bike_params)
+
+    if @bike.save
+      render :show
+    else
+      render json: @bike.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   def show
     @bike = Bike.find(params[:id])
 
@@ -27,6 +37,7 @@ class Api::BikesController < ApplicationController
     @bike = Bike.find(params[:id])
 
     @bike.destroy!
+    render :show
   end
 
   private

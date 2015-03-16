@@ -5,7 +5,7 @@ VillageBicycle.Collections.Users = Backbone.Collection.extend({
   model: VillageBicycle.Models.User,
 
   getOrFetch: function (id) {
-    var user = this.find(id)
+    var user = this.get(id)
 
     if (!user) {
       user = new VillageBicycle.Models.User({

@@ -5,6 +5,10 @@ window.VillageBicycle = {
   Routers: {},
   initialize: function(options) {
     this.currentUserId = options.currentUserId
+
+    this.Sets = new VillageBicycle.Models.Sets();
+    this.Sets.fetch()
+
     new VillageBicycle.Routers.Router({
       $rootEl: options.$rootEl
     });

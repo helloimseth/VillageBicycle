@@ -1,14 +1,15 @@
 VillageBicycle.Models.Bike = Backbone.Model.extend({
   urlRoot: 'api/bikes',
 
-  parse: function (response) {
-    this.set(
-      'size',
-      VillageBicycle.Sets.grab('sizes', response.size_id)
-    );
+  initialize: function () {
+    this.size()
+  },
 
-    delete response.owner; delete response.sizes;
+  size: function () {
+    if (!this._size) {
+      this._size = VillageBicycle.Sets.grab("sizes", this.get('size_id'))
+    }
 
-    return response
+    return this._size
   }
 });

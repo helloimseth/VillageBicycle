@@ -19,13 +19,11 @@ VillageBicycle.Views.DeleteModal = Backbone.View.extend({
   deleteModel: function (event) {
     event.preventDefault();
 
-    this.model.destroy({
-      success: function () {
-        Backbone.history.navigate("users/" + this.model.get('owner_id'), {
-          trigger: true
-        })
-      }.bind(this)
-    });
+    this.model.destroy();
+
+    Backbone.history.navigate("users/" + this.model.get('owner_id'), {
+      trigger: true
+    })
   },
 
   removeModal: function (event) {

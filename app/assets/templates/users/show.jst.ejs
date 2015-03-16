@@ -21,7 +21,7 @@
       <em>If you'd like to add a bike, please make sure to
           update your address first! </em>
     <% } else { %>
-        <button>Add Bike</button>
+        <button id="add-bike">Add Bike</button>
     <% } %>
   <% } %>
   <h2>
@@ -33,9 +33,12 @@
   </h2>
   <ul id="bike-list">
     <% user.bikes().forEach( function (bike) { %>
-      <li class="subview-list-li">
+      <li class="subview-list-li" data-bike-id="<%= bike.id %>">
         <%= bike.escape('name') %> the <%= bike.escape('type') %> -
         $<%= bike.escape('hourly_price') %>/hour
+        <article class="bike-list-item-info">
+
+        </article>
       </li>
     <% }); %>
   </ul>

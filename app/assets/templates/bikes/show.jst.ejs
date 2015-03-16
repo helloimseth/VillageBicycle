@@ -25,7 +25,7 @@
     <ul>
       <li> Designed for <%= bike.escape('gender').slice(0,-3) %> </li>
       <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
-      <li> Suggested height: <%= bike.get('size').suggested_height %></li>
+      <li> Suggested height: <%= bike.size().suggested_height %></li>
     </ul>
     <% if (bike.escape('extras').length > 0) { %>
       <h3>Comes with</h3>
@@ -41,7 +41,9 @@
 
 
 <section class="rental-info group">
-  <h2>Find <%= bike.escape('name') %> in <%= bike.escape('neighborhood') %></h2>
+
+  <h2>Find <%= bike.escape('name') %> in <%= bike.escape('neighborhood') %>
+      (<%= bike.escape('address') %>)</h2>
   <figure id="map-view">
   </figure>
 

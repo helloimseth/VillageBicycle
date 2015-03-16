@@ -17,11 +17,11 @@ Extra.delete_all
 
 Neighborhood.create!(name: "SoHo")
 Neighborhood.create!(name: "Greenwich Village")
-Neighborhood.create!(name: "East Village")
-Neighborhood.create!(name: "Lower East Side")
-Neighborhood.create!(name: "West Village")
+Neighborhood.create!(name: "The East Village")
+Neighborhood.create!(name: "The Lower East Side")
+Neighborhood.create!(name: "The West Village")
 Neighborhood.create!(name: "TriBeCa")
-Neighborhood.create!(name: "Financial District")
+Neighborhood.create!(name: "The Financial District")
 Neighborhood.create!(name: "Union Square")
 Neighborhood.create!(name: "Chelsea")
 Neighborhood.create!(name: "Gramercy")
@@ -39,14 +39,13 @@ Category.create!(name: "BMX Bike")
 Category.create!(name: "Cruiser")
 Category.create!(name: "Fixed Gear")
 
-e1 = Extra.create!(id: 1, name:"Helmet")
-e2 = Extra.create!(id: 2, name:"Lock")
-e3 = Extra.create!(id: 3, name:"Headlight")
-e4 = Extra.create!(id: 4, name:"Taillight")
+e1 = Extra.create!(name:"Helmet")
+e2 = Extra.create!(name:"Lock")
+e3 = Extra.create!(name:"Headlight")
+e4 = Extra.create!(name:"Taillight")
 
 #######
-User.create!(id: 1,
-             fname: "Seth",
+User.create!(fname: "Seth",
              lname: "Hamlin",
              email: 'email@example.com',
              password: "password",
@@ -56,8 +55,7 @@ User.create!(id: 1,
              address: "598 Broadway")
 
 25.times do |num|
-  user = User.new(id: num + 2,
-                  fname: Faker::Name.first_name,
+  user = User.new(fname: Faker::Name.first_name,
                   lname: Faker::Name.last_name,
                   email: Faker::Internet.email,
                   password: "password",
@@ -75,8 +73,7 @@ User.create!(id: 1,
 end
 
 50.times do |num|
-  b = Bike.new(id: num + 1,
-               name: [Faker::Name.first_name, Faker::Team.creature, Faker::Hacker.noun].sample.capitalize,
+  b = Bike.new(name: [Faker::Name.first_name, Faker::Team.creature, Faker::Hacker.noun].sample.capitalize,
                gender: ["Men's", "Women's"].sample,
                notes: Faker::Hacker.say_something_smart,
                size: Size.all.sample,
@@ -86,13 +83,14 @@ end
                owner: User.all.sample)
 
   num_extras = [1,2,3,4,5].sample
-  extra_ids = []
+  extras = []
 
-  num_extras.times do |num|
-    extra_ids << num unless num == 0
+  num_extras.times do
+    extra = Extra.all.sample
+    extras << extra unless extras.include?(extra)
   end
 
-  b.extra_ids = extra_ids
+  b.extras = extras
 
   b.save!
 end

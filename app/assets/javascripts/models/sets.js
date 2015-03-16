@@ -18,6 +18,3 @@ VillageBicycle.Models.Sets = Backbone.Model.extend({
     return _.find(a, function (obj) { return obj.id === id });
   }
 })
-
-VillageBicycle.Sets = new VillageBicycle.Models.Sets();
-VillageBicycle.Sets.fetch()

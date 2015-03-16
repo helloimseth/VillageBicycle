@@ -18,7 +18,7 @@
 </head>
 <body>
 <% if logged_in? %>
-  <form action="<%= user_url(current_user) %>" method="get">
+  <form action="/#/users/<%= current_user.id %>" method="get">
     <button>Home</button>
   </form>
 <%= log_out_button %>
