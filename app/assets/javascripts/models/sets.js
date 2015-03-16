@@ -2,7 +2,6 @@ VillageBicycle.Models.Sets = Backbone.Model.extend({
   urlRoot: '/api/sets',
 
   parse: function (response) {
-    console.log(response);
     this.categories = response.categories;
     delete response.categories;
     this.sizes = response.sizes;
