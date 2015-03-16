@@ -11,4 +11,24 @@ class Api::BikesController < ApplicationController
 
   end
 
+  def update
+    @bike = Bike.find(params[:id])
+
+    if @bike.update(bike_params)
+      render :show
+    else
+      flash[:notice] = @bike.errors.full_messages
+
+      render :show, status: 422
+    end
+  end
+
+  private
+
+  def bike_params
+    params.require(:bike).permit(:name, :notes, :gender, :size_id, :num_gears,
+                                 :hourly_price, :category_id, :picture,
+                                 extra_ids: [])
+  end
+
 end

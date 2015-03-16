@@ -9,7 +9,6 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
 
   bikeShow: function (id) {
     var bike = VillageBicycle.Collections.bikes.getOrFetch(id)
-    console.log(bike);
 
     var showView = new VillageBicycle.Views.BikeShow({
       model: bike

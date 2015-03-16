@@ -1,7 +1,12 @@
 VillageBicycle.Views.BikeForm = Backbone.View.extend({
   template: JST['bikes/bike_form'],
 
-  tagName: 'form',
+  tagName: 'figure',
+
+  events: {
+    'submit .modal-form form': 'updateBike',
+    'change #bike-picture': "changePicture"
+  },
 
   render: function () {
     var templatedForm = this.template({
@@ -11,5 +16,32 @@ VillageBicycle.Views.BikeForm = Backbone.View.extend({
     this.$el.html(templatedForm);
 
     return this;
+  },
+
+  updateBike: function (event) {
+    event.preventDefault()
+
+    var attrs = $(event.currentTarget).serializeJSON()
+
+    this.model.save(attrs, {
+      success: function () {
+        this.remove();
+        Backbone.history.navigate("/bikes/" + this.model.id, {
+          trigger: true
+        });
+      }.bind(this)
+    })
+  },
+
+  changePicture: function (event) {
+    var file = event.currentTarget.files[0];
+
+    var fileReader = new FileReader();
+
+    fileReader.onloadend = function () {
+      this.model.set("picture", fileReader.result);
+    }.bind(this);
+
+    fileReader.readAsDataURL(file);
   }
 })

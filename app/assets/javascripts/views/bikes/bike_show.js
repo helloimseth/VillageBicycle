@@ -11,10 +11,11 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   initialize: function () {
     this._subviews = [];
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.owner(), "sync", this.geocodeAddress)
   },
 
   render: function () {
+    this.geocodeAddress();
+
     var templatedShow = this.template({
       bike: this.model
     });
@@ -38,9 +39,9 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
 
   geocodeAddress: function () {
     var geocoder = new google.maps.Geocoder();
-
+    
     geocoder.geocode({
-        address: this.model.owner().get('address') + ' ' +
+        address: this.model.get('address') + ' ' +
                  this.model.get('neighborhood') + ' ' +
                  "New York City"
       },
@@ -49,12 +50,11 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   },
 
   renderEditView: function () {
-    var editView = new VillageBicycle.Views.BikeForm({
+    var editModal = new VillageBicycle.Views.BikeForm({
       model: this.model
     });
 
-    this.$el.find('#profile-info-text')
-            .html(editView.render().$el)
+    this.$el.append(editModal.render().$el)
 
   },
 

@@ -9,18 +9,19 @@
 <section class="profile-info group">
   <button class="edit-page">Edit</button>
   <img class="profile-picture"
-       src="<%= bike.get('image_url_medium') %>"
+       src="<%= bike.escape('image_url_medium') %>"
        alt="Profile Picture" >
 
   <article id="profile-info-text">
     <h1><%= bike.escape('name') %> the <%= bike.escape('type') %></h1>
-    <h2>Owned by <a href="#"><%= bike.owner().escape('name') %></a></h2>
+    <h2>Owned by <a href="#"><%= bike.escape('owner_name') %></a></h2>
     <p>
       <%= bike.escape('notes') %>
     </p>
 
     <h3>Specs</h3>
     <ul>
+      <li> Designed for <%= bike.escape('gender').slice(0,-3) %> </li>
       <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
       <li> Suggested height: <%= bike.get('size').suggested_height %></li>
     </ul>
@@ -36,15 +37,15 @@
 
 </section>
 
-<ul class="price-list group">
-  <li>$<%= bike.escape('hourly_price') %>/hour</li>
-  <li>$<%= bike.escape('hourly_price') * 7 %>/day</li>
-  <li>$<%= bike.escape('hourly_price') * 30 %>/week</li>
-</ul>
 
-<section class="location-section">
-  <%= bike.owner().escape('address') %>
+<section class="rental-info group">
   <h2>Find <%= bike.escape('name') %> in <%= bike.escape('neighborhood') %></h2>
   <figure id="map-view">
   </figure>
+
+  <ul class="price-list group">
+    <li>$<%= bike.escape('hourly_price') %>/hour</li>
+    <li>$<%= bike.escape('hourly_price') * 7 %>/day</li>
+    <li>$<%= bike.escape('hourly_price') * 30 %>/week</li>
+  </ul>
 </section>
