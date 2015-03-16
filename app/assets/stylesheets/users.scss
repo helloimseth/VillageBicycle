@@ -36,8 +36,11 @@
 }
 
 .subview-list-li {
+  height: 25px;
   padding: 10px;
   border-bottom: 1px solid #151515;
+  -webkit-transition: height, 1s, linear;
+  transition: height 100ms linear;
 }
 
 .subview-list-li:hover {
@@ -50,4 +53,12 @@
 
 .subview-list-li button {
   float: right
+}
+
+.subview-list-li.active {
+  height: 150px;
+}
+
+.subview-list-li.active:hover{
+  background: #eeeeee;
 }

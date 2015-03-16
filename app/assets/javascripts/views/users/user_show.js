@@ -3,6 +3,10 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
 
   tagName: 'article',
 
+  events: {
+    'click .subview-list-li': 'toggleActiveClass'
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render)
   },
@@ -15,5 +19,14 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     this.$el.html(templatedShow);
 
     return this;
+  },
+
+  toggleActiveClass: function (event) {
+    var currentActive = $('.subview-list-li.active')
+
+    currentActive && currentActive.removeClass('active');
+
+    $(event.currentTarget).addClass('active');
   }
+
 });

@@ -1,4 +1,4 @@
-<article class="profile-info group">
+<section class="profile-info group">
   <% if (user.id == VillageBicycle.currentUserId) { %>
     <button class="edit-page">Edit</button>
   <% } %>
@@ -13,4 +13,30 @@
   <p>
     <%= user.escape('bio') %>
   </p>
-</article>
+</section>
+
+<section class="subview-list group">
+  <% if (user.id == VillageBicycle.currentUserId) { %>
+    <% if (!user.escape('address')) { %>
+      <em>If you'd like to add a bike, please make sure to
+          update your address first! </em>
+    <% } else { %>
+        <button>Add Bike</button>
+    <% } %>
+  <% } %>
+  <h2>
+    <strong>
+      <% if (user.id == VillageBicycle.currentUserId) { %>
+        <%= "My" %>
+      <% } %> Bikes
+    </strong>
+  </h2>
+  <ul id="bike-list">
+    <% user.bikes().forEach( function (bike) { %>
+      <li class="subview-list-li">
+        <%= bike.escape('name') %> the <%= bike.escape('type') %> -
+        $<%= bike.escape('hourly_price') %>/hour
+      </li>
+    <% }); %>
+  </ul>
+</section>
