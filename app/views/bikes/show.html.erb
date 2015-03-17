@@ -10,14 +10,8 @@
     <button>Delete Bike</button>
   </form>
 <% end %>
-<form action="<%= search_bikes_url %>" method="get">
-  <button>Bike Search</button>
-</form>
-
 
 <section class="profile-info group">
-
-
   <img class="profile-picture" src="<%= image_url(@bike.picture.url(:medium)) %>" alt="Profile Picture" />
   <h1><%= @bike.name %> the <%= @bike.category.name %></h1>
   <strong>Owned by</strong><a href="<%= user_url(@bike.owner) %>"><%= @bike.owner_name %></a>

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .subview-list {
   position: relative;
   margin: 50px auto;
@@ -10,7 +11,17 @@
 
 .subview-list button {
   float: right;
-  margin: 10px
+  background: transparent;
+  color: white;
+  border-style: none;
+  font-size: 16px;
+  width: 100px;
+  height: 100%;
+  padding: 10px 10px;
+}
+
+.subview-list button:hover {
+  background: #BB1244;
 }
 
 .subview-list > h2 {
@@ -44,15 +55,11 @@
 }
 
 .subview-list-li:hover {
-  color: #4412BB;
-}
-
-.subview-list-li:hover {
   background: #FCFCFC;
 }
 
 .subview-list-li button {
-  float: right
+  float: right;
 }
 
 .subview-list-li.active {

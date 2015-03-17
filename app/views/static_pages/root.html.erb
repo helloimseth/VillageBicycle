@@ -1,3 +1,29 @@
+<nav class='header group'>
+  <a href="#/users/<%= current_user.id %>">
+    <button class="logo-button">
+      Village Bicycle
+    </button>
+  </a>
+
+  <form action="<%= sessions_url %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="delete">
+    <button class="nav-button">Log Out</button>
+  </form>
+
+  <a href="#/users/<%= current_user.id %>">
+    <button class="nav-button">
+      Home
+    </button>
+  </a>
+
+  <a href="#/users/<%= current_user.id %>">
+    <button class="nav-button">
+      Search
+    </button>
+  </a>
+</nav>
+
 <section class="root-el">
 
 </section>
