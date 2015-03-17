@@ -21,23 +21,17 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     });
 
     this.$el.html(templatedShow);
-    
-    debugger
+    this.attachBikeList();
 
     return this;
   },
 
-  toggleActiveClass: function (event) {
-
-    this._activeBikeListItemViews.forEach(function (view) {
-      var bikeId = $(event.currentTarget).data('bike-id');
-      if (view.model.id == bikeId) {
-        view.remove();
-      }
+  attachBikeList: function () {
+    var bikeList = new VillageBicycle.Views.BikeListView({
+      collection: this.model.bikes()
     });
 
-    $(event.currentTarget).toggleClass('active')
-                          .one("transitionend", this._addBikeInfo.bind(this));
+    this.$el.find('.subview-list').append(bikeList.render().$el);
   },
 
   renderBikeForm: function () {
@@ -58,23 +52,6 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     });
 
     this.$el.append(editModal.render().$el)
-  },
-
-  _addBikeInfo: function (event) {
-    var $infoArticle = $(event.currentTarget).find('.bike-list-item-info');
-
-    if ($(event.currentTarget).hasClass('active')) {
-      var bikeId = $(event.currentTarget).data('bike-id');
-      var bike = this.model.bikes().get(bikeId);
-
-      var bikeListItemView = new VillageBicycle.Views.BikeListItemView({
-        model: bike
-      })
-
-      this._activeBikeListItemViews.push(bikeListItemView)
-
-      $infoArticle.html(bikeListItemView.render().$el);
-    }
   }
 
 });

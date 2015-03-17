@@ -15,7 +15,6 @@ VillageBicycle.Collections.Bikes = Backbone.Collection.extend({
       this.add(bike);
     }
 
-
     bike.fetch();
 
     return bike;

@@ -14,7 +14,7 @@
 
  */
 
- html, body, section, article,
+ html, body, section, article, button,
  h1, h2, p, strong, em, a, ul, li {
    margin: 0;
    border: 0;
