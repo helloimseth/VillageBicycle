@@ -20,12 +20,27 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON();
 
     var searchResults = new VillageBicycle.Collections.Bikes();
-    this.collection.url += "/search?" + $.param(params)
+    searchResults.url += "/search?" + $.param(params)
 
-    this.collection.fetch({
-      success: function () {
-        console.log(this.collection);
-      }.bind(this)
+    searchResults.fetch({
+      success: this.renderSearchResults.bind(this, searchResults)
     })
+  },
+
+  renderSearchResults: function (results) {
+    this.searchResults && this.searchResults.remove()
+    this.searchResults = new VillageBicycle.Views.SearchResults({
+      collection: results
+    });
+
+    this.$el.find('#search-results-container')
+            .html(this.searchResults.render().$el);
+  },
+
+  remove: function () {
+    this.searchResults && this.searchResults.remove();
+    Backbone.View.prototype.remove.call(this);
   }
+
+
 })

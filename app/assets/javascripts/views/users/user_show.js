@@ -31,7 +31,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
       collection: this.model.bikes()
     });
 
-    this.$el.find('.subview-list').append(bikeList.render().$el);
+    this.$el.find('#bike-list').append(bikeList.render().$el);
   },
 
   renderBikeForm: function () {

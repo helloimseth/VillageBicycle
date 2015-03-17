@@ -49,5 +49,12 @@ VillageBicycle.Views.BikeListView = Backbone.View.extend({
 
       $infoArticle.html(bikeListItemView.render().$el);
     }
+  },
+
+  remove: function () {
+    this._activeBikeListItemViews.forEach(function (view) {
+      view.remove();
+    });
+    Backbone.View.prototype.remove.call(this);
   }
 });
