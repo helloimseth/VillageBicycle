@@ -56,6 +56,17 @@
    font-size: 14px;
  }
 
+ body {
+   background: #fefefe;
+ }
+
+ .root-el {
+   background: #858585;
+   width: 900px;
+   padding: 10px 0;
+   margin: 20px auto;
+ }
+
  form button {
    display: block;
    width: 60px;
@@ -68,10 +79,6 @@
    display: block;
  }
 
- .root-el {
-   width: 800px;
-   margin: auto;
- }
 
  .header {
    background: #BB1244;
@@ -124,17 +131,21 @@
  }
 
  .profile-info {
-   margin: 50px auto 0px auto;
-   width: 800px;
+   margin: auto;
    background: #eeeeee;
-   padding: 10px 0;
+   padding: 20px 20px 10px 20px;
  }
 
  .profile-picture {
-   margin: 0 10px;
    float: left;
+   margin-top: -10px;
+   margin-right: 20px;
    border: 1px solid #151515;
    background: white;
+ }
+
+ .profile-info > h1 {
+   display: block;
  }
 
  .profile-info > strong {
