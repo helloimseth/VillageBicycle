@@ -26,6 +26,14 @@ Rails.application.routes.draw do
     end
 
     resources :sets, only: [:index]
+
+    resources :requests, only: [:create, :update, :delete] do
+        member do
+          post 'approve'
+          post 'reject'
+        end
+    end
+
   end
 
 end

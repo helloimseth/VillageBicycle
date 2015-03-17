@@ -1,5 +1,5 @@
 VillageBicycle.Views.BikeListItemView = Backbone.View.extend({
-  template: JST['users/bike_list_item'],
+  template: JST['bikes/bike_list_item'],
 
   tagName: 'article',
 

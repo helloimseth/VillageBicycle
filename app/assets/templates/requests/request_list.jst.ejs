@@ -1,0 +1,18 @@
+<% var requestor; %>
+
+<% requests.forEach( function (request) { %>
+  <% if (request.escape('requestor_id') == VillageBicycle.currentUserId) { %>
+    <% requestor = "Your"; %>
+  <% } else { %>
+    <% requestor = request.escape('requestor_name') + "'s" %>
+  <% } %>
+
+
+  <li class="subview-list-li" data-bike-id="<%= request.id %>">
+    <%= requestor %> request for <%= request.escape('bike_name') %>
+    
+    <article class="request-list-item-info">
+    </article>
+  </li>
+
+<% }); %>
