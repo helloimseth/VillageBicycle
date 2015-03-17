@@ -9,7 +9,7 @@ client = Yelp::Client.new({ consumer_key: "yJrhKETwuRbzQnxbTIRhGQ",
 
 Neighborhood.delete_all
 Size.delete_all
-# User.delete_all
+User.delete_all
 Category.delete_all
 Bike.delete_all
 AddOn.delete_all
@@ -45,15 +45,15 @@ e3 = Extra.create!(name:"Headlight")
 e4 = Extra.create!(name:"Taillight")
 
 #######
-# User.create!(fname: "Seth",
-#              lname: "Hamlin",
-#              email: 'email@example.com',
-#              password: "password",
-#              neighborhood: Neighborhood.find_by(name: "SoHo"),
-#              size: Size.find_by(size: "M"),
-#              activated: true,
-#              address: "598 Broadway")
-#
+User.create!(fname: "Seth",
+             lname: "Hamlin",
+             email: 'email@example.com',
+             password: "password",
+             neighborhood: Neighborhood.find_by(name: "SoHo"),
+             size: Size.find_by(size: "M"),
+             activated: true,
+             address: "598 Broadway")
+
 25.times do |num|
   user = User.new(fname: Faker::Name.first_name,
                   lname: Faker::Name.last_name,

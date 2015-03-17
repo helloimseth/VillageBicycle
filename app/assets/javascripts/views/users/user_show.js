@@ -21,6 +21,8 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     });
 
     this.$el.html(templatedShow);
+    
+    debugger
 
     return this;
   },
@@ -72,7 +74,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
       this._activeBikeListItemViews.push(bikeListItemView)
 
       $infoArticle.html(bikeListItemView.render().$el);
-    }  
+    }
   }
 
 });

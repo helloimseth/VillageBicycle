@@ -1,5 +1,13 @@
 class Api::BikesController < ApplicationController
 
+  def search
+    if params[:query]
+      @bikes = Bike.search(params[:query])
+    else
+      @bikes = []
+    end
+  end
+
   def create
     @bike = current_user.bikes.new(bike_params)
 

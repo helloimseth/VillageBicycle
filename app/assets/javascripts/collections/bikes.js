@@ -2,7 +2,7 @@ VillageBicycle.Collections.Bikes = Backbone.Collection.extend({
 
   model: VillageBicycle.Models.Bike,
 
-  url: 'api/bikes',
+  url: "/api/bikes",
 
   getOrFetch: function (id) {
     var bike = this.get(id)

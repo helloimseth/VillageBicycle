@@ -17,7 +17,7 @@
     </button>
   </a>
 
-  <a href="#/users/<%= current_user.id %>">
+  <a href="#/bikes/search">
     <button class="nav-button">
       Search
     </button>
@@ -27,6 +27,24 @@
 <section class="root-el">
 
 </section>
+
+<script type="text/template" id='start-date-input'>
+  <label>Rental Start <br>
+  <%= datetime_select(:query, :start_date,
+                      discard_year: true,
+                      discard_hour: true,
+                      prompt: {month: "Start Date", day: ""}) %>
+  </label>
+</script>
+
+<script type="text/template" id='end-date-input'>
+  <label>Rental End <br>
+  <%= datetime_select(:query, :end_date,
+                      discard_year: true,
+                      discard_hour: true,
+                      prompt: { month: "End Date", day: "" }) %>
+  </label>
+</script>
 
 <script charset="utf-8">
   $(document).ready(function(){

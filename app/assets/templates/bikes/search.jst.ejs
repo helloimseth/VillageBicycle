@@ -1,0 +1,53 @@
+<br>
+<form action="#" method="get">
+  <label for="query-category">Category</label>
+  <select id="query-category" name="query[bike][category_id]">
+    <option value="">Select</option>
+    <% VillageBicycle.Sets.get('categories').forEach( function (cat) { %>
+      <option value='<%= cat.id %>'>
+        <%= cat.name %>
+      </option>
+    <% }) %>
+  </select>
+  <br><br>
+  <label for="query-neighborhood">Neighborhood</label>
+  <select id="query-neighborhood" name="query[owner][neighborhood_id]">
+    <option value="">Select</option>
+    <% VillageBicycle.Sets.get('neighborhoods').forEach( function (hood) { %>
+      <option value='<%= hood.id %>'><%= hood.name %></option>
+    <% }) %>
+  </select>
+
+  <br><br>
+
+  <input type="hidden" name="query[year]" value="2015">
+  <%= _.template($('#start-date-input').html())() %>
+
+  <br><br>
+
+  <input type="hidden" name="query[year]" value="2015">
+  <%= _.template($('#end-date-input').html())() %>
+
+  <br><br>
+
+  <input type="radio" name="query[bike][gender]"
+                      id="Men's"
+                      value="Men's">
+  <label for="Men's">Men's</label>
+  <input type="radio" name="query[bike][gender]"
+                      id="Women's"
+                      value="Women's">
+  <label for="Women's">Women's</label>
+  <br><br>
+  <% VillageBicycle.Sets.get('sizes').forEach( function (size) { %>
+    <input type="radio" name="query[bike][size_id]"
+                        id="size-<%= size.id %>"
+                        value="<%= size.id %>">
+    <label for='size-<%= size.id %>'>
+      <%= size.size %> - Suggested height: <%= size.suggested_height %>
+    </label>
+    <br>
+  <% }) %>
+  <br>
+  <button>Submit</button>
+</form>

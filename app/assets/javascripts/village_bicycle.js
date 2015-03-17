@@ -7,12 +7,14 @@ window.VillageBicycle = {
     this.currentUserId = options.currentUserId
 
     this.Sets = new VillageBicycle.Models.Sets();
-    this.Sets.fetch()
+    this.Sets.fetch({
+      success: function () {
+        Backbone.history.start();
+      }
+    });
 
     new VillageBicycle.Routers.Router({
       $rootEl: options.$rootEl
     });
-
-    Backbone.history.start();
   }
 };
