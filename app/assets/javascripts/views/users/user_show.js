@@ -4,15 +4,15 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   tagName: 'article',
 
   events: {
-    'click .subview-list-li': 'toggleActiveClass',
     'click #add-bike': 'renderBikeForm',
     'click .edit-page': 'renderEditModal'
   },
 
   initialize: function () {
-    this._activeBikeListItemViews = []
+    this._subViews = []
     this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.model.bikes(), "sync remove add", this.render)
+    this.listenTo(this.model.pendingRequests(), "sync remove add", this.render)
   },
 
   render: function () {
@@ -21,17 +21,34 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     });
 
     this.$el.html(templatedShow);
-    this.attachBikeList();
-
-    return this;
-  },
-
-  attachBikeList: function () {
-    var bikeList = new VillageBicycle.Views.BikeListView({
-      collection: this.model.bikes()
+    this.attachListView({
+      selector: '#bike-list',
+      collection: this.model.bikes(),
     });
 
-    this.$el.find('#bike-list').append(bikeList.render().$el);
+    if (this.model.id === VillageBicycle.currentUserId) {
+      this.attachListView({
+        selector: '#pending-requests-list',
+        collection: this.model.pendingRequests()
+      });
+
+      this.attachListView({
+        selector: '#approved-requests-list',
+        collection: this.model.approvedRequests(),
+      });
+
+      this.attachListView({
+        selector: '#requests-made-list',
+        collection: this.model.requestsMade(),
+      });
+
+      this.attachListView({
+        selector: '#confirmed-requests-list',
+        collection: this.model.confirmedRequests(),
+      });
+    }
+
+    return this;
   },
 
   renderBikeForm: function () {
@@ -52,6 +69,17 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     });
 
     this.$el.append(editModal.render().$el)
+  },
+
+  attachListView: function (options) {
+    var listView = new VillageBicycle.Views.ListView({
+      subViewClass: options.subViewClass,
+      collection: options.collection
+    });
+
+    this._subViews.push(listView);
+
+    this.$el.find(options.selector).append(listView.render().$el);
   }
 
 });

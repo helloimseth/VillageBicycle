@@ -32,3 +32,37 @@
     </strong>
   </h2>
 </section>
+
+<% if (user.id == VillageBicycle.currentUserId) { %>
+  <section id="pending-requests-list" class="subview-list group">
+    <h2>
+      <strong>
+        Requests for my Bikes
+      </strong>
+    </h2>
+  </section>
+
+  <section id="approved-requests-list" class="subview-list group">
+    <h2>
+      <strong>
+        Confirmed Reservations for my Bikes
+      </strong>
+    </h2>
+  </section>
+
+  <section id="requests-made-list" class="subview-list group">
+    <h2>
+      <strong>
+        Requests I've Made
+      </strong>
+    </h2>
+  </section>
+
+  <section id="confirmed-requests-list" class="subview-list group">
+    <h2>
+      <strong>
+        My Confirmed Reservtions
+      </strong>
+    </h2>
+  </section>
+<% } %>

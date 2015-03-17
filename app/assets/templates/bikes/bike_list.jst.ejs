@@ -1,8 +1,8 @@
 <% bikes.forEach( function (bike) { %>
-  <li class="subview-list-li" data-bike-id="<%= bike.id %>">
+  <li class="subview-list-li" data-item-id="<%= bike.id %>">
     <%= bike.escape('name') %> the <%= bike.escape('type') %> -
     $<%= bike.escape('hourly_price') %>/hour
-    <article class="bike-list-item-info">
+    <article class="list-item-info">
 
     </article>
   </li>

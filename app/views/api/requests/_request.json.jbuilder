@@ -1,4 +1,11 @@
-json.extract! request, :start, :end, :requestor_id, :bike_id
+json.extract! request, :id, :start, :end, :requestor_id, :bike_id
 json.requestor_name request.requestor.name
 json.bike_name request.bike.name
 json.bike_owner request.bike.owner_name
+json.bike_type request.bike.type
+
+if request.requestor_id == current_user.id
+  json.image_url_thumb image_path(request.bike.owner.picture.url(:thumb))
+else
+  json.image_url_thumb image_path(request.requestor.picture.url(:thumb))
+end

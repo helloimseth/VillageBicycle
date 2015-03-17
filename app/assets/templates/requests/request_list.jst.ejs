@@ -8,10 +8,10 @@
   <% } %>
 
 
-  <li class="subview-list-li" data-bike-id="<%= request.id %>">
-    <%= requestor %> request for <%= request.escape('bike_name') %>
-    
-    <article class="request-list-item-info">
+  <li class="subview-list-li" data-item-id="<%= request.id %>">
+    <%= requestor %> request for <%= request.escape('bike_name') %> the
+    <%= request.escape('bike_type') %>
+    <article class="list-item-info">
     </article>
   </li>
 

@@ -11,10 +11,70 @@ VillageBicycle.Models.User = Backbone.Model.extend({
     return this._bikes;
   },
 
+  pendingRequests: function () {
+    if (!this._pendingRequests) {
+      this._pendingRequests = new VillageBicycle.Collections.Requests([], {
+        bike_owner: this
+      });
+    }
+
+    return this._pendingRequests;
+  },
+
+  approvedRequests: function () {
+    if (!this._approvedRequests) {
+      this._approvedRequests = new VillageBicycle.Collections.Requests([], {
+        bike_owner: this
+      });
+    }
+
+    return this._approvedRequests;
+  },
+
+  requestsMade: function () {
+    if (!this._requestsMade) {
+      this._requestsMade = new VillageBicycle.Collections.Requests([], {
+        requestor: this
+      });
+    }
+
+    return this._requestsMade;
+  },
+
+  confirmedRequests: function () {
+    if (!this._confirmedRequests) {
+      this._confirmedRequests = new VillageBicycle.Collections.Requests([], {
+        requestor: this
+      });
+    }
+
+    return this._confirmedRequests;
+  },
+
   parse: function (response) {
     if (response.bikes) {
       this.bikes().set(response.bikes);
       delete response.bikes;
+    }
+
+    if (response.pending_requests) {
+      this.pendingRequests().set(response.pending_requests);
+      delete response.pending_requests;
+    }
+
+    if (response.approved_requests) {
+      this.approvedRequests().set(response.approved_requests);
+      delete response.approved_requests;
+    }
+
+    if (response.requests_made) {
+      this.requestsMade().set(response.requests_made);
+      delete response.requests_made;
+    }
+
+    if (response.confirmed_requests) {
+      this.confirmedRequests().set(response.confirmed_requests);
+      delete response.confirmed_requests;
     }
 
     return response

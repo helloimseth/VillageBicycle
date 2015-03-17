@@ -72,17 +72,17 @@
 }
 
 .subview-list-li:after {
-  content: "▼";
+  content: "⥥";
   position: absolute;
   right: 20px;
   top: 15px;
-  transition: transform 250ms linear;
+  transition: top 100ms linear;
 }
 
 .subview-list-li.active:after {
-  content: "▲";
+  content: "⥣";
   position: absolute;
   right: 20px;
   top: 120px;
-  transition: height 250ms linear;
+  transition: top 100ms linear;
 }
