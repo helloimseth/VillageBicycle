@@ -15,7 +15,7 @@ VillageBicycle.Views.SearchResults = Backbone.View.extend({
   },
 
   attachBikeList: function () {
-    this.bikeList = new VillageBicycle.Views.BikeListView({
+    this.bikeList = new VillageBicycle.Views.ListView({
       collection: this.collection
     });
 

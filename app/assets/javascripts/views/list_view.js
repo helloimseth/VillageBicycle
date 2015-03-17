@@ -19,7 +19,7 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
   render: function () {
     var templatedList;
 
-    if (this.collection.url === "/api/bikes" ) {
+    if (this.collection.url.slice(0,10) === "/api/bikes" ) {
       templatedList = this.bikesTemplate({
         bikes: this.collection
       });
@@ -64,7 +64,7 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
   },
 
   remove: function () {
-    this._activeBikeListItemViews.forEach(function (view) {
+    this._activeListItemViews.forEach(function (view) {
       view.remove();
     });
     Backbone.View.prototype.remove.call(this);

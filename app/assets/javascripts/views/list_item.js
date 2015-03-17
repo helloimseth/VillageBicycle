@@ -12,6 +12,8 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
   render: function () {
     var templatedListItem;
 
+    console.log(this.model);
+
     if (this.model.urlRoot === "api/bikes") {
       templatedListItem = this.bikeTemplate({
         bike: this.model
