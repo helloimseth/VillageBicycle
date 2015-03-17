@@ -17,12 +17,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if logged_in? %>
-  <form action="/#/users/<%= current_user.id %>" method="get">
-    <button>Home</button>
-  </form>
-<%= log_out_button %>
-<% end %>
 
 <%= flash[:notice] if flash[:notice] %>
 <%= yield %>

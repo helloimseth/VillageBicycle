@@ -2,6 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.profile-info-text h2 {
+  padding: 10px;
+}
+
+.profile-info-text a:hover {
+  background: #4412BB;
+  color: white;
+  margin-left: -5px;
+  padding: 5px;
+  border-radius: 5px;
+
+}
+
 .price-list {
   float: left;
   width: 156px;
@@ -9,14 +22,16 @@
   font-size: 16px;
   text-align: center;
 }
+
 .price-list li {
   display: block;
   width: 100px;
   padding: 10px 25px;
   border: 3px solid white;
-  background: #4412BB;
+  background: #BB1244;
   color: white;
   margin: 10px 0;
+  border-radius: 10px;
 }
 
 .extras-list {
@@ -33,7 +48,9 @@
   float: left;
   color: white;
   background: #BB1244;
-  border-radius: 2px;
+  border: 1px solid #BB1244;
+  border-radius: 10px;
+  border-style: double;
 }
 
 .extras-list li:not(:last-of-type) {

@@ -10,6 +10,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   },
 
   initialize: function () {
+    this._activeBikeListItemViews = []
     this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.model.bikes(), "sync remove add", this.render)
   },
@@ -25,10 +26,13 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   },
 
   toggleActiveClass: function (event) {
-    if (this._activeBikeListItemView) {
-      this._activeBikeListItemView.$el.remove();
-      this._activeBikeListItemView.remove();
-    }
+
+    this._activeBikeListItemViews.forEach(function (view) {
+      var bikeId = $(event.currentTarget).data('bike-id');
+      if (view.model.id == bikeId) {
+        view.remove();
+      }
+    });
 
     $(event.currentTarget).toggleClass('active')
                           .one("transitionend", this._addBikeInfo.bind(this));
@@ -55,15 +59,20 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   },
 
   _addBikeInfo: function (event) {
-    var bikeId = $(event.currentTarget).data('bike-id');
-    var bike = this.model.bikes().get(bikeId);
+    var $infoArticle = $(event.currentTarget).find('.bike-list-item-info');
 
-    this._activeBikeListItemView = new VillageBicycle.Views.BikeListItemView({
-      model: bike
-    })
+    if ($(event.currentTarget).hasClass('active')) {
+      var bikeId = $(event.currentTarget).data('bike-id');
+      var bike = this.model.bikes().get(bikeId);
 
-    $('.subview-list-li.active .bike-list-item-info')
-                            .html(this._activeBikeListItemView.render().$el);
+      var bikeListItemView = new VillageBicycle.Views.BikeListItemView({
+        model: bike
+      })
+
+      this._activeBikeListItemViews.push(bikeListItemView)
+
+      $infoArticle.html(bikeListItemView.render().$el);
+    }  
   }
 
 });

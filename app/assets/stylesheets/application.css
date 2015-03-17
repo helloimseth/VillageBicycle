@@ -105,12 +105,15 @@
 }
 
 .delete-model {
-  width: 75px;
+  width: 70px;
+  border-radius: 8px
+
 }
 
 .edit-page:hover, .delete-model:hover {
   background: #4412BB;
   color: #fff;
+  border-radius: 8px
 }
 
 .modal {

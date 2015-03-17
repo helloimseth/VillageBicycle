@@ -5,7 +5,6 @@
 .subview-list {
   position: relative;
   margin: 50px auto;
-  width: 830px;
   background: #eeeeee;
 }
 
@@ -36,6 +35,7 @@
 }
 
 .subview-list-li {
+  position: relative;
   height: 25px;
   padding: 10px;
   border-bottom: 1px solid #151515;
@@ -62,4 +62,20 @@
 
 .subview-list-li.active:hover{
   background: #eeeeee;
+}
+
+.subview-list-li:after {
+  content: "▼";
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  transition: transform 250ms linear;
+}
+
+.subview-list-li.active:after {
+  content: "▲";
+  position: absolute;
+  right: 20px;
+  top: 120px;
+  transition: height 250ms linear;
 }

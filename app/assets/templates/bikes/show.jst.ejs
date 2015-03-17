@@ -10,11 +10,11 @@
        src="<%= bike.escape('image_url_medium') %>"
        alt="Profile Picture" >
 
-  <article id="profile-info-text">
+  <article class="profile-info-text">
     <h1><%= bike.escape('name') %> the <%= bike.escape('type') %></h1>
-    <h2>Owned by
+    <h2>
       <a href="javascript:void(0)" id="owner-link">
-        <%= bike.escape('owner_name') %>
+        Owned by <%= bike.escape('owner_name') %>
       </a>
     </h2>
     <p>
