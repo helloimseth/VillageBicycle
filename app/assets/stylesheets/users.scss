@@ -63,8 +63,20 @@
 }
 
 .subview-list-li.active {
-  height: 150px;
+  height: 125px;
   transition: height 100ms linear;
+}
+
+.profile-thumb {
+  float: left;
+}
+
+.more-info {
+  padding: 20px;
+}
+
+.more-info li {
+  padding: 3px 0;
 }
 
 .subview-list-li.active:hover{

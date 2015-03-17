@@ -1,7 +1,7 @@
 <img class="profile-thumb"
      src="<%= bike.escape('image_url_thumb') %>"
      alt="Profile Thumbnail" >
-<ul class="bike-info">
+<ul class="more-info">
  <li> Designed for <%= bike.escape('gender').slice(0,-3) %> </li>
  <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
  <li> Suggested height: <%= bike.size().suggested_height %></li>

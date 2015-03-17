@@ -1,4 +1,32 @@
+<% var requestor, owner; %>
+<% if (request.escape('requestor_id') == VillageBicycle.currentUserId) { %>
+  <% requestor = "You"; %>
+  <% owner = request.escape('owner_name') %>
+<% } else { %>
+  <% requestor = request.escape('requestor_name') %>
+  <% owner = "You" %>
+<% } %>
+
 <img class="profile-thumb"
      src="<%= request.escape('image_url_thumb') %>"
      alt="Profile Thumbnail" >
-<a href="#/bikes/<%= request.escape('bike_id') %>">More Info</a>
+
+<ul class="more-info">
+  <li>
+    <a href="#/users/<%= request.escape('requestor_id') %>">
+      <%= requestor %>
+    </a>
+      would like to rent
+    <a href="#/bikes/<%= request.escape('bike_id')%>">
+      <%= request.escape('bike_name') %> the
+      <%= request.escape('bike_type') %>
+    </a>
+  </li>
+  <li>
+    <a href="#/users/<%= request.escape('bike_owner_id') %>">
+      Owned by <%= owner %>
+    </a>
+  </li>
+  <li>Rental will begin on <%= request.escape('start') %> </li>
+  <li>Bike must be returned on or before <%= request.escape('end') %></li>
+</ul>

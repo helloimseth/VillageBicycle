@@ -89,11 +89,15 @@
    height: 100%;
  }
 
- .header button:hover {
+ button:hover {
    background: #870D31;
    color: white;
    border-style: none;
    font-size: 14px;
+ }
+
+ button:active {
+   font-size: 12px;
  }
 
  .header form {
@@ -113,6 +117,10 @@
 
  .header .logo-button:hover {
    font-size: 20px;
+ }
+
+ .header .logo-button:active {
+   font-size: 18px;
  }
 
  .profile-info {

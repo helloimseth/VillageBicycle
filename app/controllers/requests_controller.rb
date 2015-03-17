@@ -37,7 +37,7 @@ class RequestsController < ApplicationController
   private
 
     def request_params
-      params.require(:request).permit(:bike_id, :start, :end)
+      params.require(:request).permit(:bike_id, :start, :end, :year)
     end
 
 end
