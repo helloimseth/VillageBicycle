@@ -77,7 +77,6 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
 
   attachListView: function (options) {
     var listView = new VillageBicycle.Views.ListView({
-      subViewClass: options.subViewClass,
       collection: options.collection
     });
 

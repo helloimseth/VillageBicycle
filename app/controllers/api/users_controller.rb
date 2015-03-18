@@ -1,7 +1,12 @@
 class Api::UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(
+                  bikes: :owner,
+                  requests_made: :bike,
+                  requests_for: [:requestor, :bike]
+                 )
+                .find(params[:id])
 
     if @user
       render :show

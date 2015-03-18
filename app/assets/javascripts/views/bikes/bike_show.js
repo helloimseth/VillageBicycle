@@ -28,28 +28,16 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
     return this;
   },
 
-  attachMapView: function (results) {
-    var mapView = new VillageBicycle.Views.BikeShowMap({
+  attachMapView: function () {
+    var mapView = new VillageBicycle.Views.MapView({
       el: document.getElementById('map-view'),
       model: this.model
     })
 
     this._subviews.push(mapView);
 
-    mapView.render()
+    mapView.renderSingleMap()
   },
-
-  // geocodeAddress: function () {
-  //   var geocoder = new google.maps.Geocoder();
-  //
-  //   geocoder.geocode({
-  //       address: this.model.get('address') + ' ' +
-  //                this.model.get('neighborhood') + ' ' +
-  //                "New York City"
-  //     },
-  //       this.attachMapView.bind(this)
-  //   );
-  // },
 
   renderModal: function (event) {
     var modal;

@@ -11,6 +11,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
   },
 
   initialize: function () {
+    this._fetchIfRequest();
     this.listenTo(this.model, "sync", this.render)
   },
 
@@ -51,5 +52,9 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
 
     this.model.set('approved', false);
     this.model.save()
+  },
+
+  _fetchIfRequest: function() {
+    if (this.model.urlRoot === "api/requests") { this.model.fetch() }
   }
 });

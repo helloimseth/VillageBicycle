@@ -1,4 +1,9 @@
 class Api::RequestsController < ApplicationController
+  def show
+    @request = Request.includes(:requestor, bike: :owner)
+                      .find(params[:id])
+  end
+
   def create
     @request = current_user.requests_made.new(request_params)
 
@@ -17,7 +22,7 @@ class Api::RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
 
-    if @request.update(request_params)
+    if @request.update!(request_params)
       render json: @request
     else
       render json: @request.errors.full_messages

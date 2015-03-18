@@ -37,9 +37,8 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
   toggleActiveClass: function (event) {
     this._activeListItemViews.forEach(function (view) {
       var id = $(event.currentTarget).data('item-id');
-      if (view.model.id == id) {
-        view.remove();
-      }
+
+      if (view.model.id == id) { view.remove(); }
     });
 
     $(event.currentTarget).toggleClass('active')
