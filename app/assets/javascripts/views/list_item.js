@@ -7,7 +7,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
 
   events: {
     "click #approve-button": "approveRequest",
-    "click #reject-button": "denyRequest"
+    "click #reject-button": "rejectRequest"
   },
 
   initialize: function () {
@@ -33,13 +33,22 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
   },
 
   approveRequest: function (event) {
-    event.stopPropegation();
-    debugger
+    event.stopPropagation();
+
+    var bikeOwner = this.model.collection.bikeOwner;
+
+    this.model.collection.remove(this.model);
+    bikeOwner.approvedRequests().add(this.model);
+
     this.model.set('approved', true);
     this.model.save()
   },
 
-  approveRequest: function (event) {
+  rejectRequest: function (event) {
+    event.stopPropagation();
+
+    this.model.collection.remove(this.model);
+
     this.model.set('approved', false);
     this.model.save()
   }

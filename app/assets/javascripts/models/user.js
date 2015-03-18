@@ -13,9 +13,8 @@ VillageBicycle.Models.User = Backbone.Model.extend({
 
   pendingRequests: function () {
     if (!this._pendingRequests) {
-      this._pendingRequests = new VillageBicycle.Collections.Requests([], {
-        bike_owner: this
-      });
+      this._pendingRequests = new VillageBicycle.Collections.Requests();
+      this._pendingRequests.bikeOwner = this;
     }
 
     return this._pendingRequests;
@@ -23,9 +22,8 @@ VillageBicycle.Models.User = Backbone.Model.extend({
 
   approvedRequests: function () {
     if (!this._approvedRequests) {
-      this._approvedRequests = new VillageBicycle.Collections.Requests([], {
-        bike_owner: this
-      });
+      this._approvedRequests = new VillageBicycle.Collections.Requests();
+      this._pendingRequests.bikeOwner = this;
     }
 
     return this._approvedRequests;
@@ -33,9 +31,7 @@ VillageBicycle.Models.User = Backbone.Model.extend({
 
   requestsMade: function () {
     if (!this._requestsMade) {
-      this._requestsMade = new VillageBicycle.Collections.Requests([], {
-        requestor: this
-      });
+      this._requestsMade = new VillageBicycle.Collections.Requests();
     }
 
     return this._requestsMade;
@@ -43,9 +39,7 @@ VillageBicycle.Models.User = Backbone.Model.extend({
 
   confirmedRequests: function () {
     if (!this._confirmedRequests) {
-      this._confirmedRequests = new VillageBicycle.Collections.Requests([], {
-        requestor: this
-      });
+      this._confirmedRequests = new VillageBicycle.Collections.Requests();
     }
 
     return this._confirmedRequests;
