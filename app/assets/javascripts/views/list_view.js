@@ -13,7 +13,7 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
     this.subViewClass = options.subViewClass
 
     this._activeListItemViews = []
-    this.listenTo(this.collection, "sync remove add", this.render)
+    this.listenTo(this.collection, "remove add", this.render)
   },
 
   render: function () {

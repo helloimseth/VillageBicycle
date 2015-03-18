@@ -71,6 +71,12 @@ VillageBicycle.Models.User = Backbone.Model.extend({
       delete response.confirmed_requests;
     }
 
+    var hoodName = VillageBicycle.Sets
+                                 .grab("neighborhoods",response.neighborhood_id)
+                                 .name
+
+    this.set("neighborhood", hoodName)
+
     return response
   }
 });

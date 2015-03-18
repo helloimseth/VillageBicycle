@@ -12,7 +12,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     this._subViews = []
     this.listenTo(this.model, "sync", this.render)
     this.listenTo(this.model.bikes(), "sync remove add", this.render)
-    this.listenTo(this.model.pendingRequests(), "sync remove add", this.render)
+    this.listenTo(this.model.pendingRequests(), "remove add", this.render)
   },
 
   render: function () {

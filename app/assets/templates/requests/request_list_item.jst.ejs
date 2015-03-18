@@ -19,7 +19,7 @@
       would like to rent
     <a href="#/bikes/<%= request.escape('bike_id')%>">
       <%= request.escape('bike_name') %> the
-      <%= request.escape('bike_type') %>
+      <%= VillageBicycle.Sets.grab("categories", request.get('bike_cat_id')).name %>
     </a>
   </li>
   <li>

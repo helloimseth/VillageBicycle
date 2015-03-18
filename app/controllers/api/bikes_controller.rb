@@ -2,7 +2,7 @@ class Api::BikesController < ApplicationController
 
   def search
     if params[:query]
-      @bikes = Bike.search(params[:query])
+      @bikes = Bike.includes(:owner).search(params[:query])
     else
       @bikes = []
     end

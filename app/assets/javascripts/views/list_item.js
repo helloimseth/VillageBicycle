@@ -15,7 +15,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
     this.listenTo(this.model, "sync", this.render)
   },
 
-  render: function () {
+  render: function (event) {
     var templatedListItem;
 
     if (this.model.urlRoot === "api/bikes") {
@@ -55,6 +55,8 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
   },
 
   _fetchIfRequest: function() {
-    if (this.model.urlRoot === "api/requests") { this.model.fetch() }
+    if (this.model.urlRoot === "/api/requests") { this.model.fetch({
+      success: this.render.bind(this)
+    }) }
   }
 });
