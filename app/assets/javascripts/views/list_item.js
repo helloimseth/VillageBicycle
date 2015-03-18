@@ -5,14 +5,17 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
 
   tagName: 'article',
 
+  events: {
+    "click #approve-button": "approveRequest",
+    "click #reject-button": "denyRequest"
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render)
   },
 
   render: function () {
     var templatedListItem;
-
-    console.log(this.model);
 
     if (this.model.urlRoot === "api/bikes") {
       templatedListItem = this.bikeTemplate({
@@ -27,5 +30,17 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
     this.$el.html(templatedListItem);
 
     return this;
+  },
+
+  approveRequest: function (event) {
+    event.stopPropegation();
+    debugger
+    this.model.set('approved', true);
+    this.model.save()
+  },
+
+  approveRequest: function (event) {
+    this.model.set('approved', false);
+    this.model.save()
   }
 });

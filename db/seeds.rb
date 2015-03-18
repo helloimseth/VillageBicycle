@@ -45,16 +45,16 @@ e3 = Extra.create!(name:"Headlight")
 e4 = Extra.create!(name:"Taillight")
 
 #######
-User.create!(fname: "Seth",
-             lname: "Hamlin",
-             email: 'email@example.com',
-             password: "password",
-             neighborhood: Neighborhood.find_by(name: "SoHo"),
-             size: Size.find_by(size: "M"),
-             activated: true,
-             address: "598 Broadway")
+seth = User.create!(fname: "Seth",
+                   lname: "Hamlin",
+                   email: 'email@example.com',
+                   password: "password",
+                   neighborhood: Neighborhood.find_by(name: "SoHo"),
+                   size: Size.find_by(size: "M"),
+                   activated: true,
+                   address: "598 Broadway")
 
-25.times do |num|
+25.times do
   user = User.new(fname: Faker::Name.first_name,
                   lname: Faker::Name.last_name,
                   email: Faker::Internet.email,
@@ -72,7 +72,7 @@ User.create!(fname: "Seth",
   user.save!
 end
 
-50.times do |num|
+50.times do
   b = Bike.new(name: [Faker::Name.first_name, Faker::Team.creature, Faker::Hacker.noun].sample.capitalize,
                gender: ["Men's", "Women's"].sample,
                notes: Faker::Hacker.say_something_smart,
@@ -93,4 +93,28 @@ end
   b.extras = extras
 
   b.save!
+end
+
+25.times do
+  user = User.all.sample
+  bike = Bike.all.sample
+
+  while user.bikes.include?(bike)
+    bike = Bike.all.sample
+  end
+
+  user.requests_made.create!(bike_id: bike.id,
+                             start: DateTime.now,
+                             end: DateTime.tomorrow)
+end
+
+3.times do
+  user = User.all.sample
+  while user == seth
+    user = User.all.sample
+  end
+
+  user.requests_made.create!(bike_id: seth.bike_ids.sample,
+                             start: DateTime.now,
+                             end: DateTime.tomorrow)
 end

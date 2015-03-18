@@ -1,7 +1,7 @@
 <% var requestor, owner; %>
 <% if (request.escape('requestor_id') == VillageBicycle.currentUserId) { %>
   <% requestor = "You"; %>
-  <% owner = request.escape('owner_name') %>
+  <% owner = request.escape('bike_owner') %>
 <% } else { %>
   <% requestor = request.escape('requestor_name') %>
   <% owner = "You" %>
@@ -30,3 +30,10 @@
   <li>Rental will begin on <%= request.escape('start') %> </li>
   <li>Bike must be returned on or before <%= request.escape('end') %></li>
 </ul>
+
+<% if (!request.escape('approved') && owner === "You") { %>
+  <section class="approve-reject-buttons">
+    <button id='reject-button'>Decline</button>
+    <button id='approve-button'>Approve</button>
+  </section>
+<% } %>

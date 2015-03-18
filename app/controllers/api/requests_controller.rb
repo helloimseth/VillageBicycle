@@ -14,28 +14,19 @@ class Api::RequestsController < ApplicationController
     end
   end
 
-  def approve
-    request = Request.find(params[:id])
-    request.approve!
+  def update
+    @request = Request.find(params[:id])
 
-    flash[:notice] = "Awesome! #{request.requestor.name} will rent
-                      #{request.bike.name} from #{request.start.to_formatted_s(:short)}
-                      to #{request.end.to_formatted_s(:short)}"
-
-    render json: @request
+    if @request.update(request_params)
+      render json: @request
+    else
+      render json: @request.errors.full_messages
+    end
   end
-
-  def reject
-    request = Request.find(params[:id])
-    request.reject!
-
-    render json: @request
-  end
-
   private
 
     def request_params
-      params.require(:request).permit(:bike_id, :start, :end)
+      params.require(:request).permit(:bike_id, :start, :end, :approved)
     end
 
 end

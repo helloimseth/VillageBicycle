@@ -58,8 +58,17 @@
   background: #FCFCFC;
 }
 
+.approve-reject-buttons {
+  position :absolute;
+  right: 40px;
+  bottom: 5px;
+}
+
 .subview-list-li button {
-  float: right;
+  background: #BB1244;
+  height: 15px;
+  margin-right: 10px;
+  margin-bottom: 8px;
 }
 
 .subview-list-li.active {
