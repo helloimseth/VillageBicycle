@@ -17,13 +17,13 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   },
 
   render: function () {
-    this.geocodeAddress();
-
     var templatedShow = this.template({
       bike: this.model
     });
 
     this.$el.html(templatedShow);
+
+    this.attachMapView();
 
     return this;
   },
@@ -31,7 +31,6 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   attachMapView: function (results) {
     var mapView = new VillageBicycle.Views.BikeShowMap({
       el: document.getElementById('map-view'),
-      latlng: results[0].geometry.location,
       model: this.model
     })
 
@@ -40,17 +39,17 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
     mapView.render()
   },
 
-  geocodeAddress: function () {
-    var geocoder = new google.maps.Geocoder();
-
-    geocoder.geocode({
-        address: this.model.get('address') + ' ' +
-                 this.model.get('neighborhood') + ' ' +
-                 "New York City"
-      },
-        this.attachMapView.bind(this)
-    );
-  },
+  // geocodeAddress: function () {
+  //   var geocoder = new google.maps.Geocoder();
+  //
+  //   geocoder.geocode({
+  //       address: this.model.get('address') + ' ' +
+  //                this.model.get('neighborhood') + ' ' +
+  //                "New York City"
+  //     },
+  //       this.attachMapView.bind(this)
+  //   );
+  // },
 
   renderModal: function (event) {
     var modal;

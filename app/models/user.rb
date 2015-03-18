@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token, :default_activated_to_false,
                    :set_activation_token
 
+  geocoded_by :address_for_geocoding
+  after_validation :geocode
+
   belongs_to :neighborhood, inverse_of: :users
   belongs_to :size, inverse_of: :users
 
@@ -76,6 +79,10 @@ class User < ActiveRecord::Base
 
   def reservations
     self.requests_made.select{|req| req.approved == true }
+  end
+
+  def address_for_geocoding
+    "#{self.address} #{self.neighborhood.name} New York City"
   end
 
   private

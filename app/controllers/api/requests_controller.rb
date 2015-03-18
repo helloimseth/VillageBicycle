@@ -3,7 +3,7 @@ class Api::RequestsController < ApplicationController
     @request = current_user.requests_made.new(request_params)
 
     if @request.save
-      flash[:notice] = "Thank you for requesting #{@request.bike.name} the
+      flash.now[:notice] = "Thank you for requesting #{@request.bike.name} the
                         #{@request.bike.type}! #{@request.bike.name}'s owner is
                         reviewing your request and we'll notify you when they've
                         responded."

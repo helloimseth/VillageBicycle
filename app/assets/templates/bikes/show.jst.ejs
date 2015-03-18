@@ -46,7 +46,9 @@
   </figure>
 
   <ul class="price-list group">
-    <li><button id='request-button'>Request This Bike</button> </li>
+    <% if (bike.escape('owner_id') !== VillageBicycle.currentUserId) { %>
+      <li><button id='request-button'>Request This Bike</button> </li>
+    <% } %>
     <li>$<%= bike.escape('hourly_price') %>/hour</li>
     <li>$<%= bike.escape('hourly_price') * 7 %>/day</li>
     <li>$<%= bike.escape('hourly_price') * 30 %>/week</li>

@@ -5,14 +5,22 @@ VillageBicycle.Views.BikeShowMap = Backbone.View.extend({
   },
 
   render: function () {
+    var latLng = new google.maps.LatLng(
+      this.model.get('latitude'),
+      this.model.get('longitude')
+    )
+
     var mapOptions= {
-      center: this.latlng,
+      center: latLng,
       zoom: 15
     };
 
     this._map = new google.maps.Map(this.el, mapOptions)
+
+
+
     this._marker = new google.maps.Marker({
-      position: this.latlng,
+      position: latLng,
       map: this._map,
       title: this.model.get('address') + ' ' + this.model.get('neighborhood')
     })
