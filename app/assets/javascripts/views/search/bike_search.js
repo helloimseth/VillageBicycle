@@ -1,5 +1,5 @@
 VillageBicycle.Views.BikeSearch = Backbone.View.extend({
-  template: JST['bikes/search'],
+  template: JST['search/search'],
 
   tagName: 'main',
 

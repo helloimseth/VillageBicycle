@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   end
 
   def address_for_geocoding
-    "#{self.address} #{self.neighborhood.name} New York City"
+    "#{self.address} New York City"
   end
 
   private

@@ -1,5 +1,5 @@
 VillageBicycle.Views.SearchResults = Backbone.View.extend({
-  template: JST['bikes/search_results'],
+  template: JST['search/search_results'],
 
   initialize: function () {
     this.listenTo(this.collection, "sync", this.render)
