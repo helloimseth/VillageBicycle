@@ -46,6 +46,20 @@
   </label>
 </script>
 
+<script type="text/template" id="request-form">
+  <label>Rental Start <br>
+  <%= datetime_select(:request, :start, discard_year: true, ampm: true,
+                      prompt: true) %>
+  </label>
+
+  <br><br>
+
+  <label>Rental End <br>
+  <%= datetime_select(:request, :end, discard_year: true, ampm: true,
+                      prompt: true) %>
+  </label>
+</script>
+
 <script charset="utf-8">
   $(document).ready(function(){
     VillageBicycle.initialize({

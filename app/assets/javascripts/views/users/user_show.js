@@ -27,25 +27,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     });
 
     if (this.model.id === VillageBicycle.currentUserId) {
-      this.attachListView({
-        selector: '#pending-requests-list',
-        collection: this.model.pendingRequests()
-      });
-
-      this.attachListView({
-        selector: '#approved-requests-list',
-        collection: this.model.approvedRequests(),
-      });
-
-      this.attachListView({
-        selector: '#requests-made-list',
-        collection: this.model.requestsMade(),
-      });
-
-      this.attachListView({
-        selector: '#confirmed-requests-list',
-        collection: this.model.confirmedRequests(),
-      });
+      this.attachRequestViews();
     }
 
     return this;
@@ -64,11 +46,33 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   },
 
   renderEditModal: function () {
-    var editModal = new VillageBicycle.Views.ModalForm({
+    var editModal = new VillageBicycle.Views.EditFormModal({
       model: this.model
     });
 
     this.$el.append(editModal.render().$el)
+  },
+
+  attachRequestViews: function () {
+    this.attachListView({
+      selector: '#pending-requests-list',
+      collection: this.model.pendingRequests()
+    });
+
+    this.attachListView({
+      selector: '#approved-requests-list',
+      collection: this.model.approvedRequests(),
+    });
+
+    this.attachListView({
+      selector: '#requests-made-list',
+      collection: this.model.requestsMade(),
+    });
+
+    this.attachListView({
+      selector: '#confirmed-requests-list',
+      collection: this.model.confirmedRequests(),
+    });
   },
 
   attachListView: function (options) {

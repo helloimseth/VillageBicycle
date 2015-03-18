@@ -5,9 +5,10 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   tagName: 'article',
 
   events: {
-    'click .edit-page': 'renderEditView',
-    'click .delete-model': 'renderDeleteModal',
-    'click #owner-link': 'navigateToOwnerShow'
+    'click #owner-link': 'navigateToOwnerShow',
+    'click .edit-page': 'renderModal',
+    'click .delete-model': 'renderModal',
+    'click #request-button': 'renderModal'
   },
 
   initialize: function () {
@@ -51,25 +52,30 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
     );
   },
 
-  renderEditView: function () {
-    var editModal = new VillageBicycle.Views.ModalForm({
-      model: this.model
-    });
+  renderModal: function (event) {
+    var modal;
 
-    this._subviews.push(editModal);
+    if ($(event.currentTarget).hasClass('edit-page')){
+      modal = new VillageBicycle.Views.EditFormModal({
+        model: this.model
+      });
+    } else if ($(event.currentTarget).hasClass('delete-model')){
+      modal = new VillageBicycle.Views.DeleteModal({
+        model: this.model
+      });
+    } else {
+      var newRequest = new VillageBicycle.Models.Request({
+        bike_id: this.model.id
+      });
 
-    this.$el.append(editModal.render().$el)
+      var modal = new VillageBicycle.Views.RequestFormModal({
+        model: newRequest
+      });
+    }
 
-  },
+    this._subviews.push(modal);
 
-  renderDeleteModal: function () {
-    var deleteModal = new VillageBicycle.Views.DeleteModal({
-      model: this.model
-    });
-
-    this._subviews.push(deleteModal);
-
-    this.$el.append(deleteModal.render().$el)
+    this.$el.append(modal.render().$el)
   },
 
   navigateToOwnerShow: function (event) {

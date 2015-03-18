@@ -1,4 +1,4 @@
-VillageBicycle.Views.ModalForm = Backbone.View.extend({
+VillageBicycle.Views.EditFormModal = Backbone.View.extend({
   userTemplate: JST['users/user_form'],
 
   bikeTemplate: JST['bikes/bike_form'],

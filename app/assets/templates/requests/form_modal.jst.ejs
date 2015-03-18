@@ -1,0 +1,13 @@
+<section class="modal">
+
+</section>
+
+<section class="modal-form">
+  <form action="#" method="#">
+    <input type="hidden"
+           name="request[bike_id]"
+           value="<%= request.escape('bike_id') %>">
+    <%= _.template($('#request-form').html())() %>
+    <button>Submit</button>
+  </form>
+</section>

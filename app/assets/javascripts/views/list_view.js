@@ -19,13 +19,13 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
   render: function () {
     var templatedList;
 
-    if (this.collection.url.slice(0,10) === "/api/bikes" ) {
-      templatedList = this.bikesTemplate({
-        bikes: this.collection
-      });
-    } else {
+    if (this.collection.url === "/api/requests" ) {
       templatedList = this.requestsTemplate({
         requests: this.collection
+      });
+    } else {
+      templatedList = this.bikesTemplate({
+        bikes: this.collection
       });
     }
 
