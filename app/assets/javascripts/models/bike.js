@@ -3,8 +3,6 @@ VillageBicycle.Models.Bike = Backbone.Model.extend({
 
   initialize: function () {
     this.attrs = {}
-    this.grab("sizes", "size_id")
-    this.grab("categories, category_id")
   },
 
   grab: function (set, id_name) {

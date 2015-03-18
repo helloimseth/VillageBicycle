@@ -9,7 +9,7 @@
        alt="Profile Picture" >
 
   <article class="profile-info-text">
-    <h1><%= bike.escape('name') %> the <%= bike.escape('type') %></h1>
+    <h1><%= bike.escape('name') %> the <%= bike.grab("categories", "category_id").name %></h1>
     <h2>
       <a href="javascript:void(0)" id="owner-link">
         Owned by <%= bike.escape('owner_name') %>
@@ -23,7 +23,7 @@
     <ul>
       <li> Designed for <%= bike.escape('gender').slice(0,-3) %> </li>
       <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
-      <li> Suggested height: <%= bike.size().suggested_height %></li>
+      <li> Suggested height: <%= bike.grab("sizes", "size_id").suggested_height %></li>
     </ul>
     <% if (bike.escape('extras').length > 0) { %>
       <h3>Comes with</h3>
@@ -37,10 +37,9 @@
 
 </section>
 
-
 <section class="rental-info group">
 
-  <h2>Find <%= bike.escape('name') %> in <%= bike.escape('neighborhood') %>
+  <h2>Find <%= bike.escape('name') %> in <%= bike.grab("neighborhoods", "neighborhood_id").name %>
       (<%= bike.escape('address') %>)</h2>
   <figure class="map-view" id="map-view">
   </figure>

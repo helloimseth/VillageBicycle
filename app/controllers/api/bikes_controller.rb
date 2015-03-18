@@ -19,7 +19,7 @@ class Api::BikesController < ApplicationController
   end
 
   def show
-    @bike = Bike.find(params[:id])
+    @bike = Bike.includes(:owner).find(params[:id])
 
     if @bike
       render :show

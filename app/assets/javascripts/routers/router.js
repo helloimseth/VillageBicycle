@@ -13,13 +13,14 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
     var bike = new VillageBicycle.Models.Bike({
       id: id
     });
-    bike.fetch();
 
     var bikeShow = new VillageBicycle.Views.BikeShow({
       model: bike
     });
 
-    this.swapView(bikeShow);
+    bike.fetch({
+      success: this.swapView.bind(this,bikeShow)
+    });
   },
 
   bikeSearch: function () {
@@ -33,13 +34,13 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
       id: id
     });
 
-    user.fetch();
-
     var userShow = new VillageBicycle.Views.UserShow({
       model: user
     });
 
-    this.swapView(userShow);
+    user.fetch({
+      success: this.swapView.bind(this, userShow)
+    });
   },
 
   swapView: function (view) {

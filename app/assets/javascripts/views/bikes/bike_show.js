@@ -17,6 +17,7 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
   },
 
   render: function () {
+    
     var templatedShow = this.template({
       bike: this.model
     });

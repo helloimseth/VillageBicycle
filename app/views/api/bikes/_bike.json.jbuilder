@@ -1,8 +1,8 @@
 json.extract! bike, :id, :name, :gender, :num_gears, :notes,
-                    :hourly_price, :neighborhood, :owner_id,
-                    :size_id, :type, :extras, :extra_ids, :owner_name
+                    :hourly_price, :owner_id, :size_id, :category_id, :extras,
+                    :extra_ids, :owner_name, :size_id
 
-json.extract! bike.owner, :address, :latitude, :longitude
+json.extract! bike.owner, :address, :latitude, :longitude, :neighborhood_id
 
 json.image_url_medium image_path(bike.picture.url(:medium))
 json.image_url_thumb image_path(bike.picture.url(:thumb))
