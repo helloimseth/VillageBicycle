@@ -1,0 +1,27 @@
+<a href="#/bikes/search">
+  <button class="logo-button">
+    Village Bicycle
+  </button>
+</a>
+
+<input type="text" id="pg-search" placeholder="Find another user or favorite bike...">
+
+<form action="/sessions" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="#{form_authenticity_token}">
+  <input type="hidden" name="_method" value="delete">
+  <button class="nav-button">Log Out</button>
+</form>
+
+<a href="#/users/<%= VillageBicycle.currentUserId %>">
+  <button class="nav-button">
+    Home
+  </button>
+</a>
+
+<a href="#/bikes/search">
+  <button class="nav-button">
+    Advanced Search
+  </button>
+</a>

@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :sets, only: [:index]
 
     resources :requests, only: [:show, :create, :update, :delete]
+
+    resources :quick_searches, only: [:index]
   end
 
 end

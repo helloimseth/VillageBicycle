@@ -1,5 +1,6 @@
 VillageBicycle.Routers.Router = Backbone.Router.extend({
   routes: {
+    "": "bikeSearch",
     "bikes/search": "bikeSearch",
     "bikes/:id": "bikeShow",
     "users/:id": "userShow"
@@ -7,6 +8,7 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    this.addHeader();
   },
 
   bikeShow: function (id) {
@@ -48,6 +50,12 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
     this._currentView = view;
     this.$rootEl.html(view.$el)
     view.render()
+  },
+
+  addHeader: function () {
+    var header = new VillageBicycle.Views.Header();
+
+    this.$rootEl.before(header.render().$el);
   }
 
 

@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   geocoded_by :address_for_geocoding
   after_validation :geocode
 
+  include PgSearch
+  multisearchable :against => [:fname, :lname]
+
   belongs_to :neighborhood, inverse_of: :users
   belongs_to :size, inverse_of: :users
 
@@ -81,11 +84,11 @@ class User < ActiveRecord::Base
     self.requests_made.select{|req| req.approved == true }
   end
 
-  def address_for_geocoding
-    "#{self.address} New York City"
-  end
-
   private
+
+    def address_for_geocoding
+      "#{self.address} New York City"
+    end
 
     def ensure_session_token
       self.session_token ||= User.generate_token

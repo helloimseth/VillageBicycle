@@ -39,3 +39,5 @@ gem "figaro", '~> 1.0.0'
 gem "aws-sdk", "< 2.0"
 gem "aws-sdk-core"
 gem "geocoder"
+gem "pg_search"
+gem "kaminari"

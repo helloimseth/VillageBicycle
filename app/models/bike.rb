@@ -6,6 +6,9 @@ class Bike < ActiveRecord::Base
   has_attached_file :picture, styles: { :medium => "150x150>", :thumb => "100x100>" }, default_url: ":style/blank_bicycle.png"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
+  include PgSearch
+  multisearchable :against => :name
+
   belongs_to :owner,
     class_name: "User",
     foreign_key: :owner_id,
