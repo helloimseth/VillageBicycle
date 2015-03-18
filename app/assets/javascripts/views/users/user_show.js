@@ -37,7 +37,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     var bike = new VillageBicycle.Models.Bike();
     this.model.bikes().add(bike);
 
-    var bikeModal = new VillageBicycle.Views.ModalForm({
+    var bikeModal = new VillageBicycle.Views.FormModal({
       model: bike
     });
 
@@ -46,7 +46,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
   },
 
   renderEditModal: function () {
-    var editModal = new VillageBicycle.Views.EditFormModal({
+    var editModal = new VillageBicycle.Views.FormModal({
       model: this.model
     });
 

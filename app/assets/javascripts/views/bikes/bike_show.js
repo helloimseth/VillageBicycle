@@ -54,22 +54,14 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
 
   renderModal: function (event) {
     var modal;
-    var model = this.model;
 
     if ($(event.currentTarget).hasClass('delete-model')){
       modal = new VillageBicycle.Views.DeleteModal({
         model: this.model
       });
     } else {
-
-      if ($(event.currentTarget).attr('id') === "request-button") {
-        model = new VillageBicycle.Models.Request({
-          bike_id: this.model.id
-        });
-      }
-
       var modal = new VillageBicycle.Views.FormModal({
-        model: model
+        model: this._requestOrBikeFromEvent(event)
       });
     }
 
@@ -90,6 +82,18 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
     });
 
     Backbone.View.prototype.remove.call(this);
+  },
+
+  _requestOrBikeFromEvent: function (event) {
+    var model = this.model;
+
+    if ($(event.currentTarget).attr('id') === "request-button") {
+      model = new VillageBicycle.Models.Request({
+        bike_id: this.model.id
+      });
+    }
+
+    return model;
   }
 
 });

@@ -1,5 +1,5 @@
 VillageBicycle.Models.User = Backbone.Model.extend({
-  urlRoot: '/api/users',
+  urlRoot: 'api/users',
 
   bikes: function () {
     if (!this._bikes) {

@@ -1,6 +1,6 @@
 VillageBicycle.Collections.Users = Backbone.Collection.extend({
 
-  url: '/api/users',
+  url: 'api/users',
 
   model: VillageBicycle.Models.User,
 
