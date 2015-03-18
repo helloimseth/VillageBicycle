@@ -25,10 +25,10 @@
       <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
       <li> Suggested height: <%= bike.grab("sizes", "size_id").suggested_height %></li>
     </ul>
-    <% if (bike.escape('extras').length > 0) { %>
+    <% if (bike.extras().length > 0) { %>
       <h3>Comes with</h3>
       <ul class="extras-list group">
-        <% bike.get('extras').forEach(function (extra) { %>
+        <% bike.extras().forEach(function (extra) { %>
           <li><%= extra.name %></li>
         <% }); %>
       </ul>
