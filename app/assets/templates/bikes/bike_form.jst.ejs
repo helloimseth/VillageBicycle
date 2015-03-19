@@ -79,8 +79,7 @@
         <% }); %>
       </select>
 
-      <br>
-      <h2>Comes With</h2>
+      <h3>Comes With</h3>
       <% VillageBicycle.Sets.get('extras').forEach( function (extra) { %>
         <input type="checkbox" name="bike[extra_ids][]"
                id='bike-extra-<%= extra.id %>' value='<%= extra.id %>'
@@ -89,14 +88,17 @@
                  <% }; %>>
         <label for='bike-extra-<%= extra.id %>'><%= extra.name %></label>
       <% }); %>
+
+
   </section>
 
   <section class='bike-misc-info'>
 
-    <label for="bike-picture">Profile Picture</label>
+
+    <label for="bike-picture"><h3>Profile Picture</h3></label>
     <input type="file" name="bike[picture]" id="bike-picture" value="">
 
-    <label for="bike-hourly-price">Desired price for hourly rent</label>
+    <label for="bike-hourly-price"><h3>Desired price for hourly rent</h3></label>
     <input type="number"
            name="bike[hourly_price]"
            id="bike-hourly-price"

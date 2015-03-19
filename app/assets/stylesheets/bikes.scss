@@ -60,9 +60,13 @@
 .more-info {
   margin: auto;
   width: 850px;
+  border-radius: 15px;
+
 }
 
 .rental-info {
+  border-radius: 15px;
+  
   background: #eeeeee;
   padding: 10px 15px;
   margin-top: 20px;
@@ -76,6 +80,7 @@
   padding: 0;
   background: black;
   border: 3px solid #151515;
+  border-radius: 15px;
 }
 
 .bike-request-form {

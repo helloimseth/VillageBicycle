@@ -2,6 +2,16 @@
 
 </section>
 
+<script type="text/template" id='log-out-button'>
+  <form action="/sessions" method="post">
+    <input type="hidden"
+           name="authenticity_token"
+           value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <button class="nav-button">Log Out</button>
+  </form>
+</script>
+
 <script type="text/template" id='start-date-input'>
   <label>Rental Start <br>
   <%= datetime_select(:query, :start_date,

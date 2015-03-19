@@ -19,13 +19,7 @@
     </button>
   </a>
 
-  <form action="/sessions" method="post">
-    <input type="hidden"
-           name="authenticity_token"
-           value="#{form_authenticity_token}">
-    <input type="hidden" name="_method" value="delete">
-    <button class="nav-button">Log Out</button>
-  </form>
+  <%= _.template($('#log-out-button').html())() %>
 </nav>
 
 <input type="text"

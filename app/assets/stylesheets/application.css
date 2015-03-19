@@ -22,7 +22,7 @@
    outline: 0;
    box-sizing: inherit;
    font: inherit;
-   font-family: sans-serif;
+   font-family: 'Montserrat Alternates', sans-serif;
    text-decoration: inherit;
    text-align: inherit;
    color: inherit;
@@ -44,20 +44,21 @@
  }
 
  h1 {
-   font-size: 24px;
+   font-size: 36px;
  }
 
 
  h2 {
-   font-size: 18px;
+   font-size: 24px;
  }
 
  h3 {
-   font-size: 14px;
+   font-size: 18px;
  }
 
  body {
    background: #fefefe;
+   font-size: 16px;
  }
 
  input, textarea, select {
@@ -71,25 +72,15 @@
    outline: 0;
  }
 
- .root-el {
-   background: #858585;
-   width: 800px;
-   padding: 20px 20px;
-   margin: 20px auto;
-   border-radius: 15px;
-   box-shadow: 0 5px 1px black;
+ strong {
+   font-weight: bold
  }
+
 
  form button {
    display: block;
    width: 60px;
    margin: auto;
- }
-
- .group:after {
-   content: "";
-   clear: both;
-   display: block;
  }
 
  button:hover {
@@ -103,10 +94,29 @@
    font-size: 12px;
  }
 
+ .group:after {
+   content: "";
+   clear: both;
+   display: block;
+ }
+
+
+ /**/
+
+ .root-el {
+   background: #858585;
+   width: 800px;
+   padding: 20px 20px;
+   margin: 20px auto;
+   border-radius: 15px;
+   box-shadow: 0 5px 1px black;
+ }
+
  .profile-info {
    margin: auto;
    background: #eeeeee;
    padding: 20px 20px 10px 20px;
+   border-radius: 15px;
  }
 
  .profile-picture {
@@ -115,14 +125,11 @@
    margin-right: 20px;
    border: 1px solid #151515;
    background: white;
+   width: 150px;
  }
 
  .profile-info > h1 {
    display: block;
- }
-
- .profile-info > strong {
-   font-weight: bold
  }
 
  .profile-info ul {

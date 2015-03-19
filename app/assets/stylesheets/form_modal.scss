@@ -8,10 +8,11 @@
 
   background: #bb1244;
   color: white;
+  font-size: 14px;
   opacity: 1;
+
   padding: 25px;
   border-radius: 15px;
-
   box-shadow: 0 0 10px #151515, inset 0 0 1px #aaa;
 }
 
@@ -34,6 +35,7 @@
 .modal-form h2 {
   display: block;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .modal-form input,
@@ -57,7 +59,7 @@
   color: #870D31;
   border: 2px solid #870D31;
   border-radius: 50%;
-  padding: 3px 4px 0 4px;
+  padding: 2px 4px 0 4px;
   float: right;
   background: transparent;
   transition: transform 100ms linear;
@@ -66,12 +68,13 @@
 .modal-form .x-out:hover {
   transform: rotate(90deg);
   font-weight: 800;
-  margin: 1px 0 0 1px;
+  padding: 1px 4px 1 4px;
+
 }
 
 .modal-form .x-out:active {
   font-size: 11px;
-  padding: 3px 4px 1px 4px;
+  padding: 1px 3px 1px 3px;
   margin-top: 1px;
   margin-right: 2px;
 }
@@ -105,11 +108,16 @@
   width: 160px;
 }
 
+.bike-bio textarea {
+  height: 100px;
+}
+
 .radio-figure {
   width: 120px;
   float: left;
   margin: 0 20px 0 0;
 }
+
 
 .bike-spec input[type='radio'] {
   display: block;
@@ -119,10 +127,14 @@
 .bike-misc-info {
   text-align: center;
   width: 300px;
-  margin: 50px auto 20px auto;
+  margin: auto;
 }
 
-.bike-misc-info input {
+.bike-misc-info h3, .bike-spec h3 {
+  margin: 20px 0 10px 0;
+}
+
+.bike-misc-info input:not([type='checkbox']) {
   width: 200px;
   margin: 5px auto 15px auto;
 }
@@ -144,28 +156,30 @@
   margin-right: 5px;
 }
 
-.user-bio, .address-info {
-  width: 400px;
+.user-profile-info {
+  display: block;
+  width: 300px;
   margin: auto;
   padding: 20px;
 }
 
-.user-bio label {
+.user-profile-info label {
   display: block;
   text-align: center;
   margin-bottom: 5px;
 }
 
-.user-bio textarea {
-  margin: 0 auto 20px auto;
+.user-profile-info textarea {
+  height: 120px;
 }
 
-.user-bio input {
+.user-profile-info input {
   margin: auto;
 }
 
 .address-info {
   width: 300px;
+  margin: auto;
 }
 
 // Request Modal

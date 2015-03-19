@@ -1,6 +1,6 @@
 VillageBicycle.Routers.Router = Backbone.Router.extend({
   routes: {
-    "": "bikeSearch",
+    "": "userShow",
     "bikes/search": "bikeSearch",
     "bikes/:id": "bikeShow",
     "users/:id": "userShow"
@@ -32,6 +32,8 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function (id) {
+    if (!id) { id = VillageBicycle.currentUserId }
+
     var user = new VillageBicycle.Models.User({
       id: id
     });
