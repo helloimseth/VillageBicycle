@@ -35,6 +35,10 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
 
     this.$el.html(templatedForm);
 
+    if (this.model.urlRoot === 'api/requests') {
+      this._fillInDateTimeSelectInputs();
+    }
+
     return this;
   },
 
@@ -69,5 +73,33 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
     this.model.destroy({
       success: this.remove.bind(this)
     })
+  },
+
+  _fillInDateTimeSelectInputs: function () {
+    console.log(this.model.get('start'));
+
+    if (this.model.get('start')) {
+      this.$el.find('#request_start_2i')
+              .val(this.model.get('start').getMonth() + 1);
+      this.$el.find('#request_start_3i')
+              .val(this.model.get('start').getDate());
+      this.$el.find('#request_start_4i')
+              .val("0" + this.model.get('start').getHours());
+      this.$el.find('#request_start_5i')
+              .val("0" + this.model.get('start').getMinutes());
+    }
+
+    if (this.model.get('end')) {
+      this.$el.find('#request_end_2i')
+              .val(this.model.get('end').getMonth() + 1);
+      this.$el.find('#request_end_3i')
+              .val(this.model.get('end').getDate());
+      this.$el.find('#request_end_4i')
+              .val("0" + this.model.get('end').getHours());
+      this.$el.find('#request_end_5i')
+              .val("0" + this.model.get('end').getMinutes());
+    }
+
+
   }
 })

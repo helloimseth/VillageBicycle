@@ -1,6 +1,6 @@
 json.extract! request, :id, :start, :end, :requestor_id, :bike_id, :approved
-json.start request.start.to_formatted_s(:short)
-json.end request.end.to_formatted_s(:short)
+json.start request.start
+json.end request.end
 
 json.requestor_name request.requestor.name
 

@@ -1,5 +1,5 @@
 VillageBicycle.Collections.Requests = Backbone.Collection.extend({
-  url: "/api/requests",
+  url: "api/requests",
 
   model: VillageBicycle.Models.Request
 });

@@ -1,5 +1,5 @@
 VillageBicycle.Models.Bike = Backbone.Model.extend({
-  urlRoot: '/api/bikes',
+  urlRoot: 'api/bikes',
 
   initialize: function () {
     this._extras = [];

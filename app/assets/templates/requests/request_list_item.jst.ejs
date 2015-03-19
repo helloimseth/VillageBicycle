@@ -27,8 +27,16 @@
       Owned by <%= owner %>
     </a>
   </li>
-  <li>Rental will begin on <%= request.escape('start') %> </li>
-  <li>Bike must be returned on or before <%= request.escape('end') %></li>
+  <% if (request.get('start') && request.get('end')) { %>
+    <li>
+      Rental will begin on <%= request.get('start').toDateString() %>
+      at <%= request.formattedTimeString('start') %>
+    </li>
+    <li>
+      Bike must be returned on or before <%= request.get('end').toDateString() %>
+      at <%= request.formattedTimeString('end') %>
+    </li>
+  <% } %>
 </ul>
 
 <% if (!request.escape('approved') && owner === "You") { %>

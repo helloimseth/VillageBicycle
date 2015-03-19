@@ -25,12 +25,19 @@
   <%= datetime_select(:request, :start, discard_year: true, ampm: true,
                       prompt: true) %>
   </label>
-
+  <input type="hidden"
+         id="request_start_1i"
+         name="request[start(1i)]"
+         value="<%= Date.today.year %>">
   <br><br>
 
   <label>Rental End <br>
   <%= datetime_select(:request, :end, discard_year: true, ampm: true,
                       prompt: true) %>
+  <input type="hidden"
+         id="request_end_1i"
+         name="request[end(1i)]"
+         value="<%= Date.today.year %>">
   </label>
 </script>
 

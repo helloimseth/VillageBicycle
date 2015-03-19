@@ -19,7 +19,7 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
   render: function () {
     var templatedList;
 
-    if (this.collection.url === "/api/requests" ) {
+    if (this.collection.url === "api/requests" ) {
       templatedList = this.requestsTemplate({
         requests: this.collection
       });
