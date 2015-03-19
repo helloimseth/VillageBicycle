@@ -55,7 +55,8 @@ class Bike < ActiveRecord::Base
       query_params[0] << "(? > CAST(requests.end AS DATE) OR CAST(requests.start AS DATE) > ? OR requests.id IS NULL)"
       query_params.concat([start_date, end_date])
 
-      Bike.joins(:owner)
+      Bike.select('bikes.*, AVG(owner.latitude), AVG(owner.longitude)')
+          .joins(:owner)
           .joins("LEFT JOIN requests ON requests.bike_id = bikes.id")
           .where(query_params)
     end
@@ -95,6 +96,7 @@ class Bike < ActiveRecord::Base
       query[:dates][:end].blank?
     end
 end
+
 
 # SELECT
 #   b.*

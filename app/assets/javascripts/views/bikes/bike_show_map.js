@@ -41,7 +41,7 @@ VillageBicycle.Views.MapView = Backbone.View.extend({
 
     var mapOptions= {
       center: centerLatLng,
-      zoom: 14,
+      zoom: 11,
       mapTypeControlOptions: {
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
       }

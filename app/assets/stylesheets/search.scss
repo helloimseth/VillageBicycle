@@ -1,3 +1,89 @@
+.reset {
+  float: right;
+}
+
+.search-form-container {
+  background: #eee;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.search-form-container h1 {
+  display: block;
+  text-align: center;
+  border-bottom: 2px solid #870D31;
+  margin-bottom: 20px;
+}
+
+.search-form-container h2 {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.search-form-container button {
+  color: #bb1244;
+  border: 2px solid #BB1244;
+  padding: 8px 10px 5px 10px;
+  border-radius: 15px;
+}
+
+.search-form-container button:hover {
+  border: 2px solid #fff;
+  background: #BB1244;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+.search-by-bike-stat {
+  width: 50%;
+  border-right: 2px solid #870D31;
+}
+
+.search-by-bike-stat select,
+.search-by-bike-stat input:not([type='radio']),
+.search-by-date label {
+  display: block;
+  margin: 5px 0 10px 0;
+}
+
+.search-by-size {
+  margin-left: 0;
+  width: 280px;
+}
+
+.search-by-size h3 {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.search-by-size label {
+  margin: 5px 30px 5px 5px;
+}
+
+.search-by-date {
+  width: 280px;
+  float: right;
+}
+
+.search-results-container {
+  position: relative;
+}
+
 .search-results-container .map-view {
-  float: none;
+  position: absolute;
+  border-radius: 15px;
+}
+
+.search-by-date select {
+  margin: 5px 0 10px 0;
+}
+
+.search-results-list {
+  padding: 10px 5px;
+  background: #eee;
+  width: 380px;
+  float: right;
+  border-radius: 15px;
+  margin-top: 10px;
 }

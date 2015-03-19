@@ -1,58 +1,74 @@
-<section class='search-form-container'>
+<section class='search-form-container group'>
+
+  <h1>Advanced Search</h1>
   <form action="#" method="get" class='search-form'>
-    <label for="query-category">Category</label>
-    <select id="query-category" name="query[bike][category_id]">
-      <option value="">Select</option>
-      <% VillageBicycle.Sets.get('categories').forEach( function (cat) { %>
-        <option value='<%= cat.id %>'>
-          <%= cat.name %>
-        </option>
-      <% }) %>
-    </select>
-    <br><br>
-    <label for="query-neighborhood">Neighborhood</label>
-    <select id="query-neighborhood" name="query[owner][neighborhood_id]">
-      <option value="">Select</option>
-      <% VillageBicycle.Sets.get('neighborhoods').forEach( function (hood) { %>
-        <option value='<%= hood.id %>'><%= hood.name %></option>
-      <% }) %>
-    </select>
 
-    <br><br>
+    <section class=search-by-date>
+      <h2>Search by Dates</h2>
 
-    <input type="hidden" name="query[year]" value="2015">
-    <%= _.template($('#start-date-input').html())() %>
+      <input type="hidden" name="query[year]" value="2015">
+      <%= _.template($('#start-date-input').html())() %>
 
-    <br><br>
 
-    <input type="hidden" name="query[year]" value="2015">
-    <%= _.template($('#end-date-input').html())() %>
+      <input type="hidden" name="query[year]" value="2015">
+      <%= _.template($('#end-date-input').html())() %>
+    </section>
 
-    <br><br>
 
-    <input type="radio" name="query[bike][gender]"
-                        id="Men's"
-                        value="Men's">
-    <label for="Men's">Men's</label>
-    <input type="radio" name="query[bike][gender]"
-                        id="Women's"
-                        value="Women's">
-    <label for="Women's">Women's</label>
-    <br><br>
-    <% VillageBicycle.Sets.get('sizes').forEach( function (size) { %>
-      <input type="radio" name="query[bike][size_id]"
-                          id="size-<%= size.id %>"
-                          value="<%= size.id %>">
-      <label for='size-<%= size.id %>'>
-        <%= size.size %> - Suggested height: <%= size.suggested_height %>
-      </label>
-      <br>
-    <% }) %>
-    <br>
-    <button>Submit</button>
+    <section class="search-by-bike-stat">
+      <h2>Search by Bike Specs</h2>
+      <label for="query-category">Category</label>
+      <select id="query-category" name="query[bike][category_id]">
+        <option value="">Select</option>
+        <% VillageBicycle.Sets.get('categories').forEach( function (cat) { %>
+          <option value='<%= cat.id %>'>
+            <%= cat.name %>
+          </option>
+        <% }) %>
+      </select>
+
+      <label for="query-neighborhood">Neighborhood</label>
+      <select id="query-neighborhood" name="query[owner][neighborhood_id]">
+        <option value="">Select</option>
+        <% VillageBicycle.Sets.get('neighborhoods').forEach( function (hood) { %>
+          <option value='<%= hood.id %>'><%= hood.name %></option>
+        <% }) %>
+      </select>
+
+      <input type="radio" name="query[bike][gender]"
+                          id="Men's"
+                          value="Men's">
+      <label for="Men's">Men's Frame</label>
+
+      <input type="radio" name="query[bike][gender]"
+                          id="Women's"
+                          value="Women's">
+      <label for="Women's">Women's Frame</label>
+
+      <figure class='search-by-size'>
+        <h3>Frame Size</h3>
+        <% VillageBicycle.Sets.get('sizes').forEach( function (size) { %>
+          <input type="radio" name="query[bike][size_id]"
+                              id="size-<%= size.id %>"
+                              value="<%= size.id %>">
+          <label for='size-<%= size.id %>'>
+            <%= size.size %> - Suggested height: <%= size.suggested_height %>
+          </label>
+        <% }) %>
+      </figure>
+
+    </section>
+
+
+
+
+    <button>Submit</button> <button class='reset'>Reset</button>
   </form>
+
+
+
 </section>
 
-<section class='search-results-container' id='search-results-container'>
+<section class='search-results-container group' id='search-results-container'>
 
 </section>

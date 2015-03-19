@@ -76,13 +76,14 @@
   margin-right: 2px;
 }
 
-.modal-form button {
+.modal-form button, .search-form-container button {
   border: 2px solid #fff;
   padding: 8px 10px 5px 10px;
   border-radius: 15px;
 }
 
-.modal-form button:hover {
+.modal-form button:hover,
+.search-form-container button:hover {
   border: 2px solid #fff;
   background: white;
   color: #bb1244;

@@ -4,7 +4,8 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
   tagName: 'main',
 
   events: {
-    "submit .search-form": "performSearch"
+    "submit .search-form": "performSearch",
+    "click .reset": "resetForm"
   },
 
   render: function () {
@@ -35,6 +36,15 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
 
     this.$el.find('#search-results-container')
             .html(this.searchResults.render().$el);
+  },
+
+  resetForm: function () {
+    event.preventDefault()
+    var form = $(event.currentTarget).find('form')
+
+    form.find('input, select, textarea')
+        .val("")
+        .attr("checked", false);
   },
 
   remove: function () {
