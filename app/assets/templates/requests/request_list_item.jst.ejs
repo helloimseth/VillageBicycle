@@ -32,8 +32,12 @@
 </ul>
 
 <% if (!request.escape('approved') && owner === "You") { %>
-  <section class="approve-reject-buttons">
+  <section class="request-li-buttons">
     <button id='reject-button'>Decline</button>
     <button id='approve-button'>Approve</button>
+  </section>
+<% } else if (!request.escape('approved')) { %>
+  <section class="request-li-buttons">
+    <button id='edit-request'>Edit</button>
   </section>
 <% } %>

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
     resources :sets, only: [:index]
 
-    resources :requests, only: [:show, :create, :update, :delete]
+    resources :requests, only: [:show, :create, :update, :destroy]
 
     resources :quick_searches, only: [:index]
   end

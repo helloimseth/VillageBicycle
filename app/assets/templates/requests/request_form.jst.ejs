@@ -3,11 +3,15 @@
 </section>
 
 <section class="modal-form">
+<button class='x-out'>X</button>
   <form action="#" method="#">
     <input type="hidden"
            name="request[bike_id]"
            value="<%= request.escape('bike_id') %>">
     <%= _.template($('#request-form').html())() %>
     <button>Submit</button>
+    <% if (request.id) { %>
+      <button id="delete-request">Cancel Request</button>
+    <% } %>
   </form>
 </section>

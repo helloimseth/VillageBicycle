@@ -7,7 +7,8 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
 
   events: {
     "click #approve-button": "approveRequest",
-    "click #reject-button": "rejectRequest"
+    "click #reject-button": "rejectRequest",
+    "click #edit-request": "renderEditRequestModal"
   },
 
   initialize: function () {
@@ -18,7 +19,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
   render: function (event) {
     var templatedListItem;
 
-    if (this.model.urlRoot === "api/bikes") {
+    if (this.model.urlRoot === "/api/bikes") {
       templatedListItem = this.bikeTemplate({
         bike: this.model
       });
@@ -52,6 +53,16 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
 
     this.model.set('approved', false);
     this.model.save()
+  },
+
+  renderEditRequestModal: function (event) {
+    event.stopPropagation();
+
+    var modal = new VillageBicycle.Views.FormModal({
+      model: this.model
+    });
+
+    $('body').append(modal.render().$el)
   },
 
   _fetchIfRequest: function() {

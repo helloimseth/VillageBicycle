@@ -9,13 +9,17 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
 
   events: {
     'submit .modal-form form': 'submitForm',
-    'change #bike-picture': "changePicture"
+    'click .x-out': "remove",
+
+    'change #bike-picture': "changePicture",
+
+    'click #delete-request': "deleteRequest"
   },
 
   render: function () {
     var templatedForm;
 
-    if (this.model.urlRoot === 'api/bikes') {
+    if (this.model.urlRoot === '/api/bikes') {
       templatedForm = this.bikeTemplate({
         bike: this.model
       });
@@ -41,6 +45,7 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
 
     this.model.save(attrs, {
       success: function () {
+        this.collection && this.collection.add(this.model)
         this.remove();
       }.bind(this)
     })
@@ -56,5 +61,13 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
     }.bind(this);
 
     fileReader.readAsDataURL(file);
+  },
+
+  deleteRequest: function (event) {
+    event.preventDefault()
+
+    this.model.destroy({
+      success: this.remove.bind(this)
+    })
   }
 })

@@ -28,6 +28,17 @@ class Api::RequestsController < ApplicationController
       render json: @request.errors.full_messages
     end
   end
+
+  def destroy
+    @request = Request.find(params[:id])
+
+    if @request.destroy
+      render json: @request
+    else
+      render json: @request.errors.full_messages
+    end
+  end
+
   private
 
     def request_params
