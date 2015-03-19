@@ -1,0 +1,200 @@
+.modal-form {
+  position: absolute;
+  z-index: 10;
+
+  width: 600px;
+  top: 100px;
+  left: calc((100% - 600px)/2);
+
+  background: #bb1244;
+  color: white;
+  opacity: 1;
+  padding: 25px;
+  border-radius: 15px;
+
+  box-shadow: 0 0 10px #151515, inset 0 0 1px #aaa;
+}
+
+.modal-form h1 {
+  display: block;
+  margin: 10px auto 20px auto;
+  padding: 10px 0 5px 0;
+  width: 550px;
+  background: #870D31;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 0 0 5px #590920;
+}
+
+.modal-form form {
+  width: 550px;
+  margin: auto;
+}
+
+.modal-form h2 {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.modal-form input,
+.modal-form textarea,
+.modal-form select {
+  border: none;
+  box-shadow: none;
+  color: black;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin: 5px 0 10px 0;
+  display: block;
+}
+
+.modal-form input[type='checkbox'] {
+  display: inline;
+}
+
+.modal-form .x-out {
+  font-size: 16px;
+  color: #870D31;
+  border: 2px solid #870D31;
+  border-radius: 50%;
+  padding: 3px 4px 0 4px;
+  float: right;
+  background: transparent;
+  transition: transform 100ms linear;
+}
+
+.modal-form .x-out:hover {
+  transform: rotate(90deg);
+  font-weight: 800;
+  margin: 1px 0 0 1px;
+}
+
+.modal-form .x-out:active {
+  font-size: 11px;
+  padding: 3px 4px 1px 4px;
+  margin-top: 1px;
+  margin-right: 2px;
+}
+
+.modal-form button {
+  border: 2px solid #fff;
+  padding: 8px 10px 5px 10px;
+  border-radius: 15px;
+}
+
+.modal-form button:hover {
+  border: 2px solid #fff;
+  background: white;
+  color: #bb1244;
+  font-size: 16px;
+}
+
+// Bike Modal
+
+.bike-bio {
+  width: 200px;
+  float: left;
+  margin-right: 20px;
+  border-right: 2px solid #870D31;
+}
+
+.bike-bio input,
+.bike-bio textarea,
+.bike-bio select {
+  width: 160px;
+}
+
+.radio-figure {
+  width: 120px;
+  float: left;
+  margin: 0 20px 0 0;
+}
+
+.bike-spec input[type='radio'] {
+  display: block;
+}
+
+
+.bike-misc-info {
+  text-align: center;
+  width: 300px;
+  margin: 50px auto 20px auto;
+}
+
+.bike-misc-info input {
+  width: 200px;
+  margin: 5px auto 15px auto;
+}
+
+// User Modal
+
+.user-basic-info {
+  width: 500px;
+  margin: auto;
+}
+
+.user-basic-info input, .user-basic-info select,
+.address-info input, .address-info select  {
+  display: inline;
+  margin-right: 15px;
+}
+
+.user-basic-info label {
+  margin-right: 5px;
+}
+
+.user-bio, .address-info {
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.user-bio label {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.user-bio textarea {
+  margin: 0 auto 20px auto;
+}
+
+.user-bio input {
+  margin: auto;
+}
+
+.address-info {
+  width: 300px;
+}
+
+// Request Modal
+
+.edit-request .modal-form {
+  position: fixed;
+}
+
+.request-modal form {
+  width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+.request-modal select{
+  display: inline;
+}
+
+.buttons {
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  margin: 20px auto;
+}
+
+.buttons button {
+  float: left;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+}
+
+.buttons button:first-of-type {
+  margin-right: 20px;
+}

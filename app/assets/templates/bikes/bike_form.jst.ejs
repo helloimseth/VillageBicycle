@@ -3,88 +3,106 @@
 </section>
 
 <section class="modal-form">
-  <button class='x-out'>X</button>
-  <form action="#" method="#">
-    <label for="bike-name">Name</label>
-    <input type="text"
-           name="bike[name]"
-           id="bike-name"
-           value="<%= bike.escape('name') %>">
+  <button class='x-out'>&#10005;</button>
+  <h1> <%= bike.escape("name") ? bike.escape("name") : "New Bike" %> </h1>
 
-    <label for="bike-category">Category</label>
-    <select id="bike-category" name="bike[category_id]">
-      <option>Select</option>
-      <% VillageBicycle.Sets.get('categories').forEach( function (cat) {%>
-        <option value='<%= cat.id %>'
-          <% if (cat.name == bike.escape('type')) { %>
-            <%= 'selected' %>
-          <% } %>>
-          <%= cat.name %>
-        </option>
+  <form action="#" method="#">
+
+    <section class='bike-bio'>
+      <h2>Bike Info</h2>
+      <label for="bike-name">Name</label>
+      <input type="text"
+             name="bike[name]"
+             id="bike-name"
+             value="<%= bike.escape('name') %>">
+
+      <label for="bike-category">Category</label>
+      <select id="bike-category" name="bike[category_id]">
+        <option>Select</option>
+        <% VillageBicycle.Sets.get('categories').forEach( function (cat) {%>
+          <option value='<%= cat.id %>'
+            <% if (cat.id == bike.escape('category_id')) { %>
+              <%= 'selected' %>
+            <% } %>>
+            <%= cat.name %>
+          </option>
+        <% }); %>
+      </select>
+
+      <label for="bike-notes">Description</label>
+      <textarea name="bike[notes]" id="bike-notes" rows="8" cols="40"><%= bike.escape('notes') %></textarea>
+
+    </section>
+
+    <section class="bike-spec">
+      <h2>Bike Specs</h2>
+      <figure class='radio-figure'>
+      <label for="Men's">Men's Frame</label>
+
+      <input type="radio" name="bike[gender]"
+                          id="Men's"
+                          value="Men's"
+                          <% if (bike.escape('gender').slice(0, 1) == "M") {%>
+                            <%= "checked"  %>
+                          <% } %>>
+
+      </figure>
+      <figure class='radio-figure'>
+        <label for="Women's">Women's Frame
+        <input type="radio" name="bike[gender]"
+                            id="Women's"
+                            value="Women's"
+                            <% if (bike.escape('gender').slice(0, 1) == "W") { %>
+                              <%= "checked"  %>
+                            <% } %>>
+        </label>
+      </figure>
+
+
+      <label for="bike-num-gears">Number of Gears</label>
+      <input type="number"
+             name="bike[num_gears]"
+             id="bike-num-gears"
+             value="<%= bike.escape('num_gears') %>">
+
+
+      <label for="bike-size">Size</label>
+      <select id="bike-size" name="bike[size_id]">
+        <option>Select</option>
+        <% VillageBicycle.Sets.get('sizes').forEach( function (size) {%>
+          <option value='<%= size.id %>'
+            <% if (size.id == bike.escape('size_id')) { %>
+              <%= 'selected' %>
+            <% } %>>
+            <%= size.size %> - <%= size.suggested_height %>
+          </option>
+        <% }); %>
+      </select>
+
+      <br>
+      <h2>Comes With</h2>
+      <% VillageBicycle.Sets.get('extras').forEach( function (extra) { %>
+        <input type="checkbox" name="bike[extra_ids][]"
+               id='bike-extra-<%= extra.id %>' value='<%= extra.id %>'
+                 <% if (_.contains(bike.get('extra_ids'), extra.id)) { %>
+                   <%= 'checked' %>
+                 <% }; %>>
+        <label for='bike-extra-<%= extra.id %>'><%= extra.name %></label>
       <% }); %>
-    </select>
-    <br>
-    <input type="radio" name="bike[gender]"
-                        id="Men's"
-                        value="Men's"
-                        <% if (bike.escape('gender').slice(0, 1) == "M") {%>
-                          <%= "checked"  %>
-                        <% } %>>
-    <label for="Men's">Men's</label>
-    <input type="radio" name="bike[gender]"
-                        id="Women's"
-                        value="Women's"
-                        <% if (bike.escape('gender').slice(0, 1) == "W") { %>
-                          <%= "checked"  %>
-                        <% } %>>
-    <label for="Women's">Women's</label>
-    <br>
-    <br>
-    <label for="bike-notes">Description</label><br>
-    <textarea name="bike[notes]" id="bike-notes" rows="8" cols="40"><%= bike.escape('notes') %></textarea>
-    <br>
-    <label for="bike-num-gears">Number of Gears</label>
-    <input type="number"
-           name="bike[num_gears]"
-           id="bike-num-gears"
-           value="<%= bike.escape('num_gears') %>">
-    <br>
+  </section>
+
+  <section class='bike-misc-info'>
+
+    <label for="bike-picture">Profile Picture</label>
+    <input type="file" name="bike[picture]" id="bike-picture" value="">
+
     <label for="bike-hourly-price">Desired price for hourly rent</label>
     <input type="number"
            name="bike[hourly_price]"
            id="bike-hourly-price"
            value="<%= bike.escape('hourly_price') %>">
-    <br>
+  </section>
 
-    <label for="bike-size">Size</label>
-    <select id="bike-size" name="bike[size_id]">
-      <option>Select</option>
-      <% VillageBicycle.Sets.get('sizes').forEach( function (size) {%>
-        <option value='<%= size.id %>'
-          <% if (size.id == bike.escape('size_id')) { %>
-            <%= 'selected' %>
-          <% } %>>
-          <%= size.size %> - <%= size.suggested_height %>
-        </option>
-      <% }); %>
-    </select>
-
-    <br>
-
-    <% VillageBicycle.Sets.get('extras').forEach( function (extra) { %>
-      <input type="checkbox" name="bike[extra_ids][]"
-             id='bike-extra-<%= extra.id %>' value='<%= extra.id %>'
-               <% if (_.contains(bike.get('extra_ids'), extra.id)) { %>
-                 <%= 'checked' %>
-               <% }; %>>
-      <label for='bike-extra-<%= extra.id %>'><%= extra.name %></label>
-    <% }); %>
-
-    <br>
-
-    <label for="bike-picture">Profile Picture</label>
-    <input type="file" name="bike[picture]" id="bike-picture" value="">
-    <br><br>
     <button id='#submit-form'>Submit</button>
   </form>
 </section>

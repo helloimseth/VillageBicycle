@@ -3,79 +3,76 @@
 </section>
 
 <section class="modal-form">
-<button class='x-out'>X</button>
+<button class='x-out'>&#10005;</button>
+<h1> <%= user.escape('name') %> </h1>
   <form action="#" method="post">
-    <label for="user_fname">First Name</label>
-    <input type="text"
-           id="user_fname"
-           name="user[fname]"
-           value="<%= user.escape('fname') %>">
 
-    <label for="user_lname">Last Name</label>
-    <input type="text"
-          id="user_lname"
-          name="user[lname]"
-          value="<%= user.escape('lname') %>">
-    <br>
-    <label for="user_email">Email</label>
-    <input type="text"
-           id="user_email"
-           name="user[email]"
-           value="<%= user.escape('email') %>">
-    <br>
-    <label for="user-bio">Bio</label><br>
-    <textarea name="user[bio]"
-              id="user_bio"
-              rows="8"
-              cols="40"><%= user.escape('bio') %></textarea>
-    <br>
+    <section class='user-basic-info'>
+      <label for="user_fname">First Name</label>
+      <input type="text"
+             id="user_fname"
+             name="user[fname]"
+             value="<%= user.escape('fname') %>">
 
-    Frame Size
+      <label for="user_lname">Last Name</label>
+      <input type="text"
+            id="user_lname"
+            name="user[lname]"
+            value="<%= user.escape('lname') %>">
 
-    <br>
+      <label for="user_email">Email</label>
+      <input type="text"
+             id="user_email"
+             name="user[email]"
+             value="<%= user.escape('email') %>">
 
-    <label for="user-size">Size</label>
-    <select id="user-size" name="user[size_id]">
-      <option>Select</option>
-      <% VillageBicycle.Sets.get('sizes').forEach( function (size) {%>
-        <option value='<%= size.id %>'
-          <% if (size.id == user.escape('size_id')) { %>
-            <%= 'selected' %>
-          <% } %>>
-          <%= size.size %> - <%= size.suggested_height %>
-        </option>
-      <% }); %>
-    </select>
+       <label for="user-size">Size</label>
+       <select id="user-size" name="user[size_id]">
+         <option>Select</option>
+         <% VillageBicycle.Sets.get('sizes').forEach( function (size) {%>
+           <option value='<%= size.id %>'
+             <% if (size.id == user.escape('size_id')) { %>
+               <%= 'selected' %>
+             <% } %>>
+             <%= size.size %> - <%= size.suggested_height %>
+           </option>
+         <% }); %>
+       </select>
+    </section>
 
-    <br>
+    <figure class="user-bio">
+      <label for="user-bio">Tell us about yourself</label>
+      <textarea name="user[bio]"
+                id="user_bio"
+                rows="8"
+                cols="40"><%= user.escape('bio') %></textarea>
 
-    <label for="user-neighborhood">Neighborhood</label>
-    <select id="user-neighborhood" name="user[neighborhood]">
-      <option>Select</option>
-      <% VillageBicycle.Sets.get('neighborhoods').forEach( function (hood) {%>
-        <option value='<%= hood.id %>'
-          <% if (hood.id == user.escape('neighborhood_id')) { %>
-            <%= 'selected' %>
-          <% } %>>
-          <%= hood.name %>
-        </option>
-      <% }); %>
-    </select>
-    <br>
+      <label for="user-picture">Profile Picture</label>
+      <input type="file" name="user[picture]" id="user-picture" value="">
 
-    <label for="user-address">Street Address</label>
-    <input type="text"
-           name="user[address]"
-           id="user-address"
-           value="<%= user.escape('address') %>"
-           cols="1">
+    </figure>
 
-    <br><br>
-    <label for="user-picture">Profile Picture</label>
-    <input type="file" name="user[picture]" id="user-picture" value="">
+    <section class="address-info">
+      <label for="user-neighborhood">Neighborhood</label>
+      <select id="user-neighborhood" name="user[neighborhood]">
+        <option>Select</option>
+        <% VillageBicycle.Sets.get('neighborhoods').forEach( function (hood) {%>
+          <option value='<%= hood.id %>'
+            <% if (hood.id == user.escape('neighborhood_id')) { %>
+              <%= 'selected' %>
+            <% } %>>
+            <%= hood.name %>
+          </option>
+        <% }); %>
+      </select>
 
-    <br><br>
-
+      <label for="user-address">Street Address</label>
+      <input type="text"
+             name="user[address]"
+             id="user-address"
+             value="<%= user.escape('address') %>"
+             cols="1">
+    </section>
 
     <button>Submit</button>
   </form>

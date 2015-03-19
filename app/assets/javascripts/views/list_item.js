@@ -59,7 +59,8 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
     event.stopPropagation();
 
     var modal = new VillageBicycle.Views.FormModal({
-      model: this.model
+      model: this.model,
+      className: 'edit-request'
     });
 
     $('body').append(modal.render().$el)

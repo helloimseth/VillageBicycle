@@ -43,6 +43,7 @@
 
 <script charset="utf-8">
   $(document).ready(function(){
+    VillageBicycle.bicon = '<%= image_url('bicycle.png') %>';
     VillageBicycle.initialize({
       currentUserId: <%= current_user.id %>,
       $rootEl: $('.root-el')

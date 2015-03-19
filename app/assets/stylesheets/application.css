@@ -164,39 +164,3 @@
   width: 100%;
   z-index: 9;
 }
-
-.modal-form {
-  background: #bb1244;
-  color: white;
-  position: absolute;
-  opacity: 1;
-  top: 50px;
-  padding: 25px;
-  border-radius: 2px;
-  z-index: 10;
-}
-
-.modal-form input, .modal-form textarea {
-  color: black;
-  margin: 15px 0;
-  border-radius: 2px;
-}
-
-.modal-form .x-out {
-  font-size: 12px;
-  border: 2px solid white;
-  border-radius: 15px;
-  padding: 4px 5px 1px 5px;
-  float: right;
-  background: transparent;
-}
-
-.modal-form .x-out:hover {
-  color: #870D31;
-  border: 2px solid #870D31;
-}
-
-.modal-form .x-out:active {
-  font-size: 10px;
-  padding: 3px 4px 1px 4px;
-}
