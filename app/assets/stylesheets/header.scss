@@ -1,0 +1,91 @@
+.header {
+ position: relative;
+ background: #BB1244;
+ height: 50px;
+ padding: 0 20px;
+ min-width: 800px;
+}
+
+.header button {
+ float: right;
+ background: transparent;
+ color: white;
+ border-style: none;
+ font-size: 16px;
+ width: 100px;
+ height: 50px;
+}
+
+.header-nav {
+  float: right;
+  height: 50px;
+}
+
+.header-nav > * {
+  float: left;
+}
+
+.header .logo-button {
+  margin-top: 10px;
+  float: left;
+  margin: auto;
+  font-size: 24px;
+  color: white;
+  width: 200px;
+}
+
+.header .logo-button:hover {
+  font-size: 20px;
+}
+
+.header .logo-button:active {
+  font-size: 18px;
+}
+
+.header input {
+  display: block;
+  position: relative;
+  width: 260px;
+  top: 13px;
+  left: 20px;
+  text-align: left;
+  padding: 2px 10px;
+}
+
+.quick-search-results {
+  width: 252px;
+  position: absolute;
+  top: 15px;
+  left: 245px;
+  border-radius: 0 0 5px 5px;
+  padding-top: 15px
+}
+
+.quick-search-result-li {
+  background: #fff;
+  padding: 5px 10px;
+  border-bottom: 1px solid #aaa;
+  font-size: 14px;
+}
+
+.quick-search-result-li:hover {
+  background: #ccc;
+}
+
+.quick-search-result-li:active {
+  background: #bb1244;
+  color: white;
+}
+
+.quick-search-result-li > img {
+  float: left;
+  box-shadow: 0 0 3px black;
+  border-radius: 50%;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.quick-search-result-li > strong {
+  display: block;
+  margin-top: 20px;
+}

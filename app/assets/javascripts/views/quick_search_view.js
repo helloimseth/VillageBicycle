@@ -3,6 +3,8 @@ VillageBicycle.Views.QuickSearchView = Backbone.View.extend({
 
   tagName: 'ul',
 
+  className: 'quick-search-results group',
+
   render: function () {
     var templatedResults = this.template({
       results: this.collection

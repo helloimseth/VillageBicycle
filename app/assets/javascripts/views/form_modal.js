@@ -19,7 +19,7 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
   render: function () {
     var templatedForm;
 
-    if (this.model.urlRoot === '/api/bikes') {
+    if (this.model.urlRoot === 'api/bikes') {
       templatedForm = this.bikeTemplate({
         bike: this.model
       });

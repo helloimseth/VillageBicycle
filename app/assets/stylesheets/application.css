@@ -60,6 +60,18 @@
    background: #fefefe;
  }
 
+ input {
+   border-style: none;
+   height: 18px;
+   border-radius: 10px;
+   box-shadow: inset 0 0 5px black;
+ }
+
+ input:focus {
+   box-shadow: 0;
+   outline: 0;
+ }
+
  .root-el {
    background: #858585;
    width: 800px;
@@ -81,23 +93,6 @@
    display: block;
  }
 
-
- .header {
-   background: #BB1244;
-   height: 50px;
-   padding: 0 50px
- }
-
- .header button {
-   float: right;
-   background: transparent;
-   color: white;
-   border-style: none;
-   font-size: 16px;
-   width: 100px;
-   height: 100%;
- }
-
  button:hover {
    background: #870D31;
    color: white;
@@ -109,28 +104,7 @@
    font-size: 12px;
  }
 
- .header form {
-   float: right;
-   width: 100px;
-   height: 100%;
- }
 
- .header .logo-button {
-   margin-top: 10px;
-   float: left;
-   margin: auto;
-   font-size: 24px;
-   color: white;
-   width: 200px;
- }
-
- .header .logo-button:hover {
-   font-size: 20px;
- }
-
- .header .logo-button:active {
-   font-size: 18px;
- }
 
  .profile-info {
    margin: auto;

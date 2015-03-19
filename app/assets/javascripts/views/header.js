@@ -21,7 +21,7 @@ VillageBicycle.Views.Header = Backbone.View.extend({
   performQuickSearch: function (event) {
     var query = $(event.currentTarget).val()
 
-    if (query.length > 1) {
+    if (query.length > 2) {
       var results = new VillageBicycle.Collections.QuickSearchResults();
       results.url += query;
 

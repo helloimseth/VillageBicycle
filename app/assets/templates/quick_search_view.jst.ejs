@@ -1,10 +1,10 @@
 <% results.forEach(function(result){ %>
-  <li class="quick-search-result-li" data-url="<%= result.urlRoot.slice(4) +"/" + result.id%>">
+  <li class="quick-search-result-li group" data-url="<%= result.urlRoot.slice(4) +"/" + result.id%>">
     <img src="<%= result.get('image_url_thumb') %>" alt="Pic" />
     <strong>
       <%= result.escape('name') %>
-      <% if (result.escape('category_id')) { %>
-        the <%= VillageBicycle.Sets.grab("categories", result.escape('category_id')) %>
+      <% if (result.get('category_id')) { %>
+        the <%= VillageBicycle.Sets.grab("categories", result.get('category_id')).name %>
       <% } %>
     </strong>
   </li>
