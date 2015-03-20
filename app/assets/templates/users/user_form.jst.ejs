@@ -54,7 +54,7 @@
 
     <section class="address-info">
       <label for="user-neighborhood">Neighborhood</label>
-      <select id="user-neighborhood" name="neighborhood">
+      <select id="user-neighborhood" name="neighborhood_id">
         <option>Select</option>
         <% VillageBicycle.Sets.get('neighborhoods').forEach( function (hood) {%>
           <option value='<%= hood.id %>'
