@@ -8,7 +8,7 @@
 
   <h1><strong><%= user.escape('name') %></strong></h1>
 
-  <span class='biking-around'>Biking Around <strong><%= user.escape('neighborhood') %></strong></span>
+  <span class='biking-around'>Biking Around <strong><%= VillageBicycle.Sets.grab("neighborhoods", "neighborhood_id") %></strong></span>
 
   <p class='user-bio'>
     <%= user.escape('bio') %>
