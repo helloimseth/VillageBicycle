@@ -14,7 +14,6 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
     'change #bike-picture': "changePicture",
     'change #user-picture': "changePicture",
 
-
     'click #delete-request': "deleteRequest"
   },
 
@@ -49,7 +48,8 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
 
     var attrs = $(event.currentTarget).serializeJSON()
 
-    this.model.save(attrs, {
+    this.model.set(attrs)
+    this.model.save({}, {
       success: function () {
         this.collection && this.collection.add(this.model)
         this.remove();
