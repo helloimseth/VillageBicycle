@@ -8,7 +8,7 @@
   <% } %>
 
 
-  <li class="subview-list-li" data-item-id="<%= request.id %>">
+  <li class="subview-list-li request-subview" data-item-id="<%= request.id %>">
     <%= requestor %> request for <%= request.escape('bike_name') %> the
     <%= VillageBicycle.Sets.grab("categories", request.get('bike_cat_id')).name %>
     <article class="list-item-info group">

@@ -14,4 +14,5 @@ VillageBicycle.Views.QuickSearchView = Backbone.View.extend({
 
     return this;
   }
+
 });

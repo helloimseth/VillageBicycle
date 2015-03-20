@@ -15,24 +15,31 @@
         Owned by <%= bike.escape('owner_name') %>
       </a>
     </h2>
-    <p>
+    <p class='bike-profile-bio'>
       <%= bike.escape('notes') %>
     </p>
 
-    <h3>Specs</h3>
-    <ul>
-      <li> Designed for <%= bike.escape('gender').slice(0,-3) %> </li>
-      <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
-      <li> Suggested height: <%= bike.grab("sizes", "size_id").suggested_height %></li>
-    </ul>
-    <% if (bike.extras().length > 0) { %>
-      <h3>Comes with</h3>
-      <ul class="extras-list group">
-        <% bike.extras().forEach(function (extra) { %>
-          <li><%= extra.name %></li>
-        <% }); %>
+    <section class='bike-profile-specs'>
+      <h3>Specs</h3>
+      <ul>
+        <li> Designed for <%= bike.escape('gender').slice(0,-3) %> </li>
+        <li> Number of Gears: <%= bike.escape('num_gears') %> </li>
+        <li> Suggested height: <%= bike.grab("sizes", "size_id").suggested_height %></li>
       </ul>
-    <% } %>
+    </section>
+
+    <section class='bike-profile-extras'>
+      <% if (bike.extras().length > 0) { %>
+        <h3>Comes with</h3>
+        <ul class="extras-list group">
+          <% bike.extras().forEach(function (extra) { %>
+            <li><%= extra.name %></li>
+          <% }); %>
+        </ul>
+      <% } %>
+    </section>
+
+
   </article>
 
 </section>
@@ -44,10 +51,11 @@
   <figure class="map-view" id="map-view">
   </figure>
 
+  <% if (bike.get('owner_id') !== VillageBicycle.currentUserId) { %>
+    <button id='request-button' class="request-button">Request This Bike</button>
+  <% } %>
+
   <ul class="price-list group">
-    <% if (bike.escape('owner_id') !== VillageBicycle.currentUserId) { %>
-      <li><button id='request-button'>Request This Bike</button> </li>
-    <% } %>
     <li>$<%= bike.escape('hourly_price') %>/hour</li>
     <li>$<%= bike.escape('hourly_price') * 7 %>/day</li>
     <li>$<%= bike.escape('hourly_price') * 30 %>/week</li>

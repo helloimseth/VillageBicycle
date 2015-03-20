@@ -1,3 +1,5 @@
+<% if (request.get('bike_id')) { %>
+
 <% var requestor, owner; %>
 <% if (request.escape('requestor_id') == VillageBicycle.currentUserId) { %>
   <% requestor = "You"; %>
@@ -6,7 +8,6 @@
   <% requestor = request.escape('requestor_name') %>
   <% owner = "You" %>
 <% } %>
-
 <img class="profile-thumb"
      src="<%= request.escape('image_url_thumb') %>"
      alt="Profile Thumbnail" >
@@ -39,13 +40,16 @@
   <% } %>
 </ul>
 
-<% if (!request.escape('approved') && owner === "You") { %>
-  <section class="request-li-buttons">
-    <button id='reject-button'>Decline</button>
-    <button id='approve-button'>Approve</button>
-  </section>
-<% } else if (!request.escape('approved')) { %>
-  <section class="request-li-buttons">
-    <button id='edit-request'>Edit</button>
-  </section>
+
+
+  <% if (!request.escape('approved') && owner === "You") { %>
+    <section class="request-li-buttons group">
+      <button id='approve-button'>Approve</button>
+      <button id='reject-button'>Decline</button>
+    </section>
+  <% } else if (!request.escape('approved')) { %>
+    <section class="request-li-buttons group">
+      <button id='edit-request'>Edit</button>
+    </section>
+  <% } %>
 <% } %>

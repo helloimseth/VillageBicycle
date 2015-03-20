@@ -21,7 +21,7 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
     });
 
     bike.fetch({
-      success: this.swapView.bind(this,bikeShow)
+      success: this.swapView.bind(this, bikeShow)
     });
   },
 

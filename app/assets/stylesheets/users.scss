@@ -13,107 +13,20 @@
   float: left;
 }
 
-.subview-list {
-  position: relative;
-  margin: 50px auto;
-  background: #eeeeee;
-}
-
-.subview-list button {
+.subview-list .add-bike {
   float: right;
-  background: transparent;
-  color: white;
-  border-style: none;
-  font-size: 16px;
-  width: 100px;
-  height: 100%;
-  padding: 10px 10px;
-}
-
-.subview-list button:hover {
-  background: #BB1244;
-}
-
-.subview-list > h2 {
-  display: block;
-  background: #151515;
-  color: #ffffff;
-  padding: 10px 10px;
-}
-
-.subview-list a {
+  background: #fff;
   color: #BB1244;
+  margin: 5px 5px 0 0;
 }
 
-.subview-list > em {
-  display: block;
-  padding: 10px 10px;
-  font-style: italic;
+.subview-list .add-bike:hover {
+  color: #FFFFFF;
+  margin: 5px 5px 0 0;
 }
 
-.subview-list > ul {
-  padding: 10px;
-}
-
-.subview-list-li {
-  position: relative;
-  height: 25px;
-  padding: 10px;
-  border-bottom: 1px solid #151515;
-  -webkit-transition: height, 1s, linear;
-  transition: height 100ms linear;
-}
-
-.subview-list-li:hover {
-  background: #FCFCFC;
-}
-
-.request-li-buttons {
-  position :absolute;
-  right: 40px;
-  bottom: 5px;
-}
-
-.subview-list-li button {
-  background: #BB1244;
-  height: 15px;
-  margin-right: 10px;
-  margin-bottom: 8px;
-}
-
-.subview-list-li.active {
-  height: 125px;
-  transition: height 100ms linear;
-}
-
-.profile-thumb {
-  float: left;
-}
-
-.more-info {
-  padding: 20px;
-}
-
-.more-info li {
-  padding: 3px 0;
-}
-
-.subview-list-li.active:hover{
-  background: #eeeeee;
-}
-
-.subview-list-li:after {
-  content: "⥥";
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  transition: top 100ms linear;
-}
-
-.subview-list-li.active:after {
-  content: "⥣";
-  position: absolute;
-  right: 20px;
-  top: 120px;
-  transition: top 100ms linear;
+.subview-list .add-bike:active {
+  background: #870D31;
+  color: #FFFFFF;
+  margin: 5px 5px 0 0;
 }

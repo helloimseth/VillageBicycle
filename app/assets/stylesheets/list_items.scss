@@ -1,0 +1,152 @@
+.subview-list {
+  position: relative;
+  margin: 50px auto;
+  background: #eeeeee;
+}
+
+.subview-list button {
+  color: white;
+  border-radius: 15px;
+  font-size: 16px;
+  width: 100px;
+  height: 100%;
+  padding: 10px 10px;
+}
+
+.subview-list button:hover {
+  background: #BB1244;
+  margin-top: -2px;
+}
+
+.subview-list > h2 {
+  display: block;
+  background: #151515;
+  color: #ffffff;
+  padding: 10px 10px;
+}
+
+.subview-list a {
+  color: #BB1244;
+}
+
+.subview-list > em {
+  display: block;
+  padding: 10px 10px;
+  font-style: italic;
+}
+
+.subview-list > ul {
+  padding: 10px;
+}
+
+.subview-list-li {
+  position: relative;
+  height: 25px;
+  padding: 10px;
+  border-bottom: 1px solid #151515;
+  -webkit-transition: height, 1s, linear;
+  transition: height 100ms linear;
+}
+
+.subview-list-li:hover {
+  background: #FCFCFC;
+}
+
+.subview-list-li button {
+  background: #BB1244;
+  height: 15px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+}
+
+.subview-list-li.active {
+  height: 125px;
+  transition: height 100ms linear;
+}
+
+.profile-thumb {
+  float: left;
+}
+
+.subview-list-li.active:hover{
+  background: #eeeeee;
+}
+
+.subview-list-li:after {
+  content: "⥥";
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  transition: top 100ms linear, transform 100ms linear;
+}
+
+.subview-list-li.active:after {
+  content: "⥥";
+  position: absolute;
+  right: 20px;
+  top: 120px;
+  transform: rotate(180deg);
+  transition: top 100ms linear, transform 100ms linear;
+}
+
+// Request
+
+.subview-list-li.request-subview.active {
+  height: 200px;
+}
+
+.subview-list-li.request-subview.active:after {
+  top: 180px;
+}
+
+.more-info {
+  padding: 10px 0 20px 10px;
+}
+
+.profile-thumb {
+  margin: 15px 20px 0 0;
+  border-radius: 50%;
+  border: 2px solid #870D31;
+}
+
+.request-li-buttons {
+  width: 300px;
+  margin: auto;
+}
+
+.request-li-button button {
+  float: left;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+
+.request-li-buttons button:only-child {
+  display: block;
+  margin: auto;
+}
+
+.more-info li {
+  padding: 3px 0;
+}
+
+// Bikes
+
+.bike-subview.subview-list-li.active {
+  height: 125px;
+}
+
+.bike-subview a:last-of-type {
+  color: #bb1244;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.bike-subview a:last-of-type:hover {
+  background: #bb1244;
+  color: #fff;
+  border-radius: 15px;
+  top: 8px;
+  right: 8px;
+  padding: 2px 5px;
+}
