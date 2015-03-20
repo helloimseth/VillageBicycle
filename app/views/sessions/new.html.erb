@@ -1,28 +1,32 @@
-<form class="new-session-form" action="<%= sessions_url %>" method="post">
-  <h1>Welcome to Village Bicycle</h1>
-  <%= auth_token %>
+<main class='log-in-main'>
+  <form class="new-session-form" action="<%= sessions_url %>" method="post">
+    <h1>Welcome to Village Bicycle</h1>
+    <%= auth_token %>
 
-  <label for="user_email">Email
-  <input type="text"
-         id="user_email"
-         name="user[email]"
-         value=""></label>
-  <br>
-  <label for="user_password">Password
-  <input type="password"
-         id="user_password"
-         name="user[password]"
-         value=""></label>
-  <br><br>
-  <button>Submit</button>
-</form>
+    <label for="user_email">Email
+    <input type="text"
+           id="user_email"
+           name="user[email]"
+           value=""></label>
+    <br>
+    <label for="user_password">Password
+    <input type="password"
+           id="user_password"
+           name="user[password]"
+           value=""></label>
+    <br><br>
+    <button>Submit</button>
+  </form>
 
-<a href="/auth/twitter">Sign in with Twitter</a>
+  <form class="sign-up-button" action="<%= new_user_url %>" method="get">
+    <button>Sign Up</button>
+  </form>
 
-<form class="sign-up-button" action="<%= new_user_url %>" method="get">
-  <button>Sign Up</button>
-</form>
+  <form class="demo-log-in-button" action="<%= demo_sign_in_sessions_url %>" method="get">
+    <button>Sign In as Demo User</button>
+  </form>
 
-<form class="demo-log-in-button" action="<%= demo_sign_in_sessions_url %>" method="get">
-  <button>Sign In as Demo User</button>
-</form>
+  <form class="twitter-button" action="/auth/twitter" method="get">
+    <button>Sign in with Twitter</button>
+  </form>
+</main>

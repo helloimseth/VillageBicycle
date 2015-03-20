@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   def omniauth
     @user = User.find_by_auth_hash(auth_hash)
 
-    if user
+    if @user
       log_in(@user)
       redirect_to root_url
     else

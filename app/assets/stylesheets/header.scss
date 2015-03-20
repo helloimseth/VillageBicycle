@@ -53,12 +53,13 @@
 }
 
 .quick-search-results {
-  width: 252px;
+  width: 259px;
   position: absolute;
   top: 15px;
-  left: 245px;
+  left: 250px;
   border-radius: 0 0 5px 5px;
-  padding-top: 15px
+  padding-top: 20px;
+  pointer-events: none;
 }
 
 .quick-search-result-li {
@@ -66,6 +67,12 @@
   padding: 5px 10px;
   border-bottom: 1px solid #aaa;
   font-size: 14px;
+  pointer-events: auto;
+}
+
+.quick-search-result-li:last-of-type{
+  border: none;
+  border-radius: 0 0 15px 15px;
 }
 
 .quick-search-result-li:hover {

@@ -1,0 +1,109 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.log-in-main,
+.new-user-main {
+  position: fixed;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  text-align: center;
+  color: white;
+
+  background-size: cover;
+  background-image: url('bike_wall.jpg');
+}
+
+.new-user-main {
+  background-image: url('sign_in_bike.jpg');
+}
+
+.new-user-main h2 {
+  display: block;
+  background: #151515;
+  padding: 20px 0;
+  opacity: .75
+}
+
+
+.demo-log-in-button button,
+.twitter-button button,
+.sign-up-button button  {
+  width: 500px;
+  border-radius: 30px;
+  margin: 10px auto;
+  padding: 20px 0;
+  background: #4412BB;
+  color: white;
+}
+
+.demo-log-in-button button:hover,
+.twitter-button button:hover,
+.sign-up-button button:hover  {
+  background: #8D1427;
+  color: white;
+}
+
+.twitter-button button{
+  background: #4099FF;
+}
+
+.sign-up-button button {
+  background: #eee;
+  color: black;
+}
+
+.new-session-form {
+  width: 500px;
+  margin: 20px auto;
+  border: 5px solid #151515;
+  padding: 20px 0;
+  background: #151515;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 5px 5px #151515;
+  color: white;
+}
+
+.new-session-form h1 {
+  text-align: center;
+  color: white;
+  opacity: 1;
+}
+
+.new-session-form label, .new-session-form input{
+  text-align: center;
+  display: block;
+  width: 250px;
+  margin: 10px auto 10px auto;
+  opacity: 1;
+}
+
+.new-session-form button{
+  display: block;
+  margin: auto;
+  width: 70px;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 2px solid #151515;
+  opacity: 1;
+  color: #151515;
+}
+
+.new-session-form button:hover, {
+  background: #8D1427;
+  color: white;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 2px solid #151515;
+
+}
+
+.new-session-form input {
+  border: 1px solid black;
+}

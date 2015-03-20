@@ -53,5 +53,19 @@ VillageBicycle.Views.Header = Backbone.View.extend({
     Backbone.history.navigate(url, {
       trigger: true
     });
+  },
+
+  _removeIfResults: function () {
+    console.log(event.currentTarget);
+  }
+})
+
+Backbone.View = Backbone.View.extend({
+  events: {
+    "click": "checkClick"
+  },
+
+  checkClick: function (event) {
+    console.log(thi);
   }
 })

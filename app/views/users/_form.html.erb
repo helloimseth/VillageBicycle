@@ -1,14 +1,18 @@
 <% action = @user.persisted? ? user_url(@user.id) : users_url %>
 
-<form action="<%= action %>" method="post" enctype='multipart/form-data' >
+<form action="<%= action %>"
+      method="post"
+      enctype='multipart/form-data'
+      class='new-session-form'  >
+
+  <h1>New User</h1>
+
   <%= auth_token %>
 
   <% if @user.persisted? %>
     <input type="hidden" name="_method" value="put">
   <% end %>
 
-  <%= @provider %>
-  <%= @uid %>
   <input type="hidden" name="user[provider]" value="<%= @provider %>">
   <input type="hidden" name="user[uid]" value="<%= @uid %>">
 
@@ -23,84 +27,22 @@
         id="user_lname"
         name="user[lname]"
         value="<%= @user.lname %>">
-  <br>
   <label for="user_email">Email</label>
   <input type="text"
          id="user_email"
          name="user[email]"
          value="<%= @user.email %>">
+
+  <label for="user_password">Password</label>
+  <input type="password"
+         id="user_password"
+         name="user[password]"
+         value="">
+  <label for="user_confirm_password">Confirm Password</label>
+  <input type="password"
+         id="password_confirmation"
+         name="user[password_confirmation]"
+         value="">
   <br>
-
-  <% if !logged_in? %>
-
-    <label for="user_password">Password</label>
-    <input type="password"
-           id="user_password"
-           name="user[password]"
-           value="">
-    <br>
-    <label for="user_confirm_password">Confirm Password</label>
-    <input type="password"
-           id="password_confirmation"
-           name="user[password_confirmation]"
-           value="">
-
-  <% else %>
-
-    <label for="user-bio">Bio</label><br>
-    <textarea name="user[bio]"
-              id="user_bio"
-              rows="8"
-              cols="40"><%= @user.bio %></textarea>
-    <br>
-
-    Frame Size
-
-    <br>
-
-    <% @sizes.each do |size| %>
-      <input type="radio" name="user[size_id]"
-                          id='size-<%= size.id %>'
-                          value="<%= size.id %>"
-                          <%= "checked" if size.id == @user.size_id %>>
-      <label for='size-<%= size.id %>'>
-        <%= size.size %> - Suggested height: <%= size.suggested_height %>
-      </label>
-      <br>
-    <% end %>
-
-    <br>
-
-    <label for="user-neighborhood">Neighborhood</label>
-    <select id="user-neighborhood" name="user[neighborhood_id]">
-      <option>Select</option>
-      <% @neighborhoods.each do |neighborhood| %>
-        <option value='<%= neighborhood.id %>'
-        <%= "selected" if neighborhood.id == @user.neighborhood_id %>>
-                  <%= neighborhood.name %>
-        </option>
-      <% end %>
-    </select>
-    <br>
-
-    <label for="user-address">Street Address</label>
-    <input type="text"
-           name="user[address]"
-           id="user-address"
-           value="<%= @user.address %>"
-           cols="1">
-
-    <br><br>
-
-
-
-    <label for="user-picture">Profile Picture</label>
-    <input type="file" name="user[picture]" id="user-picture" value="">
-
-  <% end %>
-
-  <br><br>
-
-
   <button>Submit</button>
 </form>
