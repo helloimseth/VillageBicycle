@@ -21,12 +21,17 @@
 
 .bike-profile-specs {
   float: left;
-  width: 200px;
+  width: 300px;
 }
 
 .bike-profile-extras {
   float: left;
 }
+
+.bike-profile-extras ul, .bike-profile-specs ul {
+  margin-top: -15px;
+}
+
 
 .price-list {
   float: left;
@@ -47,6 +52,7 @@
 }
 
 .extras-list {
+  margin-top: -10px;
   float: left;
   width: 200px;
   font-size: 14px;
@@ -55,7 +61,7 @@
 
 .extras-list li {
   display: block;
-  width: 65px;
+  width: 70px;
   padding: 10px 5px;
   float: left;
   color: white;
@@ -63,6 +69,7 @@
   border: 1px solid #BB1244;
   border-radius: 10px;
   border-style: double;
+  margin-bottom: 5px;
 }
 
 .extras-list li:not(:last-of-type) {
@@ -91,7 +98,6 @@
   margin: 10px 115px 0px 0px;
   padding: 0;
   background: black;
-  border: 3px solid #151515;
   border-radius: 15px;
 }
 

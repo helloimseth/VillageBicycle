@@ -33,7 +33,7 @@ Size.create!(size:"L", frame_size: "20\"-21\"", suggested_height: "5'11\"-6'2\""
 Size.create!(size:"XL", frame_size: "22\"-23\"", suggested_height: "6/3\"+")
 
 Category.create!(name: "Road Bike")
-Category.create!(name: "Road Bike (Compact)")
+Category.create!(name: "Recumbent Bike")
 Category.create!(name: "Mountain Bike")
 Category.create!(name: "BMX Bike")
 Category.create!(name: "Cruiser")

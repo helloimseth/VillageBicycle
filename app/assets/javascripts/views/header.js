@@ -21,13 +21,16 @@ VillageBicycle.Views.Header = Backbone.View.extend({
   performQuickSearch: function (event) {
     var query = $(event.currentTarget).val()
 
-    if (query.length > 2) {
+    if (event.keyCode == 27) {
+      this._searchResults && this._searchResults.remove();
+      $(event.currentTarget).val("")
+    } else if (query.length > 2) {
       var results = new VillageBicycle.Collections.QuickSearchResults();
       results.url += query;
 
       results.fetch({
         success: this.renderQuickSearchResults.bind(this, results)
-      })
+      });
     } else {
       this._searchResults && this._searchResults.remove();
     }
@@ -57,15 +60,5 @@ VillageBicycle.Views.Header = Backbone.View.extend({
 
   _removeIfResults: function () {
     console.log(event.currentTarget);
-  }
-})
-
-Backbone.View = Backbone.View.extend({
-  events: {
-    "click": "checkClick"
-  },
-
-  checkClick: function (event) {
-    console.log(thi);
   }
 })

@@ -82,7 +82,8 @@
 }
 
 .search-results-container.filled {
-  height: 490px;
+  min-height: 490px;
+  max-height: 600px;
 }
 
 .search-results-container .map-view {

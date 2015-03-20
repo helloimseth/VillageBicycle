@@ -10,13 +10,13 @@ VillageBicycle.Models.Bike = Backbone.Model.extend({
   },
 
   extras: function () {
-    if (this._extras.length == 0){
-      this.get("extra_ids").forEach(function (id) {
-        this._extras.push(VillageBicycle.Sets.grab('extras', id))
-      }.bind(this));
-    }
+    var extras = [];
 
-    return this._extras
+    this.get("extra_ids").forEach(function (id) {
+      extras.push(VillageBicycle.Sets.grab('extras', id))
+    }.bind(this));
+
+    return extras
   }
 
 });

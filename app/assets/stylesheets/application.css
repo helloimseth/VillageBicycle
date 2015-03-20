@@ -115,13 +115,12 @@
  .profile-info {
    margin: auto;
    background: #eeeeee;
-   padding: 20px 20px 10px 20px;
+   padding: 20px;
    border-radius: 15px;
  }
 
  .profile-picture {
    float: left;
-   margin-top: 10px;
    margin-right: 20px;
    border: 1px solid #151515;
    background: white;
