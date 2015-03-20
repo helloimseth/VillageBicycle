@@ -17,6 +17,10 @@ VillageBicycle.Models.Bike = Backbone.Model.extend({
     }.bind(this));
 
     return extras
+  },
+
+  toJSON: function () {
+    return {user: _.clone(this.attributes)}
   }
 
 });
