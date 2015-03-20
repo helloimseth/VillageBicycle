@@ -45,14 +45,14 @@ e3 = Extra.create!(name:"Headlight")
 e4 = Extra.create!(name:"Taillight")
 
 #######
-seth = User.create!(fname: "Seth",
-                   lname: "Hamlin",
+seth = User.create!(fname: "Austin",
+                   lname: "Powers",
                    email: 'email@example.com',
                    password: "password",
-                   neighborhood: Neighborhood.find_by(name: "SoHo"),
+                   neighborhood: Neighborhood.find_by(name: "Greenwich Village"),
                    size: Size.find_by(size: "M"),
                    activated: true,
-                   address: "598 Broadway")
+                   address: "Washington Square Park")
 
 25.times do
   user = User.new(fname: Faker::Name.first_name,
