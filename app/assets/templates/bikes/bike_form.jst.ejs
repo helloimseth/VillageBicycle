@@ -12,12 +12,12 @@
       <h2>Bike Info</h2>
       <label for="bike-name">Name</label>
       <input type="text"
-             name="bike[name]"
+             name="name"
              id="bike-name"
              value="<%= bike.escape('name') %>">
 
       <label for="bike-category">Category</label>
-      <select id="bike-category" name="bike[category_id]">
+      <select id="bike-category" name="category_id">
         <option>Select</option>
         <% VillageBicycle.Sets.get('categories').forEach( function (cat) {%>
           <option value='<%= cat.id %>'
@@ -30,7 +30,7 @@
       </select>
 
       <label for="bike-notes">Description</label>
-      <textarea name="bike[notes]" id="bike-notes" rows="8" cols="40"><%= bike.escape('notes') %></textarea>
+      <textarea name="notes" id="bike-notes" rows="8" cols="40"><%= bike.escape('notes') %></textarea>
 
     </section>
 
@@ -39,7 +39,7 @@
       <figure class='radio-figure'>
       <label for="Men's">Men's Frame</label>
 
-      <input type="radio" name="bike[gender]"
+      <input type="radio" name="gender"
                           id="Men's"
                           value="Men's"
                           <% if (bike.escape('gender').slice(0, 1) == "M") {%>
@@ -49,7 +49,7 @@
       </figure>
       <figure class='radio-figure'>
         <label for="Women's">Women's Frame
-        <input type="radio" name="bike[gender]"
+        <input type="radio" name="gender"
                             id="Women's"
                             value="Women's"
                             <% if (bike.escape('gender').slice(0, 1) == "W") { %>
@@ -61,13 +61,13 @@
 
       <label for="bike-num-gears">Number of Gears</label>
       <input type="number"
-             name="bike[num_gears]"
+             name="num_gears"
              id="bike-num-gears"
              value="<%= bike.escape('num_gears') %>">
 
 
       <label for="bike-size">Size</label>
-      <select id="bike-size" name="bike[size_id]">
+      <select id="bike-size" name="size_id">
         <option>Select</option>
         <% VillageBicycle.Sets.get('sizes').forEach( function (size) {%>
           <option value='<%= size.id %>'
@@ -81,7 +81,7 @@
 
       <h3>Comes With</h3>
       <% VillageBicycle.Sets.get('extras').forEach( function (extra) { %>
-        <input type="checkbox" name="bike[extra_ids][]"
+        <input type="checkbox" name="extra_ids[]"
                id='bike-extra-<%= extra.id %>' value='<%= extra.id %>'
                  <% if (_.contains(bike.get('extra_ids'), extra.id)) { %>
                    <%= 'checked' %>
@@ -96,11 +96,11 @@
 
 
     <label for="bike-picture"><h3>Profile Picture</h3></label>
-    <input type="file" name="bike[picture]" id="bike-picture" value="">
+    <input type="file" name="picture" id="bike-picture" value="">
 
     <label for="bike-hourly-price"><h3>Desired price for hourly rent</h3></label>
     <input type="number"
-           name="bike[hourly_price]"
+           name="hourly_price"
            id="bike-hourly-price"
            value="<%= bike.escape('hourly_price') %>">
   </section>
