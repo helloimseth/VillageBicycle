@@ -43,6 +43,11 @@ class User < ActiveRecord::Base
     return user if user && user.is_password?(password)
   end
 
+  def self.find_by_auth_hash(hash)
+    User.find_by(provider: hash[:provider],
+                 uid: hash[:uid])
+  end
+
   def self.generate_token
     SecureRandom::urlsafe_base64
   end

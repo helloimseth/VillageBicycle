@@ -21,19 +21,30 @@
   margin-bottom: 15px;
 }
 
-.search-form-container button {
+.search-form-container button,
+.search-nav-buttons button {
   color: #bb1244;
   border: 2px solid #BB1244;
   padding: 8px 10px 5px 10px;
   border-radius: 15px;
+  font-size: 16px;
+
 }
 
-.search-form-container button:hover {
+.search-form-container button:hover,
+.search-nav-buttons button:hover {
   border: 2px solid #fff;
   background: #BB1244;
   color: #FFFFFF;
   font-size: 16px;
 }
+
+.search-form-container button:active,
+.search-nav-buttons button:active {
+  padding: 8px 10px 6px 10px;
+  font-size: 14px;
+}
+
 .search-by-bike-stat {
   width: 50%;
   border-right: 2px solid #870D31;
@@ -70,8 +81,13 @@
   position: relative;
 }
 
+.search-results-container.filled {
+  height: 490px;
+}
+
 .search-results-container .map-view {
   position: absolute;
+  left: 400px;
   border-radius: 15px;
 }
 
@@ -83,7 +99,26 @@
   padding: 10px 5px;
   background: #eee;
   width: 380px;
-  float: right;
+  float: left;
   border-radius: 15px;
   margin-top: 10px;
+}
+
+.search-nav-buttons {
+  position: relative;
+  top: 400px;
+  left: 130px;
+}
+
+.search-nav-buttons button {
+  margin-right: 50px;
+}
+
+.search-nav-buttons button {
+  background: #bb1244;
+  color: #fff;
+  border: 2px solid #BB1244;
+  padding: 8px 10px 5px 10px;
+  border-radius: 15px;
+  font-size: 16px;
 }

@@ -21,6 +21,7 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
     var params = $(event.currentTarget).serializeJSON();
 
     var searchResults = new VillageBicycle.Collections.Bikes();
+
     searchResults.url += "/search?" + $.param(params)
 
     searchResults.fetch({
@@ -35,7 +36,8 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
     });
 
     this.$el.find('#search-results-container')
-            .html(this.searchResults.render().$el);
+            .html(this.searchResults.render().$el)
+            .addClass('filled');
   },
 
   resetForm: function () {

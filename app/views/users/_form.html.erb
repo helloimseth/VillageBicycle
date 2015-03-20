@@ -7,6 +7,11 @@
     <input type="hidden" name="_method" value="put">
   <% end %>
 
+  <%= @provider %>
+  <%= @uid %>
+  <input type="hidden" name="user[provider]" value="<%= @provider %>">
+  <input type="hidden" name="user[uid]" value="<%= @uid %>">
+
   <label for="user_fname">First Name</label>
   <input type="text"
          id="user_fname"
@@ -86,9 +91,11 @@
            cols="1">
 
     <br><br>
+
+
+
     <label for="user-picture">Profile Picture</label>
     <input type="file" name="user[picture]" id="user-picture" value="">
-
 
   <% end %>
 

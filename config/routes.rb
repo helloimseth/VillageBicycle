@@ -1,22 +1,28 @@
 Rails.application.routes.draw do
   root to: 'static_pages#root'
 
-  resources :users, except: [:index] do
-    collection { get 'activate' }
-  end
+  get "/auth/:provider/callback", to: "sessions#omniauth"
 
-  resources :bikes, except: [:index] do
-    collection { get 'search' }
+  resources :users, only: [:new] do
+    collection do
+       get 'activate'
+    end
   end
+  #
+  # resources :bikes, except: [:index] do
+  #   collection { get 'search' }
+  # end
+  #
+  # resources :requests, only: [:create, :update, :delete] do
+  #     member do
+  #       post 'approve'
+  #       post 'reject'
+  #     end
+  # end
 
-  resources :requests, only: [:create, :update, :delete] do
-      member do
-        post 'approve'
-        post 'reject'
-      end
+  resource :sessions, only: [:new, :create, :destroy] do
+    member { get 'demo_sign_in' }
   end
-
-  resource :sessions, only: [:new, :create, :destroy]
 
   namespace :api, defaults: { format: :json } do
     resources :users
@@ -31,5 +37,6 @@ Rails.application.routes.draw do
 
     resources :quick_searches, only: [:index]
   end
+
 
 end

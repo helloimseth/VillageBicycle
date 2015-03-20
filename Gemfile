@@ -41,3 +41,4 @@ gem "aws-sdk-core"
 gem "geocoder"
 gem "pg_search"
 gem "kaminari"
+gem 'omniauth-twitter'
