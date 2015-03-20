@@ -12,6 +12,8 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
     'click .x-out': "remove",
 
     'change #bike-picture': "changePicture",
+    'change #user-picture': "changePicture",
+
 
     'click #delete-request': "deleteRequest"
   },
