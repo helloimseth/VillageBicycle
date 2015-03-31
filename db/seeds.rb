@@ -45,8 +45,8 @@ e3 = Extra.create!(name:"Headlight")
 e4 = Extra.create!(name:"Taillight")
 
 #######
-seth = User.create!(fname: "Austin",
-                   lname: "Powers",
+seth = User.create!(fname: "Seth",
+                   lname: "Hamlin",
                    email: 'email@example.com',
                    password: "password",
                    neighborhood: Neighborhood.find_by(name: "Greenwich Village"),
@@ -95,7 +95,7 @@ end
   b.save!
 end
 
-25.times do
+75.times do
   user = User.all.sample
   bike = Bike.all.sample
 
@@ -103,9 +103,10 @@ end
     bike = Bike.all.sample
   end
 
-  user.requests_made.create!(bike_id: bike.id,
-                             start: DateTime.now,
-                             end: DateTime.tomorrow)
+  user.requests_made.create(bike_id: bike.id,
+                            start: DateTime.now,
+                            end: DateTime.tomorrow,
+                            approved: [nil, true, false].sample)
 end
 
 3.times do
