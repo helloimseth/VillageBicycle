@@ -6,12 +6,10 @@
     <section class=search-by-date>
       <h2>Search by Dates</h2>
 
-      <input type="hidden" name="query[year]" value="2015">
-      <%= _.template($('#start-date-input').html())() %>
-
-
-      <input type="hidden" name="query[year]" value="2015">
-      <%= _.template($('#end-date-input').html())() %>
+      <label for="request-start-date">Available From</label>
+      <input type="text" id="request-start-date" name="query[request][start]">
+      <label for="request-end-date">To</label>
+      <input type="text" id="request-end-date" name="query[request][end]">
     </section>
 
 

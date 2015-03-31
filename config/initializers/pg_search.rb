@@ -1,3 +1,3 @@
 PgSearch.multisearch_options = {
-  :using => [:trigram]
+  :using => [:trigram, :tsearch]
 }

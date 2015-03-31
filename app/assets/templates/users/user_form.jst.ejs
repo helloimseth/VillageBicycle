@@ -58,7 +58,7 @@
         <option>Select</option>
         <% VillageBicycle.Sets.get('neighborhoods').forEach( function (hood) {%>
           <option value='<%= hood.id %>'
-            <% if (hood.id == user.escape('neighborhood_id')) { %>
+            <% if (hood.name == user.get('neighborhood')) { %>
               <%= 'selected' %>
             <% } %>>
             <%= hood.name %>

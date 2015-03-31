@@ -13,6 +13,15 @@ gem "letter_opener", group: :development
 gem "yelp", require: 'yelp'
 gem 'faker', require: 'faker'
 gem 'backbone-on-rails'
+gem "paperclip", "~> 4.2"
+gem "figaro", '~> 1.0.0'
+gem "aws-sdk", "< 2.0"
+gem "aws-sdk-core"
+gem "geocoder"
+gem "pg_search"
+gem "kaminari"
+gem 'omniauth-twitter'
+gem 'jquery-ui-rails'
 
 group :test do
   gem 'guard-rspec'
@@ -33,12 +42,3 @@ end
 group :production do
   gem 'rails_12factor'
 end
-
-gem "paperclip", "~> 4.2"
-gem "figaro", '~> 1.0.0'
-gem "aws-sdk", "< 2.0"
-gem "aws-sdk-core"
-gem "geocoder"
-gem "pg_search"
-gem "kaminari"
-gem 'omniauth-twitter'

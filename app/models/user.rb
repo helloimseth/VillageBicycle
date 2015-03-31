@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   include PgSearch
-  multisearchable :against => [:fname, :lname]
+  multisearchable :against => [:fname]
 
   belongs_to :neighborhood, inverse_of: :users
   belongs_to :size, inverse_of: :users

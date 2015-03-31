@@ -10,8 +10,8 @@ VillageBicycle.Views.SearchResults = Backbone.View.extend({
   },
 
   initialize: function () {
-    this._subviews = []
-    this.listenTo(this.collection, "sync", this.render)
+    this._subviews = [];
+    this.listenTo(this.collection, "sync", this.render);
   },
 
   render: function () {
@@ -38,23 +38,23 @@ VillageBicycle.Views.SearchResults = Backbone.View.extend({
     var mapView = new VillageBicycle.Views.MapView({
       el: document.getElementById('map-view'),
       collection: this.collection
-    })
+    });
 
     this._subviews.push(mapView);
 
-    mapView.renderResultsMap()
+    mapView.renderResultsMap();
   },
 
   renderNextResults: function (event) {
     event.preventDefault();
 
-    if(!this.page) { this.page = 1 }
+    if(!this.page) { this.page = 1; }
 
     if (this.collection.length === 10) {
       this.page++;
       this.collection.fetch({
         data: { page: this.page }
-      })
+      });
     }
 
   },
@@ -62,17 +62,17 @@ VillageBicycle.Views.SearchResults = Backbone.View.extend({
   renderPrevResults: function (event) {
     event.preventDefault();
 
-    if(this.page) {
+    if(this.page && this.page > 1) {
       this.page--;
       this.collection.fetch({
         data: { page: this.page }
-      })
+      });
     }
   },
 
   remove: function () {
     this._subviews.forEach(function (view) {
-      view.remove()
+      view.remove();
     });
 
     Backbone.View.prototype.remove.call(this);

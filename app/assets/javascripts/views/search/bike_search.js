@@ -13,24 +13,43 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
 
     this.$el.html(templatedSearch);
 
+    $( "#request-start-date" ).datepicker({
+      defaultDate: "today",
+      nextText: '⥤',
+      prevText: '⥢',
+      dateFormat: "yy-mm-dd",
+      numberOfMonths: 1
+    });
+
+    $( "#request-end-date" ).datepicker({
+      defaultDate: "+1d",
+      nextText: '⥤',
+      prevText: '⥢',
+      dateFormat: "yy-mm-dd",
+      numberOfMonths: 1
+    });
+
     return this;
   },
 
   performSearch: function (event) {
-    event.preventDefault()
+    event.preventDefault();
+    console.log(event.currentTarget);
     var params = $(event.currentTarget).serializeJSON();
 
     var searchResults = new VillageBicycle.Collections.Bikes();
 
-    searchResults.url += "/search?" + $.param(params)
+    searchResults.url += "/search?" + $.param(params);
+
+    console.log(searchResults.url);
 
     searchResults.fetch({
       success: this.renderSearchResults.bind(this, searchResults)
-    })
+    });
   },
 
   renderSearchResults: function (results) {
-    this.searchResults && this.searchResults.remove()
+    this.searchResults && this.searchResults.remove();
     this.searchResults = new VillageBicycle.Views.SearchResults({
       collection: results
     });
@@ -41,8 +60,8 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
   },
 
   resetForm: function () {
-    event.preventDefault()
-    var form = $(event.currentTarget).find('form')
+    event.preventDefault();
+    var form = $(event.currentTarget).find('form');
 
     form.find('input, select, textarea')
         .val("")

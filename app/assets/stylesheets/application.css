@@ -11,7 +11,7 @@
  * file per style scope.
  *= require_tree .
  *= require_self
-
+ *= requere jquery-ui/datepicker
  */
 
  html, body, section, article, button,

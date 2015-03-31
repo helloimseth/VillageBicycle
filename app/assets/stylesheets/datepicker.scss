@@ -1,0 +1,37 @@
+.ui-datepicker {
+  background: #bb1244;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.ui-icon-circle-triangle-w, .ui-icon-circle-triangle-e {
+  cursor: pointer;
+  background: white;
+  color: #151515;
+  border-radius: 50px;
+  padding:3px 5px 0 5px;
+  font-weight: bold;
+}
+
+.ui-icon-circle-triangle-w:hover, .ui-icon-circle-triangle-e:hover {
+  color: white;
+  background: #151515;
+  transform: rotate(0deg);
+  transition: transform 200ms linear;
+}
+
+.ui-icon-circle-triangle-w {
+  float: left;
+  transform: rotate(360deg);
+}
+
+.ui-icon-circle-triangle-e{
+  float: right;
+  transform: rotate(-360deg);
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+  color:  #151515;
+  }

@@ -1,15 +1,11 @@
 class Api::BikesController < ApplicationController
 
   def search
-
     if params[:query]
       page = params[:page].nil? ? 1 : params[:page]
 
-      @bikes = Bike.includes(:owner)
-                   .search(params[:query])
-                   .page(page)
-                   .per(10)
-
+      @bikes = Bike.search(params[:query])
+                   .page(page).group('bikes.id')
     else
       @bikes = []
     end
