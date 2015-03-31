@@ -11,45 +11,7 @@
     <button class="nav-button">Log Out</button>
   </form>
 </script>
-<!-- 
-<script type="text/template" id='start-date-input'>
-  <label>Rental Start <br>
-  <%= datetime_select(:query, :start_date,
-                      discard_year: true,
-                      discard_hour: true,
-                      prompt: {month: "Start Date", day: ""}) %>
-  </label>
-</script>
 
-<script type="text/template" id='end-date-input'>
-  <label>Rental End <br>
-  <%= datetime_select(:query, :end_date,
-                      discard_year: true,
-                      discard_hour: true,
-                      prompt: { month: "End Date", day: "" }) %>
-  </label>
-</script> -->
-
-<script type="text/template" id="request-form">
-  <label>Rental Start <br>
-  <%= datetime_select(:request, :start, discard_year: true, ampm: true,
-                      prompt: true) %>
-  </label>
-  <input type="hidden"
-         id="request_start_1i"
-         name="request[start(1i)]"
-         value="<%= Date.today.year %>">
-  <br><br>
-
-  <label>Rental End <br>
-  <%= datetime_select(:request, :end, discard_year: true, ampm: true,
-                      prompt: true) %>
-  <input type="hidden"
-         id="request_end_1i"
-         name="request[end(1i)]"
-         value="<%= Date.today.year %>">
-  </label>
-</script>
 
 <script charset="utf-8">
   $(document).ready(function(){

@@ -13,18 +13,18 @@ VillageBicycle.Models.Request = Backbone.Model.extend({
       delete response.end;
     }
 
-    return response
+    return response;
   },
 
   formattedTimeString: function (startOrEnd) {
     var dateObj = this.get(startOrEnd);
 
     var hours = dateObj.getHours();
-    var ampm = "AM"
+    var ampm = "AM";
 
     if (hours - 12 > 12) {
       hours -= 12;
-      ampm = "PM"
+      ampm = "PM";
     } else if (hours === 0) {
       hours = 12;
     }
@@ -32,6 +32,6 @@ VillageBicycle.Models.Request = Backbone.Model.extend({
     var min = dateObj.getMinutes().toString();
     if (min.length === 1) { min = "0" + min; }
 
-    return hours + ":" + min + " " + ampm
+    return hours + ":" + min + " " + ampm;
   }
 });

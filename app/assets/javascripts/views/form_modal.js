@@ -36,25 +36,25 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
 
     this.$el.html(templatedForm);
 
-    if (this.model.urlRoot === 'api/requests') {
-      this._fillInDateTimeSelectInputs();
+    if (this.model.urlRoot == 'api/requests') {
+      this._renderDatePickers();
     }
 
     return this;
   },
 
   submitForm: function (event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    var attrs = $(event.currentTarget).serializeJSON()
+    var attrs = $(event.currentTarget).serializeJSON();
 
-    this.model.set(attrs)
+    this.model.set(attrs);
     this.model.save({}, {
       success: function () {
-        this.collection && this.collection.add(this.model)
+        this.collection && this.collection.add(this.model);
         this.remove();
       }.bind(this)
-    })
+    });
   },
 
   changePicture: function (event) {
@@ -70,38 +70,28 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
   },
 
   deleteRequest: function (event) {
-    event.preventDefault()
+    event.preventDefault();
 
     this.model.destroy({
       success: this.remove.bind(this)
-    })
+    });
   },
 
-  _fillInDateTimeSelectInputs: function () {
-    console.log(this.model.get('start'));
+  _renderDatePickers: function () {
+    this.$el.find( "#request-start-date" ).datepicker({
+      defaultDate: "today",
+      nextText: '⥤',
+      prevText: '⥢',
+      dateFormat: "yy-mm-dd",
+      numberOfMonths: 1
+    });
 
-    if (this.model.get('start')) {
-      this.$el.find('#request_start_2i')
-              .val(this.model.get('start').getMonth() + 1);
-      this.$el.find('#request_start_3i')
-              .val(this.model.get('start').getDate());
-      this.$el.find('#request_start_4i')
-              .val("0" + this.model.get('start').getHours());
-      this.$el.find('#request_start_5i')
-              .val("0" + this.model.get('start').getMinutes());
-    }
-
-    if (this.model.get('end')) {
-      this.$el.find('#request_end_2i')
-              .val(this.model.get('end').getMonth() + 1);
-      this.$el.find('#request_end_3i')
-              .val(this.model.get('end').getDate());
-      this.$el.find('#request_end_4i')
-              .val("0" + this.model.get('end').getHours());
-      this.$el.find('#request_end_5i')
-              .val("0" + this.model.get('end').getMinutes());
-    }
-
-
-  }
-})
+    this.$el.find( "#request-end-date" ).datepicker({
+      defaultDate: "+1d",
+      nextText: '⥤',
+      prevText: '⥢',
+      dateFormat: "yy-mm-dd",
+      numberOfMonths: 1
+    });
+  },
+});

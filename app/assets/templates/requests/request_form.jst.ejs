@@ -4,12 +4,65 @@
 
 <section class="modal-form request-modal">
   <button class='x-out'>&#10005;</button>
+  <h1> Bike Request </h1>
   <form action="#" method="#">
+
     <input type="hidden"
            name="request[bike_id]"
            value="<%= request.escape('bike_id') %>">
-    <%= _.template($('#request-form').html())() %>
-    <section class="buttons group">
+
+    <label for="request-start-date">From</label>
+    <input type="text" id="request-start-date" name="request[start]">
+    <select class="" name="request[start-time-hour]">
+      <option>Hour</option>
+      <% _.range(1, 13).forEach(function (hour) { %>
+        <option val="<%= hour %>">
+          <%= hour %>
+        </option>
+      <% }) %>
+    </select>
+
+    <select class="" name="request[start-time-min]">
+      <option>Min</option>
+      <% ['00', '15', '30', '45'].forEach(function (min) { %>
+        <option val="<%= parseInt(min) %>">
+          <%= min %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label for="AM">AM</label>
+    <input type="radio" name="request[start-ampm]" id="AM" value="AM">
+    <label for="PM">PM</label>
+    <input type="radio" name="request[start-ampm]" id="PM" value="PM">
+
+
+    <label for="request-end-date">To</label>
+    <input type="text" id="request-end-date" name="request[end]">
+
+    <select class="" name="request[end-time-hour]">
+      <option>Hour</option>
+      <% _.range(1, 13).forEach(function (hour) { %>
+        <option val="<%= hour %>">
+          <%= hour %>
+        </option>
+      <% }) %>
+    </select>
+
+    <select class="" name="request[end-time-min]">
+      <option>Min</option>
+      <% ['00', '15', '30', '45'].forEach(function (min) { %>
+        <option val="<%= parseInt(min) %>">
+          <%= min %>
+        </option>
+      <% }) %>
+    </select>
+
+    <label for="AM">AM</label>
+    <input type="radio" name="request[end-ampm]" id="AM" value="AM">
+    <label for="PM">PM</label>
+    <input type="radio" name="request[end-ampm]" id="PM" value="PM">
+
       <button>Submit</button>
       <% if (request.id) { %>
         <button id="delete-request">Cancel Request</button>

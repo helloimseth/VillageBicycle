@@ -6,7 +6,6 @@ class Api::RequestsController < ApplicationController
 
   def create
     @request = current_user.requests_made.new(request_params)
-
     if @request.save
       flash.now[:notice] = "Thank you for requesting #{@request.bike.name} the
                         #{@request.bike.type}! #{@request.bike.name}'s owner is
