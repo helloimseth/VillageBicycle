@@ -1,6 +1,17 @@
 <section class="modal">
 
 </section>
+<% if (start) { %>
+  <% var startHour = start.getUTCHours() > 12 ? start.getUTCHours() - 12 : start.getUTCHours(); %>
+  <% var startMinutes = start.getMinutes(); %>
+  <% var sAMPM = start.getUTCHours() > 12 ? "PM" : "AM" %>
+<% } %>
+
+<% if (end) { %>
+  <% var endHour = end.getUTCHours() > 12 ? end.getUTCHours() - 12 : end.getUTCHours(); %>
+  <% var endMinutes = end.getMinutes(); %>
+  <% var eAMPM = end.getUTCHours() > 12 ? "PM"  : "AM" %>
+<% } %>
 
 <section class="modal-form request-modal">
   <button class='x-out'>&#10005;</button>
@@ -17,8 +28,11 @@
       <select class="" name="request[start_hour]">
         <option>Hour</option>
         <% _.range(1, 13).forEach(function (hour) { %>
-          <option val="<%= hour %>">
-            <%= hour %>
+          <option value="<%= hour %>"
+            <% if (hour === startHour) { %>
+              <%= "selected"  %>
+            <% } %>>
+              <%= hour %>
           </option>
         <% }) %>
       </select>
@@ -26,16 +40,21 @@
       <select class="" name="request[start_min]">
         <option>Min</option>
         <% ['00', '15', '30', '45'].forEach(function (min) { %>
-          <option val="<%= parseInt(min) %>">
+          <option value="<%= parseInt(min) %>"
+            <% if (parseInt(min) === startMinutes) { %>
+              <%= "selected" %>
+            <%  } %>>
             <%= min %>
           </option>
         <% }) %>
       </select>
 
       <label for="AM">AM</label>
-      <input type="radio" name="request[start_ampm]" id="AM" value="AM">
+      <input type="radio" name="request[start_ampm]" id="AM" value="AM"
+      <% if (sAMPM === "AM") {%> <%= "checked" %> <% } %>>
       <label for="PM">PM</label>
-      <input type="radio" name="request[start_ampm]" id="PM" value="PM">
+      <input type="radio" name="request[start_ampm]" id="PM" value="PM"
+      <% if (sAMPM === "PM") {%> <%= "checked" %> <% } %>>
     </section>
 
 
@@ -46,25 +65,34 @@
       <select class="" name="request[end_hour]">
         <option>Hour</option>
         <% _.range(1, 13).forEach(function (hour) { %>
-          <option val="<%= hour %>">
+          <option value="<%= hour %>"
+            <% if (hour === endHour) { %>
+              <%= "selected" %>
+            <% } %>>
             <%= hour %>
           </option>
         <% }) %>
       </select>
 
+
       <select class="" name="request[end_min]">
         <option>Min</option>
         <% ['00', '15', '30', '45'].forEach(function (min) { %>
-          <option val="<%= parseInt(min) %>">
+          <option value="<%= parseInt(min) %>"
+            <% if (parseInt(min) === endMinutes) { %>
+              <%= "selected" %>
+            <%  } %>>
             <%= min %>
           </option>
         <% }) %>
       </select>
 
       <label for="AM">AM</label>
-      <input type="radio" name="request[end_ampm]" id="AM" value="AM">
+      <input type="radio" name="request[end_ampm]" id="AM" value="AM"
+      <% if (eAMPM === "AM") {%> <%= "checked" %> <% } %>>
       <label for="PM">PM</label>
-      <input type="radio" name="request[end_ampm]" id="PM" value="PM">
+      <input type="radio" name="request[end_ampm]" id="PM" value="PM"
+      <% if (eAMPM === "PM") {%> <%= "checked" %> <% } %>>
     </section>
 
 

@@ -30,7 +30,9 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
       });
     } else {
       templatedForm = this.requestTemplate({
-        request: this.model
+        request: this.model,
+        start: this.model.get('start'),
+        end: this.model.get('end')
       });
     }
 
