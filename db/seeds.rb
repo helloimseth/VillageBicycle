@@ -95,20 +95,6 @@ end
   b.save!
 end
 
-75.times do
-  user = User.all.sample
-  bike = Bike.all.sample
-
-  while user.bikes.include?(bike)
-    bike = Bike.all.sample
-  end
-
-  user.requests_made.create(bike_id: bike.id,
-                            start: DateTime.now,
-                            end: DateTime.tomorrow,
-                            approved: [nil, true, false].sample)
-end
-
 3.times do
   user = User.all.sample
   while user == seth
@@ -118,4 +104,28 @@ end
   user.requests_made.create!(bike_id: seth.bike_ids.sample,
                              start: DateTime.now,
                              end: DateTime.tomorrow)
+end
+
+def new_request
+  user = User.all.sample
+  bike = Bike.all.sample
+  start_date = (1..500).to_a.sample.days.from_now
+  end_date = start_date + (1..10.to_a.sample).days
+
+  while user.bikes.include?(bike)
+    bike = Bike.all.sample
+  end
+
+  user.requests_made.new(bike_id: bike.id,
+                         start: start_date,
+                         end: end_date,
+                         approved: [nil, true, false].sample)
+end
+
+75.times do
+  request = new_request
+
+  until request.save
+    request = new_request
+  end
 end
