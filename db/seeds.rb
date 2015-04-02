@@ -101,7 +101,7 @@ end
     user = User.all.sample
   end
 
-  user.requests_made.create!(bike_id: seth.bike_ids.sample,
+  user.requests_made.create!(bike: seth.bikes.sample,
                              start: DateTime.now,
                              end: DateTime.tomorrow)
 end
@@ -116,7 +116,7 @@ def new_request
     bike = Bike.all.sample
   end
 
-  user.requests_made.new(bike_id: bike.id,
+  user.requests_made.new(bike: bike,
                          start: start_date,
                          end: end_date,
                          approved: [nil, true, false].sample)
