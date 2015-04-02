@@ -23,7 +23,7 @@ VillageBicycle.Views.Header = Backbone.View.extend({
 
     if (event.keyCode == 27) {
       this._searchResults && this._searchResults.remove();
-      $(event.currentTarget).val("")
+      $(event.currentTarget).val("");
     } else if (query.length > 2) {
       var results = new VillageBicycle.Collections.QuickSearchResults();
       results.url += query;
@@ -56,9 +56,5 @@ VillageBicycle.Views.Header = Backbone.View.extend({
     Backbone.history.navigate(url, {
       trigger: true
     });
-  },
-
-  _removeIfResults: function () {
-    console.log(event.currentTarget);
   }
-})
+});

@@ -198,7 +198,29 @@
 }
 
 .request-modal input{
-  margin: 5px auto 10px auto;
+  margin: 5px 5px 10px auto;
+  display: inline;
+}
+
+.request-modal select{
+  display: inline;
+  margin: auto 5px auto 0px;
+}
+
+.request-modal select:first-child{
+  margin-right: 0;
+}
+
+.request-modal h3{
+  display: block;
+  height: 20px;
+  margin: 0;
+}
+
+.request-modal button{
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  margin-bottom: 10px;
 }
 
 .buttons {

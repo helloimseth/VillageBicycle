@@ -4,6 +4,9 @@ class Request < ActiveRecord::Base
   validate :cannot_request_own_bike
   validate :cannot_request_unavailable_bikes
 
+  attr_accessor :end_ampm, :end_hour, :end_min,
+                :start_ampm, :start_hour, :start_min
+
   belongs_to :bike
   belongs_to :requestor,
     class_name: "User",
@@ -19,6 +22,23 @@ class Request < ActiveRecord::Base
   def reject!
     self.approved = false
     self.save!
+  end
+
+  def start_date=(date_string)
+    date_parts = date_string.split('-').map(&:to_i)
+    hour = self.start_ampm == 'AM' ? self.start_hour.to_i : self.start_hour.to_i + 12
+
+    self.start = DateTime.new(date_parts[0], date_parts[1], date_parts[2],
+                          hour.to_i, self.start_min.to_i)
+  end
+
+  def end_date=(date_string)
+    date_parts = date_string.split('-').map(&:to_i)
+    hour = self.end_ampm == 'AM' ? self.end_hour.to_i : self.end_hour.to_i + 12
+
+    self.end = DateTime.new(date_parts[0], date_parts[1], date_parts[2],
+                          hour.to_i, self.end_min.to_i)
+
   end
 
   private

@@ -14,6 +14,7 @@ class Api::RequestsController < ApplicationController
 
       render json: @request
     else
+      p @request.errors.full_messages
       render json: @request.errors.full_messages
     end
   end
@@ -41,7 +42,9 @@ class Api::RequestsController < ApplicationController
   private
 
     def request_params
-      params.require(:request).permit(:bike_id, :start, :end, :approved)
+      params.require(:request).permit(:bike_id, :approved, :end_ampm,
+                                      :end_hour, :end_min, :start_ampm,
+                                      :start_hour, :start_min, :start_date,
+                                      :end_date,)
     end
-
 end

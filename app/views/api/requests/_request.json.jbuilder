@@ -1,6 +1,6 @@
-json.extract! request, :id, :start, :end, :requestor_id, :bike_id, :approved
-json.start request.start
-json.end request.end
+json.extract! request, :id, :requestor_id, :bike_id, :approved
+json.start request.start.utc
+json.end request.end.utc
 
 json.requestor_name request.requestor.name
 

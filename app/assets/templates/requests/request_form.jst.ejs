@@ -6,62 +6,68 @@
   <button class='x-out'>&#10005;</button>
   <h1> Bike Request </h1>
   <form action="#" method="#">
-
     <input type="hidden"
            name="request[bike_id]"
            value="<%= request.escape('bike_id') %>">
 
-    <label for="request-start-date">From</label>
-    <input type="text" id="request-start-date" name="request[start]">
-    <select class="" name="request[start-time-hour]">
-      <option>Hour</option>
-      <% _.range(1, 13).forEach(function (hour) { %>
-        <option val="<%= hour %>">
-          <%= hour %>
-        </option>
-      <% }) %>
-    </select>
+    <section class='request-start-fields'>
+      <h3>From</h3>
+      <input type="text" id="request-start-date" name="request[start_date]">
 
-    <select class="" name="request[start-time-min]">
-      <option>Min</option>
-      <% ['00', '15', '30', '45'].forEach(function (min) { %>
-        <option val="<%= parseInt(min) %>">
-          <%= min %>
-        </option>
-      <% }) %>
-    </select>
+      <select class="" name="request[start_hour]">
+        <option>Hour</option>
+        <% _.range(1, 13).forEach(function (hour) { %>
+          <option val="<%= hour %>">
+            <%= hour %>
+          </option>
+        <% }) %>
+      </select>
 
-    <label for="AM">AM</label>
-    <input type="radio" name="request[start-ampm]" id="AM" value="AM">
-    <label for="PM">PM</label>
-    <input type="radio" name="request[start-ampm]" id="PM" value="PM">
+      <select class="" name="request[start_min]">
+        <option>Min</option>
+        <% ['00', '15', '30', '45'].forEach(function (min) { %>
+          <option val="<%= parseInt(min) %>">
+            <%= min %>
+          </option>
+        <% }) %>
+      </select>
+
+      <label for="AM">AM</label>
+      <input type="radio" name="request[start_ampm]" id="AM" value="AM">
+      <label for="PM">PM</label>
+      <input type="radio" name="request[start_ampm]" id="PM" value="PM">
+    </section>
 
 
-    <label for="request-end-date">To</label>
-    <input type="text" id="request-end-date" name="request[end]">
+    <section class='request-end-fields'>
+      <h3>To</h3>
+      <input type="text" id="request-end-date" name="request[end_date]">
 
-    <select class="" name="request[end-time-hour]">
-      <option>Hour</option>
-      <% _.range(1, 13).forEach(function (hour) { %>
-        <option val="<%= hour %>">
-          <%= hour %>
-        </option>
-      <% }) %>
-    </select>
+      <select class="" name="request[end_hour]">
+        <option>Hour</option>
+        <% _.range(1, 13).forEach(function (hour) { %>
+          <option val="<%= hour %>">
+            <%= hour %>
+          </option>
+        <% }) %>
+      </select>
 
-    <select class="" name="request[end-time-min]">
-      <option>Min</option>
-      <% ['00', '15', '30', '45'].forEach(function (min) { %>
-        <option val="<%= parseInt(min) %>">
-          <%= min %>
-        </option>
-      <% }) %>
-    </select>
+      <select class="" name="request[end_min]">
+        <option>Min</option>
+        <% ['00', '15', '30', '45'].forEach(function (min) { %>
+          <option val="<%= parseInt(min) %>">
+            <%= min %>
+          </option>
+        <% }) %>
+      </select>
 
-    <label for="AM">AM</label>
-    <input type="radio" name="request[end-ampm]" id="AM" value="AM">
-    <label for="PM">PM</label>
-    <input type="radio" name="request[end-ampm]" id="PM" value="PM">
+      <label for="AM">AM</label>
+      <input type="radio" name="request[end_ampm]" id="AM" value="AM">
+      <label for="PM">PM</label>
+      <input type="radio" name="request[end_ampm]" id="PM" value="PM">
+    </section>
+
+
 
       <button>Submit</button>
       <% if (request.id) { %>

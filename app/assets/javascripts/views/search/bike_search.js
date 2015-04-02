@@ -34,14 +34,11 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
 
   performSearch: function (event) {
     event.preventDefault();
-    console.log(event.currentTarget);
     var params = $(event.currentTarget).serializeJSON();
 
     var searchResults = new VillageBicycle.Collections.Bikes();
 
     searchResults.url += "/search?" + $.param(params);
-
-    console.log(searchResults.url);
 
     searchResults.fetch({
       success: this.renderSearchResults.bind(this, searchResults)

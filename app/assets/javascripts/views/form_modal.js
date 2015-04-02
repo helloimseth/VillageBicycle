@@ -47,7 +47,7 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
     event.preventDefault();
 
     var attrs = $(event.currentTarget).serializeJSON();
-
+    console.log(attrs);
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
@@ -78,20 +78,18 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
   },
 
   _renderDatePickers: function () {
-    this.$el.find( "#request-start-date" ).datepicker({
-      defaultDate: "today",
-      nextText: '⥤',
-      prevText: '⥢',
-      dateFormat: "yy-mm-dd",
-      numberOfMonths: 1
-    });
+    ['start', 'end'].forEach(function (col) {
+      var datePicker = this.$el.find( "#request-" + col + "-date" ).datepicker({
+        defaultDate: this.model.get(col) || "today",
+        nextText: '⥤',
+        prevText: '⥢',
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1
+      });
 
-    this.$el.find( "#request-end-date" ).datepicker({
-      defaultDate: "+1d",
-      nextText: '⥤',
-      prevText: '⥢',
-      dateFormat: "yy-mm-dd",
-      numberOfMonths: 1
-    });
-  },
+      this.model.get(col) && datePicker.val(this.model.get(col)
+                                                      .toString()
+                                                      .substr(0,15));
+    }.bind(this));
+  }
 });

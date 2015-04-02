@@ -3,7 +3,6 @@ VillageBicycle.Models.Request = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.start) {
-      console.log(response.start);
       this.set('start', new Date(response.start));
       delete response.start;
     }
@@ -18,11 +17,10 @@ VillageBicycle.Models.Request = Backbone.Model.extend({
 
   formattedTimeString: function (startOrEnd) {
     var dateObj = this.get(startOrEnd);
-
-    var hours = dateObj.getHours();
+    var hours = dateObj.getUTCHours();
     var ampm = "AM";
 
-    if (hours - 12 > 12) {
+    if (hours - 12 > 0) {
       hours -= 12;
       ampm = "PM";
     } else if (hours === 0) {
