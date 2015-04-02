@@ -110,7 +110,7 @@ def new_request
   user = User.all.sample
   bike = Bike.all.sample
   start_date = (1..500).to_a.sample.days.from_now
-  end_date = start_date + (1..10.).to_a.sample.days
+  end_date = start_date + (1..10).to_a.sample.days
 
   while user.bikes.include?(bike)
     bike = Bike.all.sample
