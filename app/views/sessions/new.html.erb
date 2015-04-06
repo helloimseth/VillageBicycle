@@ -1,4 +1,10 @@
 <main class='log-in-main'>
+  <h2>
+    <em>
+      <%= flash[:notice] if flash[:notice] %>
+    </em>
+  </h2>
+  
   <form class="new-session-form" action="<%= sessions_url %>" method="post">
     <h1>Welcome to Village Bicycle</h1>
     <%= auth_token %>

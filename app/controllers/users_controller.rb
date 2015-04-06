@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       msg = UserMailer.activation_email(@user)
       msg.deliver_now
 
-      redirect_to new_user_url
+      redirect_to new_sessions_url
     else
       flash[:notice] = @user.errors.full_messages
 
@@ -31,8 +31,6 @@ class UsersController < ApplicationController
     @user = User.find_by(activation_token: params[:activation_token])
     @user.toggle(:activated)
     log_in(@user)
-
-    flash[:notice] = "Welcome, #{@user.fname}"
 
     redirect_to root_url
   end

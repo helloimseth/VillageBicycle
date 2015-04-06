@@ -100,6 +100,7 @@ class User < ActiveRecord::Base
                         fname: 'Seth',
                         lname: 'Hamlin',
                         address: '598 Broadway, New York',
+                        bio: 'I love to bike and code!',
                         neighborhood: Neighborhood.find_by(name: 'SoHo'),
                         size: Size.find_by(size: 'M'),
                         activated: true)
