@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
 
   def self.new_demo_user
     user = User.find_by(email: 'user@example.com')
-    user.destroy
+    user.destroy if user
 
     user = User.create!(email: 'user@example.com',
                         password: 'password',
