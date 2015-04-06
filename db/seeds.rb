@@ -85,7 +85,7 @@ end
   #
   # b.save!
 
-  Bike.create_bike_owned_by(User.sample)
+  Bike.create_bike_owned_by(User.all.sample)
 end
 
 def new_request
