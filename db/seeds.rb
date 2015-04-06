@@ -45,15 +45,6 @@ e3 = Extra.create!(name:"Headlight")
 e4 = Extra.create!(name:"Taillight")
 
 #######
-seth = User.create!(fname: "Seth",
-                   lname: "Hamlin",
-                   email: 'email@example.com',
-                   password: "password",
-                   neighborhood: Neighborhood.find_by(name: "Greenwich Village"),
-                   size: Size.find_by(size: "M"),
-                   activated: true,
-                   address: "Washington Square Park")
-
 25.times do
   user = User.new(fname: Faker::Name.first_name,
                   lname: Faker::Name.last_name,
@@ -73,37 +64,28 @@ seth = User.create!(fname: "Seth",
 end
 
 50.times do
-  b = Bike.new(name: [Faker::Name.first_name, Faker::Team.creature, Faker::Hacker.noun].sample.capitalize,
-               gender: ["Men's", "Women's"].sample,
-               notes: Faker::Hacker.say_something_smart,
-               size: Size.all.sample,
-               num_gears: (1..25).to_a.sample,
-               hourly_price: (10..50).to_a.sample,
-               category: Category.all.sample,
-               owner: User.all.sample)
+  # b = Bike.new(name: [Faker::Name.first_name, Faker::Team.creature, Faker::Hacker.noun].sample.capitalize,
+  #              gender: ["Men's", "Women's"].sample,
+  #              notes: Faker::Hacker.say_something_smart,
+  #              size: Size.all.sample,
+  #              num_gears: (1..25).to_a.sample,
+  #              hourly_price: (10..50).to_a.sample,
+  #              category: Category.all.sample,
+  #              owner: User.all.sample)
+  #
+  # num_extras = [1,2,3,4,5].sample
+  # extras = []
+  #
+  # num_extras.times do
+  #   extra = Extra.all.sample
+  #   extras << extra unless extras.include?(extra)
+  # end
+  #
+  # b.extras = extras
+  #
+  # b.save!
 
-  num_extras = [1,2,3,4,5].sample
-  extras = []
-
-  num_extras.times do
-    extra = Extra.all.sample
-    extras << extra unless extras.include?(extra)
-  end
-
-  b.extras = extras
-
-  b.save!
-end
-
-3.times do
-  user = User.all.sample
-  while user == seth
-    user = User.all.sample
-  end
-
-  user.requests_made.create!(bike: seth.bikes.sample,
-                             start: DateTime.now,
-                             end: DateTime.tomorrow)
+  Bike.create_bike_owned_by(User.sample)
 end
 
 def new_request

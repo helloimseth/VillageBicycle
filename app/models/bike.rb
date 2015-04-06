@@ -18,10 +18,14 @@ class Bike < ActiveRecord::Base
   belongs_to :size, inverse_of: :bikes
   belongs_to :category, inverse_of: :bikes
 
-  has_many :add_ons
+  has_many :add_ons,
+  dependent: :destroy
+    
   has_many :extras, through: :add_ons, source: :extra
 
-  has_many :requests
+  has_many :requests,
+    dependent: :destroy
+
   has_many :requestors, through: :requests, source: :requestor
 
   def self.search(query)
@@ -66,6 +70,29 @@ class Bike < ActiveRecord::Base
     end
 
     query_string
+  end
+
+  def self.create_bike_owned_by(user)
+    b = Bike.new(name: [Faker::Name.first_name, Faker::Team.creature, Faker::Hacker.noun].sample.capitalize,
+                 gender: ["Men's", "Women's"].sample,
+                 notes: Faker::Hacker.say_something_smart,
+                 size: user.size,
+                 num_gears: (1..25).to_a.sample,
+                 hourly_price: (1..20).to_a.sample,
+                 category: Category.all.sample,
+                 owner: user)
+
+    num_extras = [1,2,3,4,5].sample
+    extras = []
+
+    num_extras.times do
+      extra = Extra.all.sample
+      extras << extra unless extras.include?(extra)
+    end
+
+    b.extras = extras
+
+    b.save!
   end
 
   def type

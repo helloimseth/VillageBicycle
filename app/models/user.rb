@@ -27,14 +27,16 @@ class User < ActiveRecord::Base
     class_name: "Bike",
     foreign_key: :owner_id,
     primary_key: :id,
-    inverse_of: :owner
+    inverse_of: :owner,
+    dependent: :destroy
   has_many :requests_for, through: :bikes, source: :requests
 
   has_many :requests_made,
     class_name: "Request",
     foreign_key: :requestor_id,
     primary_key: :id,
-    inverse_of: :requestor
+    inverse_of: :requestor,
+    dependent: :destroy
   has_many :requested_bikes, through: :requests_made, source: :bike
 
   def self.find_by_credentials(email, password)
@@ -89,7 +91,51 @@ class User < ActiveRecord::Base
     self.requests_made.select{|req| req.approved == true }
   end
 
+  def self.new_demo_user
+    user = User.find_by(email: 'user@example.com')
+    user.destroy
+
+    user = User.create!(email: 'user@example.com',
+                        password: 'password',
+                        fname: 'Seth',
+                        lname: 'Hamlin',
+                        address: '598 Broadway, New York',
+                        neighborhood: Neighborhood.find_by(name: 'SoHo'),
+                        size: Size.find_by(size: 'M'),
+                        activated: true)
+
+    user.add_requests_made_seeds
+    user.add_bike_seeds
+    user.add_requests_for_seeds
+    user
+  end
+
+  def add_requests_made_seeds
+    6.times do
+      Request.new_request_seed(self, Bike.all.sample)
+    end
+  end
+
+  def add_requests_for_seeds
+    6.times do
+      user = User.all.sample
+
+      while user == self
+        user = User.all.sample
+      end
+
+      Request.new_request_seed(user, self.bikes.sample)
+    end
+  end
+
+  def add_bike_seeds
+    3.times do
+      Bike.create_bike_owned_by(self)
+    end
+  end
   private
+
+
 
     def address_for_geocoding
       "#{self.address} New York City"

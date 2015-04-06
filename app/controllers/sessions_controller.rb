@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
   end
 
   def demo_sign_in
-    @user = User.find_by(email: 'email@example.com')
+    @user = User.new_demo_user
     log_in(@user)
     redirect_to root_url
   end

@@ -8,11 +8,23 @@ class Request < ActiveRecord::Base
                 :start_ampm, :start_hour, :start_min
 
   belongs_to :bike
+
   belongs_to :requestor,
     class_name: "User",
     foreign_key: :requestor_id,
     primary_key: :id,
     inverse_of: :requests_made
+
+  def self.new_request_seed(requestor, bike)
+    start_date = (1..500).to_a.sample.days.from_now
+    end_date = start_date + (1..10).to_a.sample.days
+
+    r = requestor.requests_made.new(bike: bike,
+                                    start: start_date,
+                                    end: end_date,
+                                    approved: [nil, true].sample)
+    Request.new_request_seed(requestor, bike) unless r.save
+  end
 
   def approve!
     self.approved = true
