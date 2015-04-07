@@ -83,8 +83,6 @@ end
 # end
 
 75.times do
-  request = new_request
-
   user = User.all.sample
   bike = Bike.all.sample
 
