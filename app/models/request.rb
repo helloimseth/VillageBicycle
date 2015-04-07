@@ -20,9 +20,10 @@ class Request < ActiveRecord::Base
     end_date = start_date + (1..10).to_a.sample.days
 
     r = requestor.requests_made.new(bike: bike,
-                                    start: start_date,
-                                    end: end_date,
+                                    start: build_datetime(start_date),
+                                    end: build_datetime(end_date),
                                     approved: [nil, true].sample)
+                                    
     Request.new_request_seed(requestor, bike) unless r.save
   end
 
@@ -54,6 +55,11 @@ class Request < ActiveRecord::Base
   end
 
   private
+
+    def build_datetime(date)
+      DateTime.new(date.year, date.month, date.day,
+                   (0..23).to_a.sample, [0, 15, 30, 45].sample )
+    end
 
     def start_must_be_before_end
       if self.end && self.start && self.end < self.start
