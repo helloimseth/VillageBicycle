@@ -20,7 +20,7 @@ class Bike < ActiveRecord::Base
 
   has_many :add_ons,
   dependent: :destroy
-    
+
   has_many :extras, through: :add_ons, source: :extra
 
   has_many :requests,

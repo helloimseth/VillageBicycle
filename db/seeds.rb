@@ -6,10 +6,11 @@ client = Yelp::Client.new({ consumer_key: "yJrhKETwuRbzQnxbTIRhGQ",
                             token: "jjjTWRC1VEy5bKBvgOO8nntI3Zvr5qFc",
                             token_secret: "BMVINdOoolK113r-_NUEEp6yvuo"
                           })
+
+User.delete_all
 Request.delete_all
 Neighborhood.delete_all
 Size.delete_all
-# User.delete_all
 Category.delete_all
 Bike.delete_all
 AddOn.delete_all
@@ -26,7 +27,7 @@ Neighborhood.create!(name: "Union Square")
 Neighborhood.create!(name: "Chelsea")
 Neighborhood.create!(name: "Gramercy")
 
-Size.create!(size: "XS", frame_size: "15\"-16\"", suggested_height:"5'0\"-5'3\"")
+Size.create!(size:"XS", frame_size: "15\"-16\"", suggested_height:"5'0\"-5'3\"")
 Size.create!(size:"S", frame_size: "16\"-17\"", suggested_height: "5'4\"-5'7\"")
 Size.create!(size:"M", frame_size: "18\"-19\"", suggested_height: "5'8\"-5'10\"")
 Size.create!(size:"L", frame_size: "20\"-21\"", suggested_height: "5'11\"-6'2\"")
@@ -45,23 +46,23 @@ e3 = Extra.create!(name:"Headlight")
 e4 = Extra.create!(name:"Taillight")
 
 #######
-# 25.times do
-#   user = User.new(fname: Faker::Name.first_name,
-#                   lname: Faker::Name.last_name,
-#                   email: Faker::Internet.email,
-#                   password: "password",
-#                   bio: Faker::Hacker.say_something_smart,
-#                   neighborhood: Neighborhood.all.sample,
-#                   size: Size.all.sample,
-#                   activated: true,
-#                   picture: Faker::Avatar.image)
-#
-#   addrs = JSON.parse(client.search('#{user.neighborhood.name}, New York, NY').to_json)
-#
-#   user.address = addrs['businesses'].sample['location']['address'][0]
-#
-#   user.save!
-# end
+25.times do
+  user = User.new(fname: Faker::Name.first_name,
+                  lname: Faker::Name.last_name,
+                  email: Faker::Internet.email,
+                  password: "password",
+                  bio: Faker::Hacker.say_something_smart,
+                  neighborhood: Neighborhood.all.sample,
+                  size: Size.all.sample,
+                  activated: true,
+                  picture: Faker::Avatar.image)
+
+  addrs = JSON.parse(client.search('#{user.neighborhood.name}, New York, NY').to_json)
+
+  user.address = addrs['businesses'].sample['location']['address'][0]
+
+  user.save!
+end
 
 50.times do
   Bike.create_bike_owned_by(User.all.sample)
