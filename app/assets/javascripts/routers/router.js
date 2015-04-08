@@ -60,7 +60,7 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
         this.$rootEl.removeClass('in');
 
         view.render();
-      }.bind(this), 300);
+      }.bind(this), 150);
 
     }.bind(this));
   },

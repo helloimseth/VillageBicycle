@@ -74,7 +74,6 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
   },
 
   navigate: function () {
-    // event.preventDefault();
     event.stopPropagation();
 
     Backbone.history.navigate($(event.currentTarget).attr('href'), {
