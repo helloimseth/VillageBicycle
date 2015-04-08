@@ -32,7 +32,7 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
   },
 
   userShow: function (id) {
-    if (!id) { id = VillageBicycle.currentUserId }
+    if (!id) { id = VillageBicycle.currentUserId; }
 
     var user = new VillageBicycle.Models.User({
       id: id
@@ -48,10 +48,21 @@ VillageBicycle.Routers.Router = Backbone.Router.extend({
   },
 
   swapView: function (view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    this.$rootEl.html(view.$el)
-    view.render()
+    this.$rootEl.addClass('out').one("transitionend", function () {
+      this.$rootEl.addClass('in').removeClass('out');
+
+      setTimeout(function () {
+        this._currentView && this._currentView.remove();
+        this._currentView = view;
+
+        this.$rootEl.html(view.$el);
+
+        this.$rootEl.removeClass('in');
+
+        view.render();
+      }.bind(this), 300);
+
+    }.bind(this));
   },
 
   addHeader: function () {

@@ -6,6 +6,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
   tagName: 'article',
 
   events: {
+    "click a": "navigate",
     "click #approve-button": "approveRequest",
     "click #reject-button": "rejectRequest",
     "click #edit-request": "renderEditRequestModal"
@@ -13,7 +14,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
 
   initialize: function () {
     this._fetchIfRequest();
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync", this.render);
   },
 
   render: function (event) {
@@ -43,7 +44,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
     bikeOwner.approvedRequests().add(this.model);
 
     this.model.set('approved', true);
-    this.model.save()
+    this.model.save();
   },
 
   rejectRequest: function (event) {
@@ -52,7 +53,7 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
     this.model.collection.remove(this.model);
 
     this.model.set('approved', false);
-    this.model.save()
+    this.model.save();
   },
 
   renderEditRequestModal: function (event) {
@@ -63,12 +64,21 @@ VillageBicycle.Views.ListItemView = Backbone.View.extend({
       className: 'edit-request'
     });
 
-    $('body').append(modal.render().$el)
+    $('body').append(modal.render().$el);
   },
 
   _fetchIfRequest: function() {
     if (this.model.urlRoot === "api/requests") { this.model.fetch({
       success: this.render.bind(this)
-    }) }
+    }); }
+  },
+
+  navigate: function () {
+    // event.preventDefault();
+    event.stopPropagation();
+
+    Backbone.history.navigate($(event.currentTarget).attr('href'), {
+      trigger: true
+    });
   }
 });

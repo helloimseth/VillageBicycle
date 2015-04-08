@@ -1,4 +1,4 @@
-VillageBicycle.Views.Header = Backbone.View.extend({
+ VillageBicycle.Views.Header = Backbone.View.extend({
   template: JST['header'],
 
   tagName: 'nav',
@@ -19,7 +19,7 @@ VillageBicycle.Views.Header = Backbone.View.extend({
   },
 
   performQuickSearch: function (event) {
-    var query = $(event.currentTarget).val()
+    var query = $(event.currentTarget).val();
 
     if (event.keyCode == 27) {
       this._searchResults && this._searchResults.remove();

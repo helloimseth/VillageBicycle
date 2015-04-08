@@ -10,10 +10,10 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this.subViewClass = options.subViewClass
+    this.subViewClass = options.subViewClass;
 
-    this._activeListItemViews = []
-    this.listenTo(this.collection, "remove add", this.render)
+    this._activeListItemViews = [];
+    this.listenTo(this.collection, "remove add", this.render);
   },
 
   render: function () {
@@ -54,9 +54,9 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
 
       var listItemView = new VillageBicycle.Views.ListItemView({
         model: item
-      })
+      });
 
-      this._activeListItemViews.push(listItemView)
+      this._activeListItemViews.push(listItemView);
 
       $infoArticle.html(listItemView.render().$el);
     }
@@ -66,6 +66,7 @@ VillageBicycle.Views.ListView = Backbone.View.extend({
     this._activeListItemViews.forEach(function (view) {
       view.remove();
     });
+    
     Backbone.View.prototype.remove.call(this);
   }
 });

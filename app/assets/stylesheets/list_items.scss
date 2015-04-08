@@ -1,7 +1,8 @@
 .subview-list {
   position: relative;
-  margin: 50px auto;
+  margin: 20px auto;
   background: #eeeeee;
+  border-radius: 15px;
 }
 
 .subview-list button {
@@ -23,6 +24,8 @@
   background: #151515;
   color: #ffffff;
   padding: 10px 10px;
+  border-radius: 15px 15px 0 0 ;
+
 }
 
 .subview-list a {

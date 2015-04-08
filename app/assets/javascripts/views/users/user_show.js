@@ -21,6 +21,7 @@ VillageBicycle.Views.UserShow = Backbone.View.extend({
     });
 
     this.$el.html(templatedShow);
+
     this.attachListView({
       selector: '#bike-list',
       collection: this.model.bikes(),

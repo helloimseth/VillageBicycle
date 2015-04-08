@@ -56,7 +56,6 @@
  }
 
  body {
-   background: #fefefe;
    font-size: 16px;
  }
 
@@ -99,16 +98,43 @@
    display: block;
  }
 
-
  /**/
 
+ .container,
+ .log-in-main,
+ .new-user-main {
+     position: fixed;
+
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+
+     background-size: cover;
+     background-image: url( <%= asset_path('bike_wall.jpg') %> );
+ }
+
  .root-el {
-   background: #858585;
+   display: block;
+   position: relative;
    width: 800px;
    padding: 20px 20px;
    margin: 20px auto;
    border-radius: 15px;
-   box-shadow: 0 5px 1px black;
+   transition: right 300ms linear;
+   right: 0;
+   opacity: 1;
+ }
+
+ .root-el.out {
+   right: 100%;
+ }
+
+ .root-el.in {
+   opacity: 0;
+
+   right: -100%;
+   transition: right 300ms linear;
  }
 
  .profile-info {
@@ -147,7 +173,6 @@
 .delete-model {
   width: 70px;
   border-radius: 8px
-
 }
 
 .edit-page:hover, .delete-model:hover {

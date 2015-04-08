@@ -14,17 +14,17 @@
 
 <ul class="more-info">
   <li>
-    <a href="#/users/<%= request.escape('requestor_id') %>">
+    <a href="/#/users/<%= request.escape('requestor_id') %>">
       <%= requestor %>
     </a>
       would like to rent
-    <a href="#/bikes/<%= request.escape('bike_id')%>">
+    <a href="/#/bikes/<%= request.escape('bike_id')%>">
       <%= request.escape('bike_name') %> the
       <%= VillageBicycle.Sets.grab("categories", request.get('bike_cat_id')).name %>
     </a>
   </li>
   <li>
-    <a href="#/users/<%= request.escape('bike_owner_id') %>">
+    <a href="/#/users/<%= request.escape('bike_owner_id') %>">
       Owned by <%= owner %>
     </a>
   </li>

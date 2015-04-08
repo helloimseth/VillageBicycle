@@ -5,7 +5,8 @@
 .search-form-container {
   background: #eee;
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 15px 15px 0 0;
+
 }
 
 .search-form-container h1 {
@@ -79,11 +80,15 @@
 
 .search-results-container {
   position: relative;
+  background: #eeeeee;
+  border-radius: 0 0 15px 15px;
 }
+
 
 .search-results-container.filled {
   min-height: 490px;
   max-height: 600px;
+
 }
 
 .search-results-container .map-view {

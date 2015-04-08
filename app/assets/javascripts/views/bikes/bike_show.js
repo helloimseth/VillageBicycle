@@ -32,11 +32,11 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
     var mapView = new VillageBicycle.Views.MapView({
       el: document.getElementById('map-view'),
       model: this.model
-    })
+    });
 
     this._subviews.push(mapView);
 
-    mapView.renderSingleMap()
+    mapView.renderSingleMap();
   },
 
   renderModal: function (event) {
@@ -47,20 +47,20 @@ VillageBicycle.Views.BikeShow = Backbone.View.extend({
         model: this.model
       });
     } else {
-      var modal = new VillageBicycle.Views.FormModal({
+      modal = new VillageBicycle.Views.FormModal({
         model: this._requestOrBikeFromEvent(event)
       });
     }
 
     this._subviews.push(modal);
 
-    this.$el.append(modal.render().$el)
+    this.$el.append(modal.render().$el);
   },
 
   navigateToOwnerShow: function (event) {
     Backbone.history.navigate("users/" + this.model.get('owner_id'), {
       trigger: true
-    })
+    });
   },
 
   remove: function () {
