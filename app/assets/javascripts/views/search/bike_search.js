@@ -63,6 +63,10 @@ VillageBicycle.Views.BikeSearch = Backbone.View.extend({
     form.find('input, select, textarea')
         .val("")
         .attr("checked", false);
+
+    this.$el.find('#search-results-container').removeClass('filled');
+    this.searchResults && this.searchResults.remove()
+
   },
 
   remove: function () {
