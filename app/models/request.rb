@@ -45,18 +45,27 @@ class Request < ActiveRecord::Base
   def start_date=(date_string)
     date_parts = date_string.split('-').map(&:to_i)
     hour = self.start_ampm == 'AM' ? self.start_hour.to_i : self.start_hour.to_i + 12
-
-    self.start = DateTime.new(date_parts[0], date_parts[1], date_parts[2],
-                          hour.to_i, self.start_min.to_i)
+    if date_parts.length > 1
+      self.start = DateTime.new(date_parts[0], date_parts[1], date_parts[2],
+                                hour.to_i, self.start_min.to_i)
+    else
+      self.start = DateTime.new(self.start.year, self.start.month, self.start.day,
+                              hour.to_i, self.end_min.to_i)
+    end
   end
 
   def end_date=(date_string)
     date_parts = date_string.split('-').map(&:to_i)
     hour = self.end_ampm == 'AM' ? self.end_hour.to_i : self.end_hour.to_i + 12
 
-    self.end = DateTime.new(date_parts[0], date_parts[1], date_parts[2],
-                          hour.to_i, self.end_min.to_i)
+    if date_parts.length > 1
+      self.end = DateTime.new(date_parts[0], date_parts[1], date_parts[2],
+                              hour.to_i, self.end_min.to_i)
 
+    else
+      self.end = DateTime.new(self.end.year, self.end.month, self.end.day,
+                              hour.to_i, self.end_min.to_i)
+    end
   end
 
   private

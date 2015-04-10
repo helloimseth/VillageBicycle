@@ -1,7 +1,9 @@
 
 
 <section id='search-results' class='search-results-list group'>
-
+  <% if (collection.length == 0) { %>
+    <em>Sorry, you're search parameters resulted in no bikes</em>
+  <% } %>
 </section>
 
 

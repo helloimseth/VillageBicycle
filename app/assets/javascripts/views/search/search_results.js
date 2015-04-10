@@ -15,7 +15,9 @@ VillageBicycle.Views.SearchResults = Backbone.View.extend({
   },
 
   render: function () {
-    var templatedResults = this.template();
+    var templatedResults = this.template({
+      collection: this.collection
+    });
 
     this.$el.html(templatedResults);
     this.attachBikeList();

@@ -49,7 +49,6 @@ VillageBicycle.Views.FormModal = Backbone.View.extend({
     event.preventDefault();
 
     var attrs = $(event.currentTarget).serializeJSON();
-    console.log(attrs);
     this.model.set(attrs);
     this.model.save({}, {
       success: function () {
